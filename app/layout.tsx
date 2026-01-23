@@ -19,24 +19,11 @@ const rajdhani = Rajdhani({
 export const metadata: Metadata = {
   title: "SanfraCup - Torneo di Calcio a 6 | Salerno",
   description: "Il torneo di calcio a 6 più famoso di Salerno. Registra la tua squadra e partecipa alla SanfraCup!",
-  generator: "v0.app",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+    icon: "/images/sanfra-logo.png",
+    apple: "/images/sanfra-logo.png",
   },
+    generator: 'v0.app'
 }
 
 export default function RootLayout({

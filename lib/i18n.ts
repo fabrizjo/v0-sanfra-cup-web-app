@@ -1,10 +1,17 @@
 export type Language = "it" | "en"
+export type Sport = "calcio" | "volley"
 
 export const translations = {
   it: {
     // Navigation
     registerNow: "Iscriviti Ora",
     adminArea: "Area Admin",
+    home: "Home",
+    aboutUs: "Chi Siamo",
+    shop: "Negozio",
+    selectSport: "Seleziona Sport",
+    calcio: "Calcio",
+    volley: "Volley",
 
     // Hero Section
     footballTournament: "Football Tournament 2026",
@@ -73,6 +80,12 @@ export const translations = {
     // Navigation
     registerNow: "Register Now",
     adminArea: "Admin Area",
+    home: "Home",
+    aboutUs: "About Us",
+    shop: "Shop",
+    selectSport: "Select Sport",
+    calcio: "Football",
+    volley: "Volleyball",
 
     // Hero Section
     footballTournament: "Football Tournament 2026",

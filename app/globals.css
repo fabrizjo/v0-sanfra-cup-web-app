@@ -4,82 +4,44 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.15 0 0); /* Dark black background */
-  --foreground: oklch(0.98 0 0); /* White text */
-  --card: oklch(0.18 0 0); /* Dark card background */
-  --card-foreground: oklch(0.98 0 0); /* White card text */
-  --popover: oklch(0.18 0 0);
+  --background: oklch(0.1 0 0); /* Dark background */
+  --foreground: oklch(0.98 0 0); /* Light text */
+  --card: oklch(0.15 0 0); /* Dark card */
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.15 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.85 0.18 90); /* Bright yellow */
-  --primary-foreground: oklch(0.15 0 0); /* Black text on yellow */
-  --secondary: oklch(0.25 0 0); /* Lighter black */
+  --primary: oklch(0.85 0.18 90); /* Yellow primary */
+  --primary-foreground: oklch(0.1 0 0); /* Dark text on yellow */
+  --secondary: oklch(0.2 0 0);
   --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.3 0 0);
+  --muted: oklch(0.2 0 0);
   --muted-foreground: oklch(0.65 0 0);
   --accent: oklch(0.85 0.18 90); /* Yellow accent */
-  --accent-foreground: oklch(0.15 0 0);
+  --accent-foreground: oklch(0.1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.3 0 0);
-  --input: oklch(0.25 0 0);
-  --ring: oklch(0.85 0.18 90); /* Yellow ring */
+  --border: oklch(0.25 0 0);
+  --input: oklch(0.2 0 0);
+  --ring: oklch(0.85 0.18 90);
   --chart-1: oklch(0.85 0.18 90);
   --chart-2: oklch(0.75 0.15 85);
   --chart-3: oklch(0.65 0.12 80);
   --chart-4: oklch(0.55 0.09 75);
   --chart-5: oklch(0.45 0.06 70);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.18 0 0);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.15 0 0);
   --sidebar-foreground: oklch(0.98 0 0);
   --sidebar-primary: oklch(0.85 0.18 90);
-  --sidebar-primary-foreground: oklch(0.15 0 0);
-  --sidebar-accent: oklch(0.25 0 0);
+  --sidebar-primary-foreground: oklch(0.1 0 0);
+  --sidebar-accent: oklch(0.2 0 0);
   --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.3 0 0);
+  --sidebar-border: oklch(0.25 0 0);
   --sidebar-ring: oklch(0.85 0.18 90);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
-}
-
 @theme inline {
-  /* Adding custom fonts for SanfraCup branding */
-  --font-bebas: "Bebas Neue", "Impact", sans-serif;
-  --font-rajdhani: "Rajdhani", sans-serif;
-  --font-sans: var(--font-rajdhani);
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-sans: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", "Geist Mono", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -123,11 +85,74 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-/* Adding scrolling animation for sponsors */
+/* Apple-style fade-in animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+/* Staggered animation delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Initial state for animated elements */
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.animate {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Sponsors scroll animation */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -138,9 +163,48 @@
 }
 
 .animate-scroll {
-  animation: scroll 20s linear infinite;
+  animation: scroll 25s linear infinite;
 }
 
 .animate-scroll:hover {
   animation-play-state: paused;
+}
+
+/* Apple-style section styling */
+.section-apple {
+  @apply py-24 md:py-32;
+}
+
+.section-dark {
+  @apply bg-black text-white;
+}
+
+.section-darker {
+  @apply bg-black text-white;
+}
+
+.section-light {
+  @apply bg-black text-white;
+}
+
+/* Apple-style heading */
+.heading-apple {
+  @apply text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-balance;
+}
+
+.subheading-apple {
+  @apply text-xl md:text-2xl text-gray-400 font-normal max-w-2xl mx-auto text-balance;
+}
+
+/* Apple-style button */
+.btn-apple {
+  @apply inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-full transition-all duration-300;
+}
+
+.btn-apple-primary {
+  @apply bg-yellow-400 text-black hover:bg-yellow-300;
+}
+
+.btn-apple-secondary {
+  @apply bg-transparent text-white border-2 border-white/30 hover:border-white hover:bg-white/10;
 }

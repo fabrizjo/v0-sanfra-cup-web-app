@@ -1,8 +1,13 @@
 import { HomePageClient } from "@/components/home-page-client"
-import { getRegistrationsStatus } from "@/lib/registrations"
+import { getBothRegistrationsStatus } from "@/lib/registrations"
 
 export default async function HomePage() {
-  const registrationsOpen = await getRegistrationsStatus()
+  const registrationsStatus = await getBothRegistrationsStatus()
 
-  return <HomePageClient registrationsOpen={registrationsOpen} />
+  return (
+    <HomePageClient 
+      calcioRegistrationsOpen={registrationsStatus.calcio} 
+      volleyRegistrationsOpen={registrationsStatus.volley} 
+    />
+  )
 }

@@ -16,7 +16,13 @@ type Player = {
   jerseyNumber: string
 }
 
-export function RegistrationForm() {
+type SportType = "calcio" | "volley"
+
+interface RegistrationFormProps {
+  sport?: SportType
+}
+
+export function RegistrationForm({ sport = "calcio" }: RegistrationFormProps) {
   const [teamName, setTeamName] = useState("")
   const [contactEmail, setContactEmail] = useState("")
   const [contactPhone, setContactPhone] = useState("")
@@ -108,6 +114,7 @@ export function RegistrationForm() {
           name: teamName.trim(),
           contact_email: contactEmail.trim(),
           contact_phone: contactPhone.trim(),
+          sport: sport,
         })
         .select()
         .single()

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
-import { getRegistrationsStatus } from "@/lib/registrations"
+import { getBothRegistrationsStatus } from "@/lib/registrations"
 import { AdminDashboard } from "@/components/admin-dashboard"
 import { LogoutButton } from "@/components/logout-button"
 import Image from "next/image"
@@ -24,6 +24,7 @@ async function getTeamsWithPlayers() {
       contact_email,
       contact_phone,
       created_at,
+      sport,
       players (
         id,
         name,
@@ -41,19 +42,13 @@ async function getTeamsWithPlayers() {
 }
 
 export default async function AdminPage() {
-  console.log("[v0] AdminPage: Starting render")
-
   const user = await getUser()
-  console.log("[v0] AdminPage: User check complete", user ? "authenticated" : "not authenticated")
 
   if (!user) {
-    console.log("[v0] AdminPage: No user, redirecting to login")
     redirect("/admin/login")
   }
 
-  const [teams, registrationsOpen] = await Promise.all([getTeamsWithPlayers(), getRegistrationsStatus()])
-
-  console.log("[v0] AdminPage: Loaded teams count:", teams.length, "registrations open:", registrationsOpen)
+  const [teams, registrationsStatus] = await Promise.all([getTeamsWithPlayers(), getBothRegistrationsStatus()])
 
   return (
     <div className="min-h-screen bg-black relative">
@@ -73,7 +68,11 @@ export default async function AdminPage() {
         </header>
 
         <div className="container mx-auto px-4 py-8">
-          <AdminDashboard teams={teams} registrationsOpen={registrationsOpen} />
+          <AdminDashboard 
+            teams={teams} 
+            calcioRegistrationsOpen={registrationsStatus.calcio} 
+            volleyRegistrationsOpen={registrationsStatus.volley} 
+          />
         </div>
       </div>
     </div>

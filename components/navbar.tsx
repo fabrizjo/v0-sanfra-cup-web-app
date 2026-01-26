@@ -32,7 +32,7 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
             <button
               type="button"
               onClick={() => {
-                onSportChange("calcio")
+                onSportChange("home")
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
               className="text-sm text-gray-400 hover:text-white transition-colors"
@@ -131,7 +131,7 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
               <button
                 type="button"
                 onClick={() => {
-                  onSportChange("calcio")
+                  onSportChange("home")
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                   setMobileMenuOpen(false)
                 }}

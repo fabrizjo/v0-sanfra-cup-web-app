@@ -51,18 +51,12 @@ interface HomePageClientProps {
 
 export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpen }: HomePageClientProps) {
   const [lang, setLang] = useState<Language>("it")
-  const [sport, setSport] = useState<Sport>("calcio")
+  const [sport, setSport] = useState<Sport>("home")
   const [animationKey, setAnimationKey] = useState(0)
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(lang, key)
   
   // Get registration status based on current sport
   const registrationsOpen = sport === "calcio" ? calcioRegistrationsOpen : volleyRegistrationsOpen
-
-  // Re-trigger animation when sport changes
-  const handleSportChange = (newSport: Sport) => {
-    setSport(newSport)
-    setAnimationKey(prev => prev + 1)
-  }
 
   // Intersection Observer for scroll animations
   useEffect(() => {
@@ -83,6 +77,133 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
 
     return () => observer.disconnect()
   }, [])
+
+  // Re-trigger animation when sport changes
+  const handleSportChange = (newSport: Sport) => {
+    setSport(newSport)
+    setAnimationKey(prev => prev + 1)
+  }
+
+  // If on home page, show landing page
+  if (sport === "home") {
+    return (
+      <div className="min-h-screen bg-black">
+        {/* Navigation Bar */}
+        <Navbar 
+          currentLang={lang} 
+          onLanguageChange={setLang} 
+          currentSport={sport} 
+          onSportChange={handleSportChange} 
+        />
+
+        {/* Home Landing Section */}
+        <section className="min-h-screen flex flex-col items-center justify-center relative px-4 overflow-hidden">
+          {/* Background Logo */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-20">
+            <img 
+              src="/images/sanfra-transparent.png"
+              alt=""
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          {/* Content */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center max-w-5xl mx-auto relative z-10"
+          >
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-yellow-400 drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
+            >
+              SANFRACUP
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-400 mt-6"
+            >
+              {lang === "it" ? "Scegli il tuo torneo" : "Choose your tournament"}
+            </motion.p>
+            
+            {/* Sport Selection Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+              className="mt-12 flex flex-col sm:flex-row gap-6 justify-center"
+            >
+              <button
+                onClick={() => handleSportChange("calcio")}
+                className="group relative px-12 py-8 bg-transparent border-2 border-yellow-500 rounded-2xl hover:bg-yellow-500 transition-all duration-300"
+              >
+                <span className="text-3xl md:text-4xl font-bold text-yellow-400 group-hover:text-black transition-colors">
+                  CALCIO
+                </span>
+                <span className="block text-sm text-gray-400 group-hover:text-black/70 mt-2 transition-colors">
+                  Football Tournament 2026
+                </span>
+              </button>
+              
+              <button
+                onClick={() => handleSportChange("volley")}
+                className="group relative px-12 py-8 bg-transparent border-2 border-yellow-500 rounded-2xl hover:bg-yellow-500 transition-all duration-300"
+              >
+                <span className="text-3xl md:text-4xl font-bold text-yellow-400 group-hover:text-black transition-colors">
+                  VOLLEY
+                </span>
+                <span className="block text-sm text-gray-400 group-hover:text-black/70 mt-2 transition-colors">
+                  Volley Tournament 2026
+                </span>
+              </button>
+            </motion.div>
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="absolute bottom-10"
+          >
+            <a href="#chi-siamo" className="animate-bounce block">
+              <ChevronDown className="h-8 w-8 text-gray-600" />
+            </a>
+          </motion.div>
+        </section>
+
+        {/* Non solo un torneo Section */}
+        <section className="min-h-[60vh] flex items-center justify-center bg-black">
+          <div className="container mx-auto px-4 text-center">
+            <GradientRevealText text="Non solo un torneo." />
+          </div>
+        </section>
+
+        {/* Story Section - Chi Siamo */}
+        <section id="chi-siamo" className="min-h-[80vh] flex items-center justify-center bg-black py-20">
+          <div className="container mx-auto px-4 text-center max-w-5xl">
+            <GradientRevealText 
+              text="Abbiamo creato questo torneo tre anni fa con l'obiettivo di riavvicinare le persone dopo il Covid. Fin dalla prima edizione ci siamo divertiti noi in primis, ma soprattutto abbiamo visto quanto il torneo facesse bene alla comunità. Edizione dopo edizione, il nostro cerchio si è allargato sempre di più. La SanFra Cup nasce nell'oratorio di San Francesco, dove siamo cresciuti con valori ben precisi: rispetto, fratellanza, empatia." 
+              size="medium"
+            />
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-12 bg-black border-t border-yellow-500/10">
+          <div className="container mx-auto px-4 text-center">
+            <p className="text-gray-500 text-sm">{t("footerText")}</p>
+            <p className="text-gray-600 text-xs mt-2">Tutti i diritti riservati</p>
+          </div>
+        </footer>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-black">

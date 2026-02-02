@@ -20,8 +20,19 @@ export const metadata: Metadata = {
   title: "SanfraCup - Torneo di Calcio a 6 | Salerno",
   description: "Il torneo di calcio a 6 più famoso di Salerno. Registra la tua squadra e partecipa alla SanfraCup!",
   icons: {
-    icon: "/images/sanfra-logo.png",
+    icon: [
+      { url: "/images/sanfra-logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/sanfra-logo.png", sizes: "192x192", type: "image/png" },
+    ],
     apple: "/images/sanfra-logo.png",
+    shortcut: "/images/sanfra-logo.png",
+  },
+  manifest: "/manifest.json",
+  openGraph: {
+    title: "SanfraCup - Torneo di Calcio a 6 | Salerno",
+    description: "Il torneo di calcio a 6 più famoso di Salerno. Registra la tua squadra e partecipa alla SanfraCup!",
+    images: ["/images/sanfra-logo.png"],
+    siteName: "SanfraCup",
   },
     generator: 'v0.app'
 }

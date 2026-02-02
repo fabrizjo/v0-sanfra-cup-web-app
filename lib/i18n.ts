@@ -1,5 +1,5 @@
 export type Language = "it" | "en"
-export type Sport = "calcio" | "volley"
+export type Sport = "home" | "calcio" | "volley"
 
 export const translations = {
   it: {

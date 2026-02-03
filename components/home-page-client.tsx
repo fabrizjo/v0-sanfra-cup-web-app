@@ -8,7 +8,7 @@ import { Calendar, MapPin, Users, Clock, Trophy, Download, ChevronDown } from "l
 import { Navbar } from "@/components/navbar"
 import { type Language, type Sport, getTranslation } from "@/lib/i18n"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { MetallicButton } from "@/components/metallic-button"
+import { LiquidMetalButton } from "@/components/liquid-metal-button"
 
 // Gradient Reveal Text Component
 function GradientRevealText({ text, size = "large" }: { text: string; size?: "large" | "medium" }) {
@@ -85,82 +85,81 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
     return () => observer.disconnect()
   }, [])
 
-  // Home landing page with sport selection
+  // Home page with sport selection
   if (sport === "home") {
     return (
-      <div className="min-h-screen bg-black overflow-hidden">
-        {/* Background Logo */}
-        <div className="fixed inset-0 flex items-center justify-center opacity-15 pointer-events-none">
-          <img 
-            src="/images/sanfra-transparent.png"
-            alt=""
-            className="w-full h-full object-contain"
-          />
-        </div>
+      <div className="min-h-screen bg-black">
+        {/* Navigation Bar */}
+        <Navbar 
+          currentLang={lang} 
+          onLanguageChange={setLang} 
+          currentSport={sport} 
+          onSportChange={handleSportChange} 
+        />
 
-        {/* Main Content */}
-        <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4">
-          {/* Language Switcher */}
-          <div className="absolute top-6 right-6">
-            <button
-              onClick={() => setLang(lang === "it" ? "en" : "it")}
-              className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors border border-gray-800 rounded-lg hover:border-yellow-500/50"
-            >
-              {lang === "it" ? "EN" : "IT"}
-            </button>
-          </div>
-
-          {/* Title */}
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
+        {/* Hero Section - Same as calcio but with sport selection buttons */}
+        <section className="min-h-screen flex flex-col items-center justify-center relative px-4 overflow-hidden">
+          {/* Background Logo */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center mb-16"
+            className="absolute inset-0"
           >
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-yellow-400 drop-shadow-[0_0_40px_rgba(250,204,21,0.4)]">
+            <div className="absolute inset-0 flex items-center justify-center opacity-30">
+              <img 
+                src="/images/sanfra-transparent.png"
+                alt=""
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </motion.div>
+          
+          {/* Content */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            className="text-center max-w-5xl mx-auto relative z-10"
+          >
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-yellow-400 drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
+            >
               SANFRACUP
-            </h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
               className="text-xl md:text-2xl text-gray-400 mt-6"
             >
               {lang === "it" ? "Scegli il tuo torneo" : "Choose your tournament"}
             </motion.p>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.7 }}
+              className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center"
+            >
+              <LiquidMetalButton 
+                label="CALCIO" 
+                onClick={() => handleSportChange("calcio")} 
+              />
+              <LiquidMetalButton 
+                label="VOLLEY" 
+                onClick={() => handleSportChange("volley")} 
+              />
+            </motion.div>
           </motion.div>
-
-          {/* Sport Selection Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-            className="flex flex-col md:flex-row gap-8 md:gap-12"
-          >
-            <MetallicButton 
-              label="CALCIO" 
-              onClick={() => handleSportChange("calcio")}
-              color="gold"
-            />
-            <MetallicButton 
-              label="VOLLEY" 
-              onClick={() => handleSportChange("volley")}
-              color="gold"
-            />
-          </motion.div>
-
+          
           {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="absolute bottom-10"
-          >
-            <a href="#chi-siamo" className="animate-bounce block text-gray-600 hover:text-yellow-400 transition-colors">
-              <ChevronDown className="h-8 w-8" />
-            </a>
-          </motion.div>
-        </div>
+          <div className="absolute bottom-10 animate-bounce">
+            <ChevronDown className="h-8 w-8 text-gray-600" />
+          </div>
+        </section>
 
         {/* Non solo un torneo Section */}
         <section className="min-h-[60vh] flex items-center justify-center bg-black">
@@ -176,6 +175,42 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
               text="Abbiamo creato questo torneo tre anni fa con l'obiettivo di riavvicinare le persone dopo il Covid. Fin dalla prima edizione ci siamo divertiti noi in primis, ma soprattutto abbiamo visto quanto il torneo facesse bene alla comunità. Edizione dopo edizione, il nostro cerchio si è allargato sempre di più. La SanFra Cup nasce nell'oratorio di San Francesco, dove siamo cresciuti con valori ben precisi: rispetto, fratellanza, empatia." 
               size="medium"
             />
+          </div>
+        </section>
+
+        {/* Image Section */}
+        <section className="section-apple section-dark">
+          <div className="container mx-auto px-4">
+            <div className="animate-on-scroll">
+              <div className="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden border border-yellow-500/20">
+                <Image
+                  src="/images/sanfra-team.jpg"
+                  alt="SanfraCup Team"
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Sponsors Section */}
+        <section className="py-16 bg-black border-y border-yellow-500/10">
+          <div className="overflow-hidden">
+            <div className="animate-scroll flex gap-16 whitespace-nowrap">
+              {["QUANTO BASTA", "CAPRICCIO DI PEPE", "MD22TEAM", "ARECHI", "DOLCE E CAFFE"].map((sponsor, i) => (
+                <span key={`${sponsor}-${i}`} className="text-2xl font-medium text-yellow-500/30 tracking-widest">
+                  {sponsor}
+                </span>
+              ))}
+              {["QUANTO BASTA", "CAPRICCIO DI PEPE", "MD22TEAM", "ARECHI", "DOLCE E CAFFE"].map((sponsor, i) => (
+                <span key={`${sponsor}-dup-${i}`} className="text-2xl font-medium text-yellow-500/30 tracking-widest">
+                  {sponsor}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 

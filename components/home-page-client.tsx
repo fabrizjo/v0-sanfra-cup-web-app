@@ -8,6 +8,7 @@ import { Calendar, MapPin, Users, Clock, Trophy, Download, ChevronDown } from "l
 import { Navbar } from "@/components/navbar"
 import { type Language, type Sport, getTranslation } from "@/lib/i18n"
 import { motion, useScroll, useTransform } from "framer-motion"
+import { MetallicButton } from "@/components/metallic-button"
 
 // Gradient Reveal Text Component
 function GradientRevealText({ text, size = "large" }: { text: string; size?: "large" | "medium" }) {
@@ -58,6 +59,12 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
   // Get registration status based on current sport
   const registrationsOpen = sport === "calcio" ? calcioRegistrationsOpen : volleyRegistrationsOpen
 
+  // Re-trigger animation when sport changes
+  const handleSportChange = (newSport: Sport) => {
+    setSport(newSport)
+    setAnimationKey(prev => prev + 1)
+  }
+
   // Intersection Observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -78,104 +85,82 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
     return () => observer.disconnect()
   }, [])
 
-  // Re-trigger animation when sport changes
-  const handleSportChange = (newSport: Sport) => {
-    setSport(newSport)
-    setAnimationKey(prev => prev + 1)
-  }
-
-  // If on home page, show landing page
+  // Home landing page with sport selection
   if (sport === "home") {
     return (
-      <div className="min-h-screen bg-black">
-        {/* Navigation Bar */}
-        <Navbar 
-          currentLang={lang} 
-          onLanguageChange={setLang} 
-          currentSport={sport} 
-          onSportChange={handleSportChange} 
-        />
+      <div className="min-h-screen bg-black overflow-hidden">
+        {/* Background Logo */}
+        <div className="fixed inset-0 flex items-center justify-center opacity-15 pointer-events-none">
+          <img 
+            src="/images/sanfra-transparent.png"
+            alt=""
+            className="w-full h-full object-contain"
+          />
+        </div>
 
-        {/* Home Landing Section */}
-        <section className="min-h-screen flex flex-col items-center justify-center relative px-4 overflow-hidden">
-          {/* Background Logo */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-20">
-            <img 
-              src="/images/sanfra-transparent.png"
-              alt=""
-              className="w-full h-full object-contain"
-            />
+        {/* Main Content */}
+        <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4">
+          {/* Language Switcher */}
+          <div className="absolute top-6 right-6">
+            <button
+              onClick={() => setLang(lang === "it" ? "en" : "it")}
+              className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors border border-gray-800 rounded-lg hover:border-yellow-500/50"
+            >
+              {lang === "it" ? "EN" : "IT"}
+            </button>
           </div>
 
-          {/* Content */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+          {/* Title */}
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center max-w-5xl mx-auto relative z-10"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center mb-16"
           >
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-yellow-400 drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
-            >
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-yellow-400 drop-shadow-[0_0_40px_rgba(250,204,21,0.4)]">
               SANFRACUP
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            </h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
               className="text-xl md:text-2xl text-gray-400 mt-6"
             >
               {lang === "it" ? "Scegli il tuo torneo" : "Choose your tournament"}
             </motion.p>
-            
-            {/* Sport Selection Buttons */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
-              className="mt-12 flex flex-col sm:flex-row gap-6 justify-center"
-            >
-              <button
-                onClick={() => handleSportChange("calcio")}
-                className="group relative px-12 py-8 bg-transparent border-2 border-yellow-500 rounded-2xl hover:bg-yellow-500 transition-all duration-300"
-              >
-                <span className="text-3xl md:text-4xl font-bold text-yellow-400 group-hover:text-black transition-colors">
-                  CALCIO
-                </span>
-                <span className="block text-sm text-gray-400 group-hover:text-black/70 mt-2 transition-colors">
-                  Football Tournament 2026
-                </span>
-              </button>
-              
-              <button
-                onClick={() => handleSportChange("volley")}
-                className="group relative px-12 py-8 bg-transparent border-2 border-yellow-500 rounded-2xl hover:bg-yellow-500 transition-all duration-300"
-              >
-                <span className="text-3xl md:text-4xl font-bold text-yellow-400 group-hover:text-black transition-colors">
-                  VOLLEY
-                </span>
-                <span className="block text-sm text-gray-400 group-hover:text-black/70 mt-2 transition-colors">
-                  Volley Tournament 2026
-                </span>
-              </button>
-            </motion.div>
+          </motion.div>
+
+          {/* Sport Selection Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col md:flex-row gap-8 md:gap-12"
+          >
+            <MetallicButton 
+              label="CALCIO" 
+              onClick={() => handleSportChange("calcio")}
+              color="gold"
+            />
+            <MetallicButton 
+              label="VOLLEY" 
+              onClick={() => handleSportChange("volley")}
+              color="gold"
+            />
           </motion.div>
 
           {/* Scroll indicator */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
             className="absolute bottom-10"
           >
-            <a href="#chi-siamo" className="animate-bounce block">
-              <ChevronDown className="h-8 w-8 text-gray-600" />
+            <a href="#chi-siamo" className="animate-bounce block text-gray-600 hover:text-yellow-400 transition-colors">
+              <ChevronDown className="h-8 w-8" />
             </a>
           </motion.div>
-        </section>
+        </div>
 
         {/* Non solo un torneo Section */}
         <section className="min-h-[60vh] flex items-center justify-center bg-black">

@@ -15,7 +15,7 @@ export const translations = {
 
     // Hero Section
     footballTournament: "Football Tournament 2026",
-    heroTag: "Il Torneo di Calcio a 6 più Famoso di Salerno",
+    heroTag: "Il Torneo di Calcio a 5 più Famoso di Salerno",
     heroTitle: "Benvenuti alla",
     heroSubtitle:
       "Il torneo che unisce passione, competizione e divertimento. Partecipa con la tua squadra e vivi un'esperienza indimenticabile sui campi di Salerno.",
@@ -33,7 +33,7 @@ export const translations = {
     where: "Dove",
     whereDesc: "Via Nicola Acocella 7, campetto di Sanfrancesco",
     whoCanParticipate: "Chi Può Partecipare",
-    whoDesc: "Squadre di 6-8 giocatori, aperto a tutti gli appassionati di calcio a 6.",
+    whoDesc: "Squadre di 5-8 giocatori, aperto a tutti gli appassionati di calcio a 5.",
     rules: "Regole",
     rulesDesc:
       "Formato 11 contro 11, tempi da 45 minuti, regole FIFA standard. Minimo 6 giocatori richiesti per registrarsi.",
@@ -50,7 +50,7 @@ export const translations = {
     maxPlayers: "Massimo 8 giocatori per squadra",
     uniqueNumber: "Ogni giocatore deve avere un numero di maglia unico",
     format: "Formato",
-    sixPlayers: "Calcio a 6 giocatori",
+    sixPlayers: "Calcio a 5 giocatori",
     phases: "Fase a gironi seguita da fase eliminatoria",
     referees: "Arbitri professionisti",
     downloadRegulations: "Regolamento Generale del Torneo",
@@ -69,7 +69,7 @@ export const translations = {
       "Le registrazioni sono attualmente chiuse. Contatta gli organizzatori per maggiori informazioni.",
 
     // Footer
-    footerText: "© 2026 SanfraCup - Torneo di Calcio a 6 - Salerno",
+    footerText: "© 2026 SanfraCup - Torneo di Calcio a 5 - Salerno",
 
     // Social Media
     followSocial: "SEGUITECI SUI NOSTRI SOCIAL PER RIMANERE AGGIORNATI!",
@@ -89,7 +89,7 @@ export const translations = {
 
     // Hero Section
     footballTournament: "Football Tournament 2026",
-    heroTag: "The Most Famous 6-a-Side Football Tournament in Salerno",
+    heroTag: "The Most Famous 5-a-Side Football Tournament in Salerno",
     heroTitle: "Welcome to",
     heroSubtitle:
       "The tournament that brings together passion, competition and fun. Join with your team and experience an unforgettable experience on the fields of Salerno.",
@@ -107,7 +107,7 @@ export const translations = {
     where: "Where",
     whereDesc: "Via Nicola Acocella 7, Sanfrancesco field",
     whoCanParticipate: "Who Can Participate",
-    whoDesc: "Teams of 6-8 players, open to all 6-a-side football enthusiasts.",
+    whoDesc: "Teams of 5-8 players, open to all 5-a-side football enthusiasts.",
     rules: "Rules",
     rulesDesc: "11-a-side format, 45-min halves, FIFA standard rules apply. Minimum 6 players required to register.",
     contact: "Contact",
@@ -123,7 +123,7 @@ export const translations = {
     maxPlayers: "Maximum 8 players per team",
     uniqueNumber: "Each player must have a unique jersey number",
     format: "Format",
-    sixPlayers: "6-a-side football",
+    sixPlayers: "5-a-side football",
     phases: "Group stage followed by knockout phase",
     referees: "Professional referees",
     downloadRegulations: "Full Tournament Regulations",
@@ -141,7 +141,7 @@ export const translations = {
     registrationsClosedDesc: "Registrations are currently closed. Contact the organizers for more information.",
 
     // Footer
-    footerText: "© 2026 SanfraCup - 6-a-Side Football Tournament - Salerno",
+    footerText: "© 2026 SanfraCup - 5-a-Side Football Tournament - Salerno",
 
     // Social Media
     followSocial: "FOLLOW US ON SOCIAL MEDIA TO STAY UPDATED!",

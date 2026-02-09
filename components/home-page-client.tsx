@@ -65,25 +65,30 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
     setAnimationKey(prev => prev + 1)
   }
 
-  // Intersection Observer for scroll animations
+  // Intersection Observer for scroll animations - re-run when sport changes
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate")
-          }
-        })
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    )
+    // Small delay to let the DOM render the new sport page
+    const timeout = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate")
+            }
+          })
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      )
 
-    document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-      observer.observe(el)
-    })
+      document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+        observer.observe(el)
+      })
 
-    return () => observer.disconnect()
-  }, [])
+      return () => observer.disconnect()
+    }, 100)
+
+    return () => clearTimeout(timeout)
+  }, [sport])
 
   // Home page with sport selection
   if (sport === "home") {

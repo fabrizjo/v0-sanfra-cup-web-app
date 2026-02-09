@@ -176,15 +176,15 @@
 }
 
 .section-dark {
-  @apply bg-zinc-950 text-white;
+  @apply bg-black text-white;
 }
 
 .section-darker {
-  @apply bg-zinc-900 text-white;
+  @apply bg-black text-white;
 }
 
 .section-light {
-  @apply bg-zinc-900/50 text-white;
+  @apply bg-black text-white;
 }
 
 /* Apple-style heading */

@@ -1,175 +1,150 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import type React from "react"
+import { useState, useRef, useEffect, useMemo } from "react"
 
 interface LiquidMetalButtonProps {
-  label: string
-  onClick: () => void
+  label?: string
+  onClick?: () => void
 }
 
-export function LiquidMetalButton({ label, onClick }: LiquidMetalButtonProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+export function LiquidMetalButton({ label = "Get Started", onClick }: LiquidMetalButtonProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [isPressed, setIsPressed] = useState(false)
-  const animationRef = useRef<number>()
-  const timeRef = useRef(0)
+  const [ripples, setRipples] = useState<Array<{ x: number; y: number; id: number }>>([])
+  const shaderRef = useRef<HTMLDivElement>(null)
+  const shaderMount = useRef<any>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const rippleId = useRef(0)
+
+  const dimensions = useMemo(() => {
+    return { width: 200, height: 56, innerWidth: 196, innerHeight: 52, shaderWidth: 200, shaderHeight: 56 }
+  }, [])
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    const width = canvas.width
-    const height = canvas.height
-
-    const animate = () => {
-      timeRef.current += isHovered ? 0.03 : 0.015
-      const time = timeRef.current
-
-      // Clear canvas
-      ctx.clearRect(0, 0, width, height)
-
-      // Create gradient background
-      const gradient = ctx.createLinearGradient(0, 0, width, height)
-      
-      if (isPressed) {
-        gradient.addColorStop(0, "#1a1a1a")
-        gradient.addColorStop(0.5, "#2d2d2d")
-        gradient.addColorStop(1, "#1a1a1a")
-      } else if (isHovered) {
-        gradient.addColorStop(0, "#3d3d3d")
-        gradient.addColorStop(0.3, "#4a4a4a")
-        gradient.addColorStop(0.5, "#5a5a5a")
-        gradient.addColorStop(0.7, "#4a4a4a")
-        gradient.addColorStop(1, "#3d3d3d")
-      } else {
-        gradient.addColorStop(0, "#2a2a2a")
-        gradient.addColorStop(0.3, "#3a3a3a")
-        gradient.addColorStop(0.5, "#454545")
-        gradient.addColorStop(0.7, "#3a3a3a")
-        gradient.addColorStop(1, "#2a2a2a")
-      }
-
-      // Draw rounded rectangle
-      const radius = 30
-      ctx.beginPath()
-      ctx.moveTo(radius, 0)
-      ctx.lineTo(width - radius, 0)
-      ctx.quadraticCurveTo(width, 0, width, radius)
-      ctx.lineTo(width, height - radius)
-      ctx.quadraticCurveTo(width, height, width - radius, height)
-      ctx.lineTo(radius, height)
-      ctx.quadraticCurveTo(0, height, 0, height - radius)
-      ctx.lineTo(0, radius)
-      ctx.quadraticCurveTo(0, 0, radius, 0)
-      ctx.closePath()
-      ctx.fillStyle = gradient
-      ctx.fill()
-
-      // Liquid metal effect - moving highlights
-      const highlightCount = 3
-      for (let i = 0; i < highlightCount; i++) {
-        const phase = (time + i * 2) % (Math.PI * 2)
-        const x = width * 0.2 + Math.sin(phase) * width * 0.3
-        const y = height * 0.3 + Math.cos(phase * 0.7) * height * 0.2
-        
-        const highlightGradient = ctx.createRadialGradient(x, y, 0, x, y, 80)
-        highlightGradient.addColorStop(0, isHovered ? "rgba(255, 255, 255, 0.15)" : "rgba(255, 255, 255, 0.08)")
-        highlightGradient.addColorStop(1, "rgba(255, 255, 255, 0)")
-        
-        ctx.fillStyle = highlightGradient
-        ctx.fill()
-      }
-
-      // Top edge highlight
-      const topHighlight = ctx.createLinearGradient(0, 0, 0, 20)
-      topHighlight.addColorStop(0, isHovered ? "rgba(255, 255, 255, 0.25)" : "rgba(255, 255, 255, 0.15)")
-      topHighlight.addColorStop(1, "rgba(255, 255, 255, 0)")
-      
-      ctx.beginPath()
-      ctx.moveTo(radius, 0)
-      ctx.lineTo(width - radius, 0)
-      ctx.quadraticCurveTo(width, 0, width, radius)
-      ctx.lineTo(width, 20)
-      ctx.lineTo(0, 20)
-      ctx.lineTo(0, radius)
-      ctx.quadraticCurveTo(0, 0, radius, 0)
-      ctx.closePath()
-      ctx.fillStyle = topHighlight
-      ctx.fill()
-
-      // Inner shadow at bottom
-      const bottomShadow = ctx.createLinearGradient(0, height - 20, 0, height)
-      bottomShadow.addColorStop(0, "rgba(0, 0, 0, 0)")
-      bottomShadow.addColorStop(1, "rgba(0, 0, 0, 0.3)")
-      
-      ctx.beginPath()
-      ctx.moveTo(0, height - 20)
-      ctx.lineTo(width, height - 20)
-      ctx.lineTo(width, height - radius)
-      ctx.quadraticCurveTo(width, height, width - radius, height)
-      ctx.lineTo(radius, height)
-      ctx.quadraticCurveTo(0, height, 0, height - radius)
-      ctx.closePath()
-      ctx.fillStyle = bottomShadow
-      ctx.fill()
-
-      animationRef.current = requestAnimationFrame(animate)
+    const styleId = "shader-canvas-style-exploded"
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement("style")
+      style.id = styleId
+      style.textContent = `
+        .shader-container-exploded canvas {
+          width: 100% !important;
+          height: 100% !important;
+          display: block !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          border-radius: 100px !important;
+        }
+        @keyframes ripple-animation {
+          0% { transform: translate(-50%, -50%) scale(0); opacity: 0.6; }
+          100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+        }
+      `
+      document.head.appendChild(style)
     }
 
-    animate()
+    const loadShader = async () => {
+      try {
+        const { liquidMetalFragmentShader, ShaderMount } = await import("@paper-design/shaders")
+        if (shaderRef.current) {
+          if (shaderMount.current?.destroy) shaderMount.current.destroy()
+          shaderMount.current = new ShaderMount(shaderRef.current, liquidMetalFragmentShader, {
+            u_repetition: 4, u_softness: 0.5, u_shiftRed: 0.3, u_shiftBlue: 0.3,
+            u_distortion: 0, u_contour: 0, u_angle: 45, u_scale: 8,
+            u_shape: 1, u_offsetX: 0.1, u_offsetY: -0.1,
+          }, undefined, 0.6)
+        }
+      } catch (error) {
+        console.error("Failed to load shader:", error)
+      }
+    }
+    loadShader()
 
     return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-      }
+      if (shaderMount.current?.destroy) { shaderMount.current.destroy(); shaderMount.current = null }
     }
-  }, [isHovered, isPressed])
+  }, [dimensions.width, dimensions.height])
+
+  const handleMouseEnter = () => { setIsHovered(true); shaderMount.current?.setSpeed?.(1) }
+  const handleMouseLeave = () => { setIsHovered(false); setIsPressed(false); shaderMount.current?.setSpeed?.(0.6) }
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (shaderMount.current?.setSpeed) {
+      shaderMount.current.setSpeed(2.4)
+      setTimeout(() => {
+        shaderMount.current?.setSpeed?.(isHovered ? 1 : 0.6)
+      }, 300)
+    }
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect()
+      const ripple = { x: e.clientX - rect.left, y: e.clientY - rect.top, id: rippleId.current++ }
+      setRipples((prev) => [...prev, ripple])
+      setTimeout(() => setRipples((prev) => prev.filter((r) => r.id !== ripple.id)), 600)
+    }
+    onClick?.()
+  }
 
   return (
-    <button
-      onClick={onClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => {
-        setIsHovered(false)
-        setIsPressed(false)
-      }}
-      onMouseDown={() => setIsPressed(true)}
-      onMouseUp={() => setIsPressed(false)}
-      className="relative group focus:outline-none"
-      style={{
-        transform: isPressed ? "scale(0.98) translateY(2px)" : isHovered ? "scale(1.02)" : "scale(1)",
-        transition: "transform 0.15s ease-out"
-      }}
-    >
-      {/* Canvas for liquid metal effect */}
-      <canvas
-        ref={canvasRef}
-        width={200}
-        height={60}
-        className="rounded-full"
-        style={{
-          boxShadow: isPressed 
-            ? "inset 0 2px 4px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.3)"
-            : isHovered
-            ? "0 8px 30px rgba(0,0,0,0.4), 0 4px 15px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)"
-            : "0 4px 15px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05)"
-        }}
-      />
-      
-      {/* Text overlay */}
-      <span 
-        className="absolute inset-0 flex items-center justify-center text-lg font-semibold tracking-wide pointer-events-none"
-        style={{
-          color: isPressed ? "#888" : isHovered ? "#fff" : "#ccc",
-          textShadow: isHovered ? "0 0 10px rgba(255,255,255,0.3)" : "none",
-          transition: "color 0.15s ease-out, text-shadow 0.15s ease-out"
-        }}
-      >
-        {label}
-      </span>
-    </button>
+    <div className="relative inline-block">
+      <div style={{ perspective: "1000px", perspectiveOrigin: "50% 50%" }}>
+        <div style={{ position: "relative", width: `${dimensions.width}px`, height: `${dimensions.height}px`,
+          transformStyle: "preserve-3d", transition: "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)", transform: "none" }}>
+
+          {/* Testo */}
+          <div style={{ position: "absolute", top: 0, left: 0, width: `${dimensions.width}px`, height: `${dimensions.height}px`,
+            display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", transformStyle: "preserve-3d",
+            transition: "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)",
+            transform: "translateZ(20px)", zIndex: 30, pointerEvents: "none" }}>
+            <span style={{ fontSize: "16px", color: "#666666", fontWeight: 500, letterSpacing: "0.05em",
+              textShadow: "0px 1px 2px rgba(0, 0, 0, 0.5)", transition: "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)",
+              transform: "scale(1)", whiteSpace: "nowrap" }}>{label}</span>
+          </div>
+
+          {/* Livello interno scuro */}
+          <div style={{ position: "absolute", top: 0, left: 0, width: `${dimensions.width}px`, height: `${dimensions.height}px`,
+            transformStyle: "preserve-3d", transition: "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)",
+            transform: `translateZ(10px) ${isPressed ? "translateY(1px) scale(0.98)" : "translateY(0) scale(1)"}`, zIndex: 20 }}>
+            <div style={{ width: `${dimensions.innerWidth}px`, height: `${dimensions.innerHeight}px`, margin: "2px", borderRadius: "100px",
+              background: "linear-gradient(180deg, #202020 0%, #000000 100%)",
+              boxShadow: isPressed ? "inset 0px 2px 4px rgba(0, 0, 0, 0.4), inset 0px 1px 2px rgba(0, 0, 0, 0.3)" : "none",
+              transition: "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1)" }} />
+          </div>
+
+          {/* Livello shader metallico */}
+          <div style={{ position: "absolute", top: 0, left: 0, width: `${dimensions.width}px`, height: `${dimensions.height}px`,
+            transformStyle: "preserve-3d", transition: "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)",
+            transform: `translateZ(0px) ${isPressed ? "translateY(1px) scale(0.98)" : "translateY(0) scale(1)"}`, zIndex: 10 }}>
+            <div style={{ height: `${dimensions.height}px`, width: `${dimensions.width}px`, borderRadius: "100px",
+              boxShadow: isPressed
+                ? "0px 0px 0px 1px rgba(0, 0, 0, 0.5), 0px 1px 2px 0px rgba(0, 0, 0, 0.3)"
+                : isHovered
+                  ? "0px 0px 0px 1px rgba(0, 0, 0, 0.4), 0px 12px 6px 0px rgba(0, 0, 0, 0.05), 0px 8px 5px 0px rgba(0, 0, 0, 0.1), 0px 4px 4px 0px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.2)"
+                  : "0px 0px 0px 1px rgba(0, 0, 0, 0.3), 0px 36px 14px 0px rgba(0, 0, 0, 0.02), 0px 20px 12px 0px rgba(0, 0, 0, 0.12), 0px 9px 9px 0px rgba(0, 0, 0, 0.12), 0px 2px 5px 0px rgba(0, 0, 0, 0.15)",
+              transition: "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+              background: "rgb(0 0 0 / 0)" }}>
+              <div ref={shaderRef} className="shader-container-exploded" style={{ borderRadius: "100px", overflow: "hidden", position: "relative",
+                width: `${dimensions.shaderWidth}px`, maxWidth: `${dimensions.shaderWidth}px`, height: `${dimensions.shaderHeight}px` }} />
+            </div>
+          </div>
+
+          {/* Pulsante interattivo */}
+          <button ref={buttonRef} onClick={handleClick} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+            onMouseDown={() => setIsPressed(true)} onMouseUp={() => setIsPressed(false)}
+            style={{ position: "absolute", top: 0, left: 0, width: `${dimensions.width}px`, height: `${dimensions.height}px`,
+              background: "transparent", border: "none", cursor: "pointer", outline: "none", zIndex: 40,
+              transformStyle: "preserve-3d", transform: "translateZ(25px)",
+              transition: "all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)",
+              overflow: "hidden", borderRadius: "100px" }} aria-label={label}>
+            {ripples.map((ripple) => (
+              <span key={ripple.id} style={{ position: "absolute", left: `${ripple.x}px`, top: `${ripple.y}px`,
+                width: "20px", height: "20px", borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%)",
+                pointerEvents: "none", animation: "ripple-animation 0.6s ease-out" }} />
+            ))}
+          </button>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -8,7 +8,7 @@ import { Calendar, MapPin, Users, Clock, Trophy, Download, ChevronDown } from "l
 import { Navbar } from "@/components/navbar"
 import { type Language, type Sport, getTranslation } from "@/lib/i18n"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { LiquidMetalButton } from "@/components/liquid-metal-button"
+
 
 // Gradient Reveal Text Component
 function GradientRevealText({ text, size = "large" }: { text: string; size?: "large" | "medium" }) {
@@ -141,23 +141,8 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
               className="text-xl md:text-2xl text-gray-400 mt-6"
             >
-              {lang === "it" ? "Scegli il tuo torneo" : "Choose your tournament"}
+              {lang === "it" ? "I tuoi eventi sportivi a Salerno" : "Your sports events in Salerno"}
             </motion.p>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.7 }}
-              className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center"
-            >
-              <LiquidMetalButton 
-                label="CALCIO" 
-                onClick={() => handleSportChange("calcio")} 
-              />
-              <LiquidMetalButton 
-                label="VOLLEY" 
-                onClick={() => handleSportChange("volley")} 
-              />
-            </motion.div>
           </motion.div>
           
           {/* Scroll indicator */}

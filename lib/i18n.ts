@@ -58,18 +58,18 @@ export const translations = {
 
     // Registration
     teamRegistration: "Registrazione Squadra",
-    teamRegistrationDesc: "Registra la tua squadra per il Torneo SanfraCup (Minimo 6 giocatori richiesti)",
+    teamRegistrationDesc: "Registra la tua squadra per il Torneo Sanfra Cup (Minimo 6 giocatori richiesti)",
 
     // CTA
     readyToJoin: "Pronto a Partecipare?",
-    ctaDesc: "Registra la tua squadra ora e preparati a vivere un'esperienza sportiva unica alla SanfraCup!",
+    ctaDesc: "Registra la tua squadra ora e preparati a vivere un'esperienza sportiva unica alla Sanfra Cup!",
     startRegistration: "Inizia la Registrazione",
     registrationsClosed: "Registrazioni Chiuse",
     registrationsClosedDesc:
       "Le registrazioni sono attualmente chiuse. Contatta gli organizzatori per maggiori informazioni.",
 
     // Footer
-    footerText: "© 2026 SanfraCup - Torneo di Calcio a 5 - Salerno",
+    footerText: "© 2026 Sanfra Cup - Torneo di Calcio a 5 - Salerno",
 
     // Social Media
     followSocial: "SEGUITECI SUI NOSTRI SOCIAL PER RIMANERE AGGIORNATI!",
@@ -131,17 +131,17 @@ export const translations = {
 
     // Registration
     teamRegistration: "Team Registration",
-    teamRegistrationDesc: "Register your team for the SanfraCup Tournament (Minimum 6 players required)",
+    teamRegistrationDesc: "Register your team for the Sanfra Cup Tournament (Minimum 6 players required)",
 
     // CTA
     readyToJoin: "Ready to Join?",
-    ctaDesc: "Register your team now and get ready to experience a unique sporting experience at SanfraCup!",
+    ctaDesc: "Register your team now and get ready to experience a unique sporting experience at Sanfra Cup!",
     startRegistration: "Start Registration",
     registrationsClosed: "Registrations Closed",
     registrationsClosedDesc: "Registrations are currently closed. Contact the organizers for more information.",
 
     // Footer
-    footerText: "© 2026 SanfraCup - 5-a-Side Football Tournament - Salerno",
+    footerText: "© 2026 Sanfra Cup - 5-a-Side Football Tournament - Salerno",
 
     // Social Media
     followSocial: "FOLLOW US ON SOCIAL MEDIA TO STAY UPDATED!",

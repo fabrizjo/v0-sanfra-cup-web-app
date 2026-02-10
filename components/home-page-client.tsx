@@ -131,9 +131,9 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-yellow-400 drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
+              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
             >
-              SANFRACUP
+              <span className="text-white">SANFRA</span>{' '}<span className="text-yellow-400">CUP</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -190,7 +190,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
               <div className="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden border border-yellow-500/20">
                 <Image
                   src="/images/sanfra-team.jpg"
-                  alt="SanfraCup Team"
+                  alt="Sanfra Cup Team"
                   width={1200}
                   height={800}
                   className="w-full h-auto"
@@ -282,9 +282,9 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-yellow-400 drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
+            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
           >
-            SANFRACUP
+            <span className="text-white">SANFRA</span>{' '}<span className="text-yellow-400">CUP</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -347,7 +347,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
             <div className="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden border border-yellow-500/20">
               <Image
                 src="/images/sanfra-team.jpg"
-                alt="SanfraCup Team"
+                alt="Sanfra Cup Team"
                 width={1200}
                 height={800}
                 className="w-full h-auto"
@@ -472,7 +472,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="SanfraCup Location"
+                title="Sanfra Cup Location"
                 className="grayscale"
               />
             </div>

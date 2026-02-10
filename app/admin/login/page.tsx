@@ -8,7 +8,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-black relative flex items-center justify-center p-4">
       <div className="fixed inset-0 z-0 opacity-10">
-        <Image src="/images/sanfra-logo.png" alt="SanfraCup Logo" fill className="object-contain" priority />
+        <Image src="/images/sanfra-logo.png" alt="Sanfra Cup Logo" fill className="object-contain" priority />
       </div>
 
       <div className="w-full max-w-md relative z-10">
@@ -17,7 +17,7 @@ export default function LoginPage() {
             className="text-6xl font-black text-yellow-400 tracking-wider mb-4 drop-shadow-[0_0_30px_rgba(234,179,8,0.5)]"
             style={{ fontFamily: "'Teko', sans-serif", letterSpacing: "0.1em" }}
           >
-            SANFRACUP
+            <span className="text-white">SANFRA</span>{' '}<span className="text-yellow-400">CUP</span>
           </h1>
           <h2 className="text-2xl font-bold text-white mb-2">Area Admin</h2>
           <p className="text-gray-400">Accedi per gestire le iscrizioni del torneo</p>

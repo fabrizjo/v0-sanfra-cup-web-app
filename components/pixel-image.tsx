@@ -7,6 +7,8 @@ type GridType = "6x4" | "8x8" | "8x3" | "4x6" | "3x8"
 interface PixelImageProps {
   src: string
   alt?: string
+  width?: number
+  height?: number
   grid?: GridType
   customGrid?: { rows: number; cols: number }
   grayscaleAnimation?: boolean
@@ -27,6 +29,8 @@ const GRID_MAP: Record<GridType, { rows: number; cols: number }> = {
 export function PixelImage({
   src,
   alt = "",
+  width = 1200,
+  height = 800,
   grid = "8x8",
   customGrid,
   grayscaleAnimation = true,
@@ -42,7 +46,6 @@ export function PixelImage({
 
   const { rows, cols } = customGrid || GRID_MAP[grid]
 
-  // Generate random delays for each pixel
   const delays = useMemo(() => {
     const arr: number[] = []
     for (let i = 0; i < rows * cols; i++) {
@@ -51,7 +54,15 @@ export function PixelImage({
     return arr
   }, [rows, cols, maxAnimationDelay])
 
-  // Intersection observer to trigger animation when visible
+  // Preload image via JS Image object
+  useEffect(() => {
+    const img = new Image()
+    img.crossOrigin = "anonymous"
+    img.onload = () => setImageLoaded(true)
+    img.src = src
+  }, [src])
+
+  // Intersection observer
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
@@ -73,37 +84,34 @@ export function PixelImage({
   // Color reveal timer
   useEffect(() => {
     if (!isVisible || !grayscaleAnimation || !imageLoaded) return
-
-    const timer = setTimeout(() => {
-      setShowColor(true)
-    }, colorRevealDelay)
-
+    const timer = setTimeout(() => setShowColor(true), colorRevealDelay)
     return () => clearTimeout(timer)
   }, [isVisible, grayscaleAnimation, colorRevealDelay, imageLoaded])
 
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden ${className}`}
+      className={`relative w-full overflow-hidden ${className}`}
       role="img"
       aria-label={alt}
     >
-      {/* Hidden image to preload */}
+      {/* Real image underneath for sizing and fallback */}
       <img
         src={src}
-        alt=""
-        className="sr-only"
-        onLoad={() => setImageLoaded(true)}
+        alt={alt}
+        width={width}
+        height={height}
+        className="w-full h-auto block"
+        style={{ visibility: imageLoaded ? "hidden" : "visible" }}
       />
 
-      {/* Pixel grid */}
+      {/* Pixel grid overlay */}
       {imageLoaded && (
         <div
-          className="grid w-full h-full"
+          className="absolute inset-0 grid"
           style={{
             gridTemplateColumns: `repeat(${cols}, 1fr)`,
             gridTemplateRows: `repeat(${rows}, 1fr)`,
-            aspectRatio: `${cols} / ${rows}`,
           }}
         >
           {Array.from({ length: rows * cols }).map((_, i) => {
@@ -127,7 +135,7 @@ export function PixelImage({
                     backgroundSize: `${cols * 100}% ${rows * 100}%`,
                     backgroundPosition: `${(col / (cols - 1)) * 100}% ${(row / (rows - 1)) * 100}%`,
                     filter: showColor ? "grayscale(0)" : grayscaleAnimation ? "grayscale(1)" : "none",
-                    transition: `filter 800ms ease-out`,
+                    transition: "filter 800ms ease-out",
                   }}
                 />
               </div>

@@ -237,15 +237,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="absolute inset-0"
         >
-          {sport === "calcio" ? (
-            <div className="absolute inset-0 flex items-center justify-center opacity-30">
-              <img 
-                src="/images/sanfra-transparent.png"
-                alt=""
-                className="w-full h-full object-contain"
-              />
-            </div>
-          ) : (
+          {sport === "volley" ? (
             <div className="absolute inset-0 flex items-center justify-center">
               <img 
                 src="/images/volley-hero.jpg"
@@ -253,6 +245,14 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
                 className="max-w-full max-h-full object-contain opacity-50"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/50" />
+            </div>
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center opacity-30">
+              <img 
+                src="/images/sanfra-transparent.png"
+                alt=""
+                className="w-full h-full object-contain"
+              />
             </div>
           )}
         </motion.div>
@@ -279,7 +279,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
             className="text-xl md:text-2xl text-gray-400 mt-6"
           >
-            {sport === "calcio" ? t("footballTournament") : "Volley Tournament 2026"}
+            {sport === "calcio" ? t("footballTournament") : sport === "volley" ? "Volley Tournament 2026" : "Fantacalcio 2026"}
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

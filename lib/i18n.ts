@@ -1,5 +1,5 @@
 export type Language = "it" | "en"
-export type Sport = "home" | "calcio" | "volley"
+export type Sport = "home" | "calcio" | "volley" | "fsc"
 
 export const translations = {
   it: {
@@ -12,6 +12,7 @@ export const translations = {
     selectSport: "Seleziona Sport",
     calcio: "Calcio",
     volley: "Volley",
+    fsc: "FSC",
 
     // Hero Section
     footballTournament: "Football Tournament 2026",
@@ -86,6 +87,7 @@ export const translations = {
     selectSport: "Select Sport",
     calcio: "Football",
     volley: "Volleyball",
+    fsc: "FSC",
 
     // Hero Section
     footballTournament: "Football Tournament 2026",

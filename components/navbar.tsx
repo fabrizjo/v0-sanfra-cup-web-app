@@ -31,6 +31,20 @@ const socialLinks = [
     icon: "https://img.icons8.com/?size=100&id=118638&format=png&color=000000",
     color: "#00f2ea",
   },
+  {
+    id: "facebook",
+    label: "Facebook",
+    href: "#",
+    icon: "https://img.icons8.com/?size=100&id=118497&format=png&color=000000",
+    color: "#1877F2",
+  },
+  {
+    id: "whatsapp",
+    label: "WhatsApp",
+    href: "#",
+    icon: "https://img.icons8.com/?size=100&id=16713&format=png&color=000000",
+    color: "#25D366",
+  },
 ]
 
 const containerVariants = {
@@ -75,7 +89,7 @@ function SocialDropdown() {
           aria-expanded={isOpen}
           aria-haspopup="true"
         >
-          Social
+          I nostri media
           <motion.div
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.2 }}
@@ -101,7 +115,7 @@ function SocialDropdown() {
                 height: 0,
                 transition: { type: "spring", stiffness: 500, damping: 30, mass: 1 },
               }}
-              className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-44"
+              className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-48"
             >
               <motion.div
                 className="rounded-lg border border-neutral-800 bg-neutral-900 p-1 shadow-lg"
@@ -214,6 +228,17 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
             >
               {t("volley")}
             </button>
+            <button
+              type="button"
+              onClick={() => onSportChange("fsc")}
+              className={`text-sm transition-colors ${
+                currentSport === "fsc"
+                  ? "text-yellow-400 font-medium"
+                  : "text-gray-400 hover:text-white"
+              }`}
+            >
+              {t("fsc")}
+            </button>
           </div>
 
           {/* Right: Language, Admin */}
@@ -265,36 +290,25 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
               
               {/* Social links in mobile */}
               <div className="py-2">
-                <p className="text-sm text-gray-500 mb-2">Social</p>
-                <div className="flex gap-4 pl-2">
-                  <a
-                    href="https://www.instagram.com/sanfracup/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <img 
-                      src="https://img.icons8.com/?size=100&id=32309&format=png&color=000000" 
-                      alt="Instagram" 
-                      className="h-5 w-5 invert opacity-60"
-                    />
-                    <span className="text-sm">Instagram</span>
-                  </a>
-                  <a
-                    href="https://www.tiktok.com/@sanfracup?is_from_webapp=1&sender_device=pc"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <img 
-                      src="https://img.icons8.com/?size=100&id=118638&format=png&color=000000" 
-                      alt="TikTok" 
-                      className="h-5 w-5 invert opacity-60"
-                    />
-                    <span className="text-sm">TikTok</span>
-                  </a>
+                <p className="text-sm text-gray-500 mb-2">I nostri media</p>
+                <div className="flex flex-wrap gap-4 pl-2">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.id}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <img
+                        src={social.icon}
+                        alt={social.label}
+                        className="h-5 w-5 invert opacity-60"
+                      />
+                      <span className="text-sm">{social.label}</span>
+                    </a>
+                  ))}
                 </div>
               </div>
               
@@ -326,6 +340,20 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
                   }`}
                 >
                   {t("volley")}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onSportChange("fsc")
+                    setMobileMenuOpen(false)
+                  }}
+                  className={`transition-colors ${
+                    currentSport === "fsc"
+                      ? "text-yellow-400 font-medium"
+                      : "text-gray-400 hover:text-white"
+                  }`}
+                >
+                  {t("fsc")}
                 </button>
               </div>
               

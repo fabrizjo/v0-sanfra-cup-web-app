@@ -8,6 +8,7 @@ import { Calendar, MapPin, Users, Clock, Trophy, Download, ChevronDown } from "l
 import { Navbar } from "@/components/navbar"
 import { type Language, type Sport, getTranslation } from "@/lib/i18n"
 import { motion, useScroll, useTransform } from "framer-motion"
+import { PixelImage } from "@/components/pixel-image"
 
 
 // Gradient Reveal Text Component
@@ -168,18 +169,19 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           </div>
         </section>
 
-        {/* Image Section */}
+        {/* Image Section - Pixel Reveal */}
         <section className="section-apple section-dark">
           <div className="container mx-auto px-4">
             <div className="animate-on-scroll">
               <div className="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden border border-yellow-500/20">
-                <Image
+                <PixelImage
                   src="/images/sanfra-team.jpg"
                   alt="Sanfra Cup Team"
-                  width={1200}
-                  height={800}
-                  className="w-full h-auto"
-                  priority
+                  grid="8x8"
+                  grayscaleAnimation={true}
+                  pixelFadeInDuration={1000}
+                  maxAnimationDelay={1200}
+                  colorRevealDelay={1500}
                 />
               </div>
             </div>
@@ -325,18 +327,19 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
         </div>
       </section>
 
-      {/* Image Section */}
+      {/* Image Section - Pixel Reveal */}
       <section className="section-apple section-dark">
         <div className="container mx-auto px-4">
           <div className="animate-on-scroll">
             <div className="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden border border-yellow-500/20">
-              <Image
+              <PixelImage
                 src="/images/sanfra-team.jpg"
                 alt="Sanfra Cup Team"
-                width={1200}
-                height={800}
-                className="w-full h-auto"
-                priority
+                grid="8x8"
+                grayscaleAnimation={true}
+                pixelFadeInDuration={1000}
+                maxAnimationDelay={1200}
+                colorRevealDelay={1500}
               />
             </div>
           </div>

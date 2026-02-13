@@ -9,6 +9,7 @@ import { Navbar } from "@/components/navbar"
 import { type Language, type Sport, getTranslation } from "@/lib/i18n"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { PixelImage } from "@/components/pixel-image"
+import { FlipWords } from "@/components/ui/flip-words"
 
 
 // Gradient Reveal Text Component
@@ -184,6 +185,20 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
                   colorRevealDelay={1500}
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Values Section - FlipWords */}
+        <section className="py-24 md:py-32 bg-black">
+          <div className="container mx-auto px-4 flex justify-center items-center">
+            <div className="text-4xl md:text-6xl lg:text-7xl font-bold text-center text-white">
+              I nostri valori:
+              <FlipWords 
+                words={["rispetto", "fratellanza", "empatia"]} 
+                duration={2500}
+                className="text-yellow-400"
+              />
             </div>
           </div>
         </section>

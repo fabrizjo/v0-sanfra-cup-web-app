@@ -192,11 +192,13 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
         {/* Values Section - FlipWords */}
         <section className="min-h-[40vh] flex items-center justify-center bg-black">
           <div className="container mx-auto px-4 text-center">
-            <FlipWords 
-              words={["rispetto.", "fratellanza.", "empatia."]} 
-              duration={2500}
-              className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent"
-            />
+            <div className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-yellow-400">
+              <FlipWords 
+                words={["rispetto.", "fratellanza.", "empatia."]} 
+                duration={2500}
+                className="text-yellow-400"
+              />
+            </div>
           </div>
         </section>
 

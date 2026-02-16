@@ -221,10 +221,48 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
         </section>
 
         {/* Footer */}
-        <footer className="py-12 bg-black border-t border-yellow-500/10">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-gray-500 text-sm">{t("footerText")}</p>
-            <p className="text-gray-600 text-xs mt-2">Tutti i diritti riservati</p>
+        <footer className="py-16 bg-black border-t border-yellow-500/10">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+              {/* Links */}
+              <div>
+                <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Navigazione</h4>
+                <ul className="space-y-2">
+                  <li><button type="button" onClick={() => handleSportChange("home")} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Home</button></li>
+                  <li><button type="button" onClick={() => { const el = document.getElementById("chi-siamo"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Chi Siamo</button></li>
+                  <li><a href="mailto:sanfracup@gmail.com" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Contattaci</a></li>
+                </ul>
+              </div>
+              {/* Social */}
+              <div>
+                <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Social</h4>
+                <div className="flex gap-4">
+                  <a href="https://www.instagram.com/sanfracup/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                    <img src="https://img.icons8.com/?size=100&id=32309&format=png&color=000000" alt="Instagram" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
+                  </a>
+                  <a href="https://www.tiktok.com/@sanfracup?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                    <img src="https://img.icons8.com/?size=100&id=118638&format=png&color=000000" alt="TikTok" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                    <img src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000" alt="Facebook" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
+                  </a>
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                    <img src="https://img.icons8.com/?size=100&id=16713&format=png&color=000000" alt="WhatsApp" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
+                  </a>
+                </div>
+              </div>
+              {/* Contatti */}
+              <div>
+                <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Contattaci</h4>
+                <ul className="space-y-2">
+                  <li><a href="mailto:sanfracup@gmail.com" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">sanfracup@gmail.com</a></li>
+                </ul>
+              </div>
+            </div>
+            <div className="border-t border-yellow-500/10 pt-6 text-center">
+              <p className="text-gray-500 text-sm">{t("footerText")}</p>
+              <p className="text-gray-600 text-xs mt-2">Tutti i diritti riservati</p>
+            </div>
           </div>
         </footer>
       </div>
@@ -483,10 +521,48 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-black border-t border-yellow-500/10">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-500 text-sm">{t("footerText")}</p>
-          <p className="text-gray-600 text-xs mt-2">Tutti i diritti riservati</p>
+      <footer className="py-16 bg-black border-t border-yellow-500/10">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+            {/* Links */}
+            <div>
+              <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Navigazione</h4>
+              <ul className="space-y-2">
+                <li><button type="button" onClick={() => handleSportChange("home")} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Home</button></li>
+                <li><button type="button" onClick={() => { const el = document.getElementById("chi-siamo"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Chi Siamo</button></li>
+                <li><a href="mailto:sanfracup@gmail.com" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Contattaci</a></li>
+              </ul>
+            </div>
+            {/* Social */}
+            <div>
+              <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Social</h4>
+              <div className="flex gap-4">
+                <a href="https://www.instagram.com/sanfracup/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                  <img src="https://img.icons8.com/?size=100&id=32309&format=png&color=000000" alt="Instagram" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
+                </a>
+                <a href="https://www.tiktok.com/@sanfracup?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                  <img src="https://img.icons8.com/?size=100&id=118638&format=png&color=000000" alt="TikTok" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                  <img src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000" alt="Facebook" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                  <img src="https://img.icons8.com/?size=100&id=16713&format=png&color=000000" alt="WhatsApp" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
+                </a>
+              </div>
+            </div>
+            {/* Contatti */}
+            <div>
+              <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Contattaci</h4>
+              <ul className="space-y-2">
+                <li><a href="mailto:sanfracup@gmail.com" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">sanfracup@gmail.com</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-yellow-500/10 pt-6 text-center">
+            <p className="text-gray-500 text-sm">{t("footerText")}</p>
+            <p className="text-gray-600 text-xs mt-2">Tutti i diritti riservati</p>
+          </div>
         </div>
       </footer>
     </div>

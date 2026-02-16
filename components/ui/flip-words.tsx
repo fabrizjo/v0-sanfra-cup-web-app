@@ -1,6 +1,6 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export const FlipWords = ({
@@ -22,14 +22,17 @@ export const FlipWords = ({
   }, [currentWord, words]);
 
   useEffect(() => {
-    if (!isAnimating)
-      setTimeout(() => {
+    if (!isAnimating) {
+      const timeout = setTimeout(() => {
         startAnimation();
       }, duration);
+      return () => clearTimeout(timeout);
+    }
   }, [isAnimating, duration, startAnimation]);
 
   return (
     <AnimatePresence
+      mode="wait"
       onExitComplete={() => {
         setIsAnimating(false);
       }}

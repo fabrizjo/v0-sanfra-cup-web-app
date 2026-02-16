@@ -14,8 +14,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md relative z-10">
         <div className="text-center mb-8">
           <h1
-            className="text-6xl font-black text-yellow-400 tracking-wider mb-4 drop-shadow-[0_0_30px_rgba(234,179,8,0.5)]"
-            style={{ fontFamily: "'Teko', sans-serif", letterSpacing: "0.1em" }}
+            className="text-6xl font-spacema text-yellow-400 tracking-wider mb-4 drop-shadow-[0_0_30px_rgba(234,179,8,0.5)]"
           >
             <span className="text-white">SANFRA</span>{' '}<span className="text-yellow-400">CUP</span>
           </h1>

@@ -27,18 +27,18 @@ function GradientRevealText({ text, size = "large" }: { text: string; size?: "la
   )
 
   const textSizeClass = size === "large" 
-    ? "text-3xl md:text-5xl lg:text-6xl" 
-    : "text-xl md:text-2xl lg:text-3xl leading-relaxed"
+    ? "text-3xl md:text-5xl lg:text-6xl font-spacema" 
+    : "text-xl md:text-2xl lg:text-3xl leading-relaxed font-spacema"
 
   return (
     <div ref={containerRef} className="relative py-8">
       {/* Base faded text */}
-      <span className={`${textSizeClass} font-semibold tracking-tight text-white/10`}>
+      <span className={`${textSizeClass} tracking-tight text-white/10`}>
         {text}
       </span>
       {/* Gradient text revealed on scroll */}
       <motion.span
-        className={`absolute inset-0 py-8 ${textSizeClass} font-semibold tracking-tight bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent`}
+        className={`absolute inset-0 py-8 ${textSizeClass} tracking-tight bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent`}
         style={{ clipPath }}
       >
         {text}
@@ -133,7 +133,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
+              className="text-6xl md:text-8xl lg:text-9xl font-spacema tracking-tight drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
             >
               <span className="text-white">SANFRA</span>{' '}<span className="text-yellow-400">CUP</span>
             </motion.h1>
@@ -192,7 +192,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
         {/* Values Section - FlipWords */}
         <section className="min-h-[40vh] flex items-center justify-center bg-black">
           <div className="container mx-auto px-4 text-center">
-            <div className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-yellow-400">
+            <div className="text-3xl md:text-5xl lg:text-6xl font-spacema tracking-tight text-yellow-400">
               <FlipWords 
                 words={["rispetto.", "fratellanza.", "empatia."]} 
                 duration={2500}
@@ -283,7 +283,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
+            className="text-6xl md:text-8xl lg:text-9xl font-spacema tracking-tight drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
           >
             <span className="text-white">SANFRA</span>{' '}<span className="text-yellow-400">CUP</span>
           </motion.h1>

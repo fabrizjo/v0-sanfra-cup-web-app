@@ -60,7 +60,7 @@ export default async function AdminPage() {
         <header className="border-b border-yellow-500/30 bg-black/90 backdrop-blur-sm sticky top-0 z-50">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bebas tracking-wider"><span className="text-white">SANFRA</span>{' '}<span className="text-yellow-400">CUP</span> <span className="text-yellow-400">ADMIN</span></h1>
+              <h1 className="text-3xl font-spacema tracking-wider"><span className="text-white">SANFRA</span>{' '}<span className="text-yellow-400">CUP</span> <span className="text-yellow-400">ADMIN</span></h1>
               <p className="text-sm text-gray-400">{user.email}</p>
             </div>
             <LogoutButton />

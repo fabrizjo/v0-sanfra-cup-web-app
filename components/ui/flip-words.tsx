@@ -40,24 +40,23 @@ export const FlipWords = ({
       <motion.div
         initial={{
           opacity: 0,
-          y: 10,
+          y: 20,
         }}
         animate={{
           opacity: 1,
           y: 0,
         }}
         transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 10,
+          duration: 0.4,
+          ease: "easeOut",
         }}
         exit={{
           opacity: 0,
-          y: -40,
-          x: 40,
-          filter: "blur(8px)",
-          scale: 2,
-          position: "absolute",
+          y: -20,
+          transition: {
+            duration: 0.3,
+            ease: "easeIn",
+          },
         }}
         className={cn(
           "z-10 inline-block relative text-left px-2",
@@ -65,32 +64,19 @@ export const FlipWords = ({
         )}
         key={currentWord}
       >
-        {currentWord.split(" ").map((word, wordIndex) => (
+        {currentWord.split("").map((letter, letterIndex) => (
           <motion.span
-            key={word + wordIndex}
-            initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            key={currentWord + letterIndex}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
-              delay: wordIndex * 0.3,
-              duration: 0.3,
+              delay: letterIndex * 0.04,
+              duration: 0.2,
+              ease: "easeOut",
             }}
-            className="inline-block whitespace-nowrap"
+            className="inline-block"
           >
-            {word.split("").map((letter, letterIndex) => (
-              <motion.span
-                key={word + letterIndex}
-                initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{
-                  delay: wordIndex * 0.3 + letterIndex * 0.05,
-                  duration: 0.2,
-                }}
-                className="inline-block"
-              >
-                {letter}
-              </motion.span>
-            ))}
-            <span className="inline-block">&nbsp;</span>
+            {letter}
           </motion.span>
         ))}
       </motion.div>

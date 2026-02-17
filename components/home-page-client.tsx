@@ -10,6 +10,7 @@ import { type Language, type Sport, getTranslation } from "@/lib/i18n"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { PixelImage } from "@/components/pixel-image"
 import { FlipWords } from "@/components/ui/flip-words"
+import { DirectionAwareHover } from "@/components/ui/direction-aware-hover"
 
 
 // Gradient Reveal Text Component
@@ -361,6 +362,30 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           <ChevronDown className="h-8 w-8 text-gray-600" />
         </div>
       </section>
+
+      {/* Calcio Categories Cards */}
+      {sport === "calcio" && (
+        <section className="py-20 bg-black">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+              <DirectionAwareHover 
+                imageUrl="/images/calcio-open.jpg"
+                className="h-72 w-full md:w-[480px] md:h-[320px] rounded-2xl border border-yellow-500/20"
+              >
+                <p className="font-spacema text-3xl md:text-4xl text-yellow-400">CALCIO OPEN</p>
+                <p className="text-sm text-gray-300 mt-1">Torneo principale</p>
+              </DirectionAwareHover>
+              <DirectionAwareHover 
+                imageUrl="/images/calcio-junior.jpg"
+                className="h-72 w-full md:w-[480px] md:h-[320px] rounded-2xl border border-yellow-500/20"
+              >
+                <p className="font-spacema text-3xl md:text-4xl text-yellow-400">CALCIO JUNIOR</p>
+                <p className="text-sm text-gray-300 mt-1">Under 16</p>
+              </DirectionAwareHover>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Non solo un torneo Section */}
       <section className="min-h-[60vh] flex items-center justify-center bg-black">

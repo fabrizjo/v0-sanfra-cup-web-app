@@ -382,16 +382,6 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
         </div>
       </section>
 
-      {/* Story Section - Chi Siamo */}
-      <section id="chi-siamo" className="min-h-[80vh] flex items-center justify-center bg-black py-20">
-        <div className="container mx-auto px-4 text-center max-w-5xl">
-          <GradientRevealText 
-            text="Abbiamo creato questo torneo tre anni fa con l'obiettivo di riavvicinare le persone dopo il Covid. Fin dalla prima edizione ci siamo divertiti noi in primis, ma soprattutto abbiamo visto quanto il torneo facesse bene alla comunità. Edizione dopo edizione, il nostro cerchio si è allargato sempre di più. La SanFra Cup nasce nell'oratorio di San Francesco, dove siamo cresciuti con valori ben precisi: rispetto, fratellanza, empatia." 
-            size="medium"
-          />
-        </div>
-      </section>
-
       {/* Image Section - Pixel Reveal */}
       <section className="section-apple section-dark">
         <div className="container mx-auto px-4">

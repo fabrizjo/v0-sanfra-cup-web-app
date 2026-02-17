@@ -1,9 +1,9 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import Link from "next/link"
+
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
+
 import { Calendar, MapPin, Users, Clock, Trophy, Download, ChevronDown } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { type Language, type Sport, getTranslation } from "@/lib/i18n"
@@ -11,6 +11,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { PixelImage } from "@/components/pixel-image"
 import { FlipWords } from "@/components/ui/flip-words"
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover"
+import { WhatsAppContact } from "@/components/whatsapp-contact"
 
 
 // Gradient Reveal Text Component
@@ -340,17 +341,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.7 }}
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
           >
-            {registrationsOpen ? (
-              <Link href={`/registrazione?sport=${sport}`}>
-                <Button className="btn-apple btn-apple-primary">
-                  {t("startRegistration")}
-                </Button>
-              </Link>
-            ) : (
-              <Button disabled className="btn-apple bg-zinc-800 text-gray-500 cursor-not-allowed">
-                {t("registrationsClosed")}
-              </Button>
-            )}
+            <WhatsAppContact />
             <a href="#info" className="btn-apple btn-apple-secondary">
               {t("tournamentInfo")}
             </a>
@@ -491,30 +482,13 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
         </div>
       </section>
 
-      {/* Registration CTA Section */}
+      {/* Contact CTA Section */}
       <section className="section-apple section-darker">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto animate-on-scroll">
             <h2 className="heading-apple text-white">{t("teamRegistration")}</h2>
             <p className="subheading-apple mt-6 mb-10">{t("teamRegistrationDesc")}</p>
-            
-            {registrationsOpen ? (
-              <Link href={`/registrazione?sport=${sport}`}>
-                <Button className="btn-apple btn-apple-primary text-xl px-12 py-6">
-                  {t("startRegistration")}
-                </Button>
-              </Link>
-            ) : (
-              <div className="space-y-4">
-                <Button
-                  disabled
-                  className="btn-apple bg-zinc-800 text-gray-500 cursor-not-allowed text-xl px-12 py-6"
-                >
-                  {t("registrationsClosed")}
-                </Button>
-                <p className="text-yellow-500 font-medium">{t("registrationsClosedDesc")}</p>
-              </div>
-            )}
+            <WhatsAppContact className="text-xl" />
           </div>
         </div>
       </section>

@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 
 import Image from "next/image"
 
-import { Calendar, MapPin, Users, Clock, Trophy, Download, ChevronDown } from "lucide-react"
+import { Download, ChevronDown } from "lucide-react"
 import { Navbar } from "@/components/navbar"
 import { type Language, type Sport, getTranslation } from "@/lib/i18n"
 import { motion, useScroll, useTransform } from "framer-motion"
@@ -342,9 +342,6 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
           >
             <WhatsAppContact />
-            <a href="#info" className="btn-apple btn-apple-secondary">
-              {t("tournamentInfo")}
-            </a>
           </motion.div>
         </motion.div>
         
@@ -427,38 +424,6 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
               <span key={`${sponsor}-dup-${i}`} className="text-2xl font-medium text-yellow-500/30 tracking-widest">
                 {sponsor}
               </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Info Section */}
-      <section id="info" className="section-apple section-light">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20 animate-on-scroll">
-            <h2 className="heading-apple text-white">{t("tournamentInfo")}</h2>
-            <p className="subheading-apple mt-6">
-              Tutto quello che devi sapere sul torneo
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {[
-              { icon: Calendar, title: t("tournamentDates"), desc: t("whenDesc") },
-              { icon: Clock, title: t("matchTimes"), desc: t("matchTimesDesc") },
-              { icon: MapPin, title: t("location"), desc: t("whereDesc") },
-              { icon: Users, title: t("contact"), desc: t("contactDesc") },
-              { icon: Trophy, title: t("prizes"), desc: t("prizesDesc") },
-            ].map((item, index) => (
-              <div 
-                key={item.title} 
-                className="animate-on-scroll p-8 rounded-2xl bg-black/50 border border-yellow-500/10 hover:border-yellow-500/30 transition-all duration-300"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <item.icon className="h-10 w-10 text-yellow-400 mb-4" strokeWidth={1.5} />
-                <h3 className="text-xl font-semibold mb-2 text-white">{item.title}</h3>
-                <p className="text-gray-400">{item.desc}</p>
-              </div>
             ))}
           </div>
         </div>

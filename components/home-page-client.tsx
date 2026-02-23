@@ -382,25 +382,6 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
         </div>
       </section>
 
-      {/* Image Section - Pixel Reveal */}
-      <section className="section-apple section-dark">
-        <div className="container mx-auto px-4">
-          <div className="animate-on-scroll">
-            <div className="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden border border-yellow-500/20">
-              <PixelImage
-                src="/images/sanfra-team.jpg"
-                alt="Sanfra Cup Team"
-                grid="8x8"
-                grayscaleAnimation={true}
-                pixelFadeInDuration={1000}
-                maxAnimationDelay={1200}
-                colorRevealDelay={1500}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Sponsors Section */}
       <section className="py-16 bg-black border-y border-yellow-500/10">
         <div className="overflow-hidden">

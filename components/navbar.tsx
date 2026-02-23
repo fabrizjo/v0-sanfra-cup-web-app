@@ -198,12 +198,24 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
             >
               {t("home")}
             </button>
-            <a
-              href="#chi-siamo"
+            <button
+              type="button"
+              onClick={() => {
+                if (currentSport !== "home") {
+                  onSportChange("home")
+                  setTimeout(() => {
+                    const el = document.getElementById("chi-siamo")
+                    el?.scrollIntoView({ behavior: "smooth" })
+                  }, 300)
+                } else {
+                  const el = document.getElementById("chi-siamo")
+                  el?.scrollIntoView({ behavior: "smooth" })
+                }
+              }}
               className="text-sm text-gray-400 hover:text-white transition-colors"
             >
               {t("aboutUs")}
-            </a>
+            </button>
             <SocialDropdown />
             <span className="text-yellow-500/30">|</span>
             <button
@@ -280,13 +292,25 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
               >
                 {t("home")}
               </button>
-              <a
-                href="#chi-siamo"
-                className="text-gray-400 hover:text-white transition-colors py-2"
-                onClick={() => setMobileMenuOpen(false)}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  if (currentSport !== "home") {
+                    onSportChange("home")
+                    setTimeout(() => {
+                      const el = document.getElementById("chi-siamo")
+                      el?.scrollIntoView({ behavior: "smooth" })
+                    }, 300)
+                  } else {
+                    const el = document.getElementById("chi-siamo")
+                    el?.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+                className="text-gray-400 hover:text-white transition-colors py-2 text-left"
               >
                 {t("aboutUs")}
-              </a>
+              </button>
               
               {/* Social links in mobile */}
               <div className="py-2">

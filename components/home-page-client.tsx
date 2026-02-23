@@ -401,22 +401,24 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
       </section>
 
       {/* Rules Section */}
-      <section className="section-apple section-dark">
-        <div className="container mx-auto px-4">
-          <div className="text-center animate-on-scroll">
-            <h2 className="heading-apple text-yellow-400 mb-8">{t("tournamentBasicRules")}</h2>
-            <a
-              href="/documents/regolamento-sanfracup.pdf"
-              download
-              className="btn-apple btn-apple-primary inline-flex items-center gap-3"
-            >
-              <Download className="h-5 w-5" />
-              {t("downloadRegulations")}
-            </a>
-            <p className="text-gray-500 text-sm mt-4">{t("downloadRegulationsDesc")}</p>
+      {sport !== "fsc" && (
+        <section className="section-apple section-dark">
+          <div className="container mx-auto px-4">
+            <div className="text-center animate-on-scroll">
+              <h2 className="heading-apple text-yellow-400 mb-8">{t("tournamentBasicRules")}</h2>
+              <a
+                href="/documents/regolamento-sanfracup.pdf"
+                download
+                className="btn-apple btn-apple-primary inline-flex items-center gap-3"
+              >
+                <Download className="h-5 w-5" />
+                {t("downloadRegulations")}
+              </a>
+              <p className="text-gray-500 text-sm mt-4">{t("downloadRegulationsDesc")}</p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Contact CTA Section */}
       {sport !== "fsc" && (

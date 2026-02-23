@@ -419,15 +419,17 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
       </section>
 
       {/* Contact CTA Section */}
-      <section className="section-apple section-darker">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto animate-on-scroll">
-            <h2 className="heading-apple text-white">{t("teamRegistration")}</h2>
-            <p className="subheading-apple mt-6 mb-10">{t("teamRegistrationDesc")}</p>
-            <WhatsAppContact className="text-xl" />
+      {sport !== "fsc" && (
+        <section className="section-apple section-darker">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto animate-on-scroll">
+              <h2 className="heading-apple text-white">{t("teamRegistration")}</h2>
+              <p className="subheading-apple mt-6 mb-10">{t("teamRegistrationDesc")}</p>
+              <WhatsAppContact className="text-xl" />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Location Section */}
       <section className="section-apple section-light">

@@ -70,7 +70,7 @@ export const translations = {
       "Le registrazioni sono attualmente chiuse. Contatta gli organizzatori per maggiori informazioni.",
 
     // Footer
-    footerText: "© 2026 Sanfra Cup - Torneo di Calcio a 5 - Salerno",
+    footerText: "© 2026 Sanfra Cup - I Tuoi Eventi Sportivi - Salerno",
 
     // Social Media
     followSocial: "SEGUITECI SUI NOSTRI SOCIAL PER RIMANERE AGGIORNATI!",
@@ -143,7 +143,7 @@ export const translations = {
     registrationsClosedDesc: "Registrations are currently closed. Contact the organizers for more information.",
 
     // Footer
-    footerText: "© 2026 Sanfra Cup - 5-a-Side Football Tournament - Salerno",
+    footerText: "© 2026 Sanfra Cup - Your Sports Events - Salerno",
 
     // Social Media
     followSocial: "FOLLOW US ON SOCIAL MEDIA TO STAY UPDATED!",

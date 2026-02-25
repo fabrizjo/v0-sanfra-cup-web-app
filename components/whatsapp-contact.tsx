@@ -4,11 +4,18 @@ import { useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useClickAway } from "@/hooks/use-click-away"
 
-const WHATSAPP_NUMBER = "393406272496"
 const WHATSAPP_MESSAGE = encodeURIComponent("Ciao, vorrei più informazioni")
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`
 
-export function WhatsAppContact({ className = "" }: { className?: string }) {
+const CONTACTS = {
+  calcio: { number: "393406272496", name: "Antonio Dattoli" },
+  volley: { number: "393391532127", name: "Lorenzo" },
+} as const
+
+type Sport = "calcio" | "volley"
+
+export function WhatsAppContact({ className = "", sport = "calcio" }: { className?: string; sport?: Sport }) {
+  const contact = CONTACTS[sport]
+  const WHATSAPP_URL = `https://wa.me/${contact.number}?text=${WHATSAPP_MESSAGE}`
   const [isOpen, setIsOpen] = useState(false)
   const popoverRef = useRef<HTMLDivElement>(null)
 
@@ -50,7 +57,7 @@ export function WhatsAppContact({ className = "" }: { className?: string }) {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-white font-medium text-sm group-hover:text-yellow-400 transition-colors">Antonio Dattoli</p>
+                  <p className="text-white font-medium text-sm group-hover:text-yellow-400 transition-colors">{contact.name}</p>
                   <p className="text-gray-500 text-xs">WhatsApp</p>
                 </div>
               </a>

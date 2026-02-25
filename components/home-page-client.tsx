@@ -406,7 +406,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.7 }}
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <WhatsAppContact />
+            <WhatsAppContact sport={sport === "volley" ? "volley" : "calcio"} />
           </motion.div>
         </motion.div>
         

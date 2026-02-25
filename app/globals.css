@@ -49,7 +49,7 @@
 @theme inline {
   --font-sans: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "SF Mono", "Geist Mono", monospace;
-  --font-spacema: 'Russo One', 'Spacema', 'Teko', sans-serif;
+  --font-spacema: var(--font-bebas), 'Bebas Neue', 'Spacema', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -104,13 +104,6 @@
   html {
     scroll-behavior: smooth;
   }
-}
-
-/* Force Spacema font - outside @layer for highest specificity */
-.font-spacema {
-  font-family: 'Russo One', 'Spacema', 'Teko', sans-serif !important;
-  font-weight: 400 !important;
-  -webkit-font-smoothing: antialiased !important;
 }
 
 @keyframes fadeInUp {

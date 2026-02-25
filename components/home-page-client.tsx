@@ -243,7 +243,10 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
         </section>
 
         {/* ID Card Section */}
-        <section className="py-20 bg-black flex items-center justify-center">
+        <section className="py-20 bg-black flex flex-col items-center justify-center gap-8">
+          <h2 className="text-2xl md:text-4xl font-spacema tracking-tight text-center">
+            <span className="text-white">Card soci in arrivo,</span>{' '}<span className="text-yellow-400">stay tuned!</span>
+          </h2>
           <LiquidMetalIDCard />
         </section>
 

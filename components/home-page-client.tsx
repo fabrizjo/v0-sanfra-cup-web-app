@@ -68,20 +68,29 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
   const heroTitleRef = useRef<HTMLHeadingElement>(null)
   useEffect(() => {
     let ticking = false
+    const updateTitle = () => {
+      if (!heroTitleRef.current) return
+      const y = scrollRef.current
+      if (y <= 50) {
+        heroTitleRef.current.style.maskImage = 'none'
+        heroTitleRef.current.style.webkitMaskImage = 'none'
+        heroTitleRef.current.style.opacity = '1'
+        heroTitleRef.current.style.transform = 'translateY(0px)'
+      } else {
+        const fadeProgress = (y - 50) / 2.5
+        const maskEnd = Math.min(fadeProgress, 100)
+        const maskStart = Math.max(maskEnd - 30, 0)
+        heroTitleRef.current.style.maskImage = `linear-gradient(135deg, transparent ${maskStart}%, black ${maskEnd}%)`
+        heroTitleRef.current.style.webkitMaskImage = `linear-gradient(135deg, transparent ${maskStart}%, black ${maskEnd}%)`
+        heroTitleRef.current.style.opacity = `${Math.max(1 - y / 600, 0)}`
+        heroTitleRef.current.style.transform = `translateY(${y * 0.3}px)`
+      }
+    }
     const handleScroll = () => {
+      scrollRef.current = window.scrollY
       if (!ticking) {
         requestAnimationFrame(() => {
-          scrollRef.current = window.scrollY
-          if (heroTitleRef.current) {
-            const y = scrollRef.current
-            const fadeProgress = Math.max((y - 50) / 2.5, 0)
-            const maskEnd = Math.min(fadeProgress, 100)
-            const maskStart = Math.max(maskEnd - 30, 0)
-            heroTitleRef.current.style.maskImage = `linear-gradient(135deg, transparent ${maskStart}%, black ${maskEnd}%)`
-            heroTitleRef.current.style.webkitMaskImage = `linear-gradient(135deg, transparent ${maskStart}%, black ${maskEnd}%)`
-            heroTitleRef.current.style.opacity = `${Math.max(1 - y / 600, 0)}`
-            heroTitleRef.current.style.transform = `translateY(${y * 0.3}px)`
-          }
+          updateTitle()
           ticking = false
         })
         ticking = true

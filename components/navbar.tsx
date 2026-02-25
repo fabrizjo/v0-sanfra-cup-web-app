@@ -182,7 +182,7 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-14">
           {/* Left: Logo */}
-          <Link href="/" className="text-xl font-spacema tracking-tight">
+          <Link href="/" className="text-xl tracking-tight" style={{ fontFamily: "'Spacema', sans-serif", fontWeight: 700 }}>
             <span className="text-white">Sanfra</span>{' '}<span className="text-yellow-400">Cup</span>
           </Link>
 

@@ -74,8 +74,11 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           scrollRef.current = window.scrollY
           if (heroTitleRef.current) {
             const y = scrollRef.current
-            heroTitleRef.current.style.maskImage = `linear-gradient(135deg, transparent ${Math.min(y / 3, 100)}%, black ${Math.min(y / 3 + 40, 100)}%)`
-            heroTitleRef.current.style.webkitMaskImage = `linear-gradient(135deg, transparent ${Math.min(y / 3, 100)}%, black ${Math.min(y / 3 + 40, 100)}%)`
+            const fadeProgress = Math.max((y - 50) / 2.5, 0)
+            const maskEnd = Math.min(fadeProgress, 100)
+            const maskStart = Math.max(maskEnd - 30, 0)
+            heroTitleRef.current.style.maskImage = `linear-gradient(135deg, transparent ${maskStart}%, black ${maskEnd}%)`
+            heroTitleRef.current.style.webkitMaskImage = `linear-gradient(135deg, transparent ${maskStart}%, black ${maskEnd}%)`
             heroTitleRef.current.style.opacity = `${Math.max(1 - y / 600, 0)}`
             heroTitleRef.current.style.transform = `translateY(${y * 0.3}px)`
           }

@@ -76,16 +76,11 @@ export function FscClassifica() {
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-yellow-500/20">
-            <th className="py-3 px-3 text-left text-xs font-mono tracking-wider text-yellow-400 uppercase">#</th>
-            <th className="py-3 px-3 text-left text-xs font-mono tracking-wider text-yellow-400 uppercase">Squadra</th>
-            <th className="py-3 px-3 text-center text-xs font-mono tracking-wider text-yellow-400 uppercase">G</th>
-            <th className="py-3 px-3 text-center text-xs font-mono tracking-wider text-yellow-400 uppercase">V</th>
-            <th className="py-3 px-3 text-center text-xs font-mono tracking-wider text-yellow-400 uppercase">P</th>
-            <th className="py-3 px-3 text-center text-xs font-mono tracking-wider text-yellow-400 uppercase">S</th>
-            <th className="py-3 px-3 text-center text-xs font-mono tracking-wider text-yellow-400 uppercase">GF</th>
-            <th className="py-3 px-3 text-center text-xs font-mono tracking-wider text-yellow-400 uppercase">GS</th>
-            <th className="py-3 px-3 text-center text-xs font-mono tracking-wider text-yellow-400 uppercase">Pt</th>
+          <tr className="border-b border-yellow-500/30">
+            <th className="py-3 px-4 text-left text-xs font-mono tracking-wider text-yellow-400 uppercase w-12">#</th>
+            <th className="py-3 px-4 text-left text-xs font-mono tracking-wider text-yellow-400 uppercase">Squadra</th>
+            <th className="py-3 px-4 text-center text-xs font-mono tracking-wider text-yellow-400 uppercase w-16">PG</th>
+            <th className="py-3 px-4 text-right text-xs font-mono tracking-wider text-yellow-400 uppercase w-20">Punti</th>
           </tr>
         </thead>
         <tbody>
@@ -93,24 +88,27 @@ export function FscClassifica() {
             <tr
               key={team.id}
               className={`border-b border-white/5 transition-colors hover:bg-yellow-400/5 ${
-                index === 0 ? "bg-yellow-400/10" : ""
+                index === 0 ? "bg-yellow-400/10" : index === 1 ? "bg-gray-400/5" : index === 2 ? "bg-amber-800/5" : ""
               }`}
             >
-              <td className="py-3 px-3 text-gray-400 font-mono">
+              <td className="py-3 px-4 font-mono font-bold">
                 {index === 0 ? (
-                  <Trophy className="h-4 w-4 text-yellow-400 inline" />
+                  <span className="text-yellow-400">{team.position}</span>
+                ) : index === 1 ? (
+                  <span className="text-gray-300">{team.position}</span>
+                ) : index === 2 ? (
+                  <span className="text-amber-600">{team.position}</span>
                 ) : (
-                  team.position
+                  <span className="text-gray-500">{team.position}</span>
                 )}
               </td>
-              <td className="py-3 px-3 text-white font-medium">{team.team_name}</td>
-              <td className="py-3 px-3 text-center text-gray-400">{team.games_played}</td>
-              <td className="py-3 px-3 text-center text-gray-400">{team.wins}</td>
-              <td className="py-3 px-3 text-center text-gray-400">{team.draws}</td>
-              <td className="py-3 px-3 text-center text-gray-400">{team.losses}</td>
-              <td className="py-3 px-3 text-center text-gray-400">{team.goals_scored}</td>
-              <td className="py-3 px-3 text-center text-gray-400">{team.goals_conceded}</td>
-              <td className="py-3 px-3 text-center font-bold text-yellow-400 text-base">{team.points}</td>
+              <td className="py-3 px-4 text-white font-medium">{team.team_name}</td>
+              <td className="py-3 px-4 text-center text-gray-400">{team.games_played}</td>
+              <td className={`py-3 px-4 text-right font-bold text-base ${
+                index === 0 ? "text-yellow-400" : "text-white"
+              }`}>
+                {team.points}
+              </td>
             </tr>
           ))}
         </tbody>

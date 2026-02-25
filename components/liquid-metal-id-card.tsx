@@ -15,7 +15,7 @@ interface LiquidMetalIDCardProps {
 // Sanfra Cup Logo Component
 function SanfraLogo({ className }: { className?: string }) {
   return (
-    <span className={`font-spacema text-yellow-400 ${className}`}>SC</span>
+    <img src="/images/sanfra-logo.png" alt="Sanfra Cup" className={`object-contain ${className}`} />
   )
 }
 
@@ -461,35 +461,7 @@ export function LiquidMetalIDCard({
               </span>
             </div>
 
-            {/* Main content */}
-            <div className="space-y-6">
-              {/* Bio */}
-              <div className="space-y-2">
-                <h3 className="text-[10px] font-mono tracking-[0.2em] text-neutral-500 uppercase">Chi sono</h3>
-                <p className="text-sm text-neutral-400 leading-relaxed">
-                  Organizzatore della Sanfra Cup. Cresciuto nell{"'"}oratorio di San Francesco con i valori di rispetto, fratellanza ed empatia.
-                </p>
-              </div>
 
-              {/* Skills / Tags */}
-              <div className="space-y-2">
-                <h3 className="text-[10px] font-mono tracking-[0.2em] text-neutral-500 uppercase">Valori</h3>
-                <div className="flex flex-wrap gap-2">
-                  {["Rispetto", "Fratellanza", "Empatia"].map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 text-[10px] font-mono tracking-wider text-neutral-300 rounded-full"
-                      style={{
-                        background: "rgba(255,255,255,0.05)",
-                        border: "1px solid rgba(255,255,255,0.1)",
-                      }}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
 
             {/* Footer */}
             <div className="flex items-center justify-between">

@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Bebas_Neue, Rajdhani } from "next/font/google"
-import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
@@ -15,18 +14,6 @@ const rajdhani = Rajdhani({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-rajdhani",
-})
-
-const spacema = localFont({
-  src: [
-    {
-      path: "../public/fonts/Spacema-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-spacema-local",
-  display: "block",
 })
 
 export const metadata: Metadata = {
@@ -56,11 +43,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="it" className={`${bebasNeue.variable} ${rajdhani.variable} ${spacema.variable}`}>
+    <html lang="it" className={`${bebasNeue.variable} ${rajdhani.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=block" rel="stylesheet" />
       </head>
       <body className={`font-sans antialiased`}>
         {children}

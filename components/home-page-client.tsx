@@ -64,9 +64,26 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
   const registrationsOpen = sport === "calcio" ? calcioRegistrationsOpen : volleyRegistrationsOpen
 
   // Scroll progress for diagonal fade effect on hero title
-  const [scrollY, setScrollY] = useState(0)
+  const scrollRef = useRef(0)
+  const heroTitleRef = useRef<HTMLHeadingElement>(null)
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          scrollRef.current = window.scrollY
+          if (heroTitleRef.current) {
+            const y = scrollRef.current
+            heroTitleRef.current.style.maskImage = `linear-gradient(135deg, transparent ${Math.min(y / 3, 100)}%, black ${Math.min(y / 3 + 40, 100)}%)`
+            heroTitleRef.current.style.webkitMaskImage = `linear-gradient(135deg, transparent ${Math.min(y / 3, 100)}%, black ${Math.min(y / 3 + 40, 100)}%)`
+            heroTitleRef.current.style.opacity = `${Math.max(1 - y / 600, 0)}`
+            heroTitleRef.current.style.transform = `translateY(${y * 0.3}px)`
+          }
+          ticking = false
+        })
+        ticking = true
+      }
+    }
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -345,16 +362,11 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           className="text-center max-w-5xl mx-auto relative z-10"
         >
           <motion.h1 
+            ref={heroTitleRef}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-spacema tracking-tight drop-shadow-[0_0_30px_rgba(250,204,21,0.3)]"
-            style={{
-              maskImage: `linear-gradient(135deg, transparent ${Math.min(scrollY / 3, 100)}%, black ${Math.min(scrollY / 3 + 40, 100)}%)`,
-              WebkitMaskImage: `linear-gradient(135deg, transparent ${Math.min(scrollY / 3, 100)}%, black ${Math.min(scrollY / 3 + 40, 100)}%)`,
-              opacity: Math.max(1 - scrollY / 600, 0),
-              transform: `translateY(${scrollY * 0.3}px)`,
-            }}
+            className="text-6xl md:text-8xl lg:text-9xl font-spacema tracking-tight drop-shadow-[0_0_30px_rgba(250,204,21,0.3)] will-change-transform"
           >
             <span className="text-white">SANFRA</span>{' '}<span className="text-yellow-400">CUP</span>
           </motion.h1>

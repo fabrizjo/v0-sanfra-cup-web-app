@@ -183,22 +183,12 @@ export function LiquidMetalIDCard({
             ease: "easeInOut",
           }}
         >
-          {/* Liquid metal base gradient */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `
-                linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #0f0f0f 50%, #1f1f1f 75%, #0a0a0a 100%)
-              `,
-            }}
-          />
-
-          {/* Sanfra logo background */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-15">
+          {/* Sanfra logo as full background */}
+          <div className="absolute inset-0">
             <img
               src="/images/sanfra-logo.png"
               alt=""
-              className="w-3/4 h-3/4 object-contain"
+              className="w-full h-full object-cover"
             />
           </div>
 

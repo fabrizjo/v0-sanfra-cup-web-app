@@ -45,6 +45,7 @@ export default function RootLayout({
   return (
     <html lang="it" className={`${bebasNeue.variable} ${rajdhani.variable}`}>
       <head>
+        <link rel="preload" href="/fonts/Spacema-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet" />

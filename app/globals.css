@@ -5,15 +5,7 @@
 @font-face {
   font-family: 'Spacema';
   src: url('/fonts/Spacema-Bold.ttf') format('truetype');
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Spacema';
-  src: url('/fonts/Spacema-Black.ttf') format('truetype');
-  font-weight: 800 900;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -111,9 +103,6 @@
   }
   html {
     scroll-behavior: smooth;
-  }
-  .font-spacema {
-    font-weight: 700;
   }
 }
 

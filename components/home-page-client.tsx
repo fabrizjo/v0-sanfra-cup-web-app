@@ -489,30 +489,32 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
       )}
 
       {/* Location Section */}
-      <section className="section-apple section-light">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-3xl md:text-4xl font-semibold text-white">{t("location")}</h2>
-            <p className="text-gray-400 mt-2">Via Nicola Acocella 7, Salerno</p>
-          </div>
-          
-          <div className="animate-on-scroll max-w-4xl mx-auto">
-            <div className="rounded-2xl overflow-hidden border border-yellow-500/20">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3018.5!2d14.7847!3d40.6754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133bc1c1c1c1c1c1%3A0x1234567890abcdef!2sVia%20Nicola%20Acocella%2C%207%2C%2084131%20Salerno%20SA%2C%20Italy!5e0!3m2!1sen!2sit!4v1234567890"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Sanfra Cup Location"
-                className="grayscale"
-              />
+      {sport !== "fsc" && (
+        <section className="section-apple section-light">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12 animate-on-scroll">
+              <h2 className="text-3xl md:text-4xl font-semibold text-white">{t("location")}</h2>
+              <p className="text-gray-400 mt-2">Via Nicola Acocella 7, Salerno</p>
+            </div>
+            
+            <div className="animate-on-scroll max-w-4xl mx-auto">
+              <div className="rounded-2xl overflow-hidden border border-yellow-500/20">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3018.5!2d14.7847!3d40.6754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133bc1c1c1c1c1c1%3A0x1234567890abcdef!2sVia%20Nicola%20Acocella%2C%207%2C%2084131%20Salerno%20SA%2C%20Italy!5e0!3m2!1sen!2sit!4v1234567890"
+                  width="100%"
+                  height="400"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Sanfra Cup Location"
+                  className="grayscale"
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Footer */}
       <footer className="py-16 bg-black border-t border-yellow-500/10">

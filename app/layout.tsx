@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Bebas_Neue, Rajdhani } from "next/font/google"
+import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
@@ -14,6 +15,23 @@ const rajdhani = Rajdhani({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-rajdhani",
+})
+
+const spacema = localFont({
+  src: [
+    {
+      path: "../public/fonts/Spacema-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Spacema-Black.ttf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-spacema-local",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -43,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="it" className={`${bebasNeue.variable} ${rajdhani.variable}`}>
+    <html lang="it" className={`${bebasNeue.variable} ${rajdhani.variable} ${spacema.variable}`}>
       <head>
         <link rel="icon" href="/images/sanfra-logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/images/sanfra-logo.png" />

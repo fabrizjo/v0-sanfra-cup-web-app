@@ -47,6 +47,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/sanfra-logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/images/sanfra-logo.png" />
+        <link rel="preload" href="/fonts/Spacema-Bold.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap" rel="stylesheet" />

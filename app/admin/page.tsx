@@ -53,14 +53,14 @@ export default async function AdminPage() {
   return (
     <div className="min-h-screen bg-black relative">
       <div className="fixed inset-0 z-0 opacity-10">
-        <Image src="/images/sanfra-logo.png" alt="SanfraCup Logo" fill className="object-contain" priority />
+        <Image src="/images/sanfra-logo.png" alt="Sanfra Cup Logo" fill className="object-contain" priority />
       </div>
 
       <div className="relative z-10">
         <header className="border-b border-yellow-500/30 bg-black/90 backdrop-blur-sm sticky top-0 z-50">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bebas text-yellow-400 tracking-wider">SANFRACUP ADMIN</h1>
+              <h1 className="text-3xl font-spacema tracking-wider"><span className="text-white">SANFRA</span>{' '}<span className="text-yellow-400">CUP</span> <span className="text-yellow-400">ADMIN</span></h1>
               <p className="text-sm text-gray-400">{user.email}</p>
             </div>
             <LogoutButton />

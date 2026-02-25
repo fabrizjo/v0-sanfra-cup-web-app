@@ -1,22 +1,29 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: 'Spacema';
+  src: url('/fonts/Spacema-Bold.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: oklch(0.1 0 0); /* Dark background */
-  --foreground: oklch(0.98 0 0); /* Light text */
-  --card: oklch(0.15 0 0); /* Dark card */
+  --background: oklch(0.1 0 0);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.15 0 0);
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.15 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.85 0.18 90); /* Yellow primary */
-  --primary-foreground: oklch(0.1 0 0); /* Dark text on yellow */
+  --primary: oklch(0.85 0.18 90);
+  --primary-foreground: oklch(0.1 0 0);
   --secondary: oklch(0.2 0 0);
   --secondary-foreground: oklch(0.98 0 0);
   --muted: oklch(0.2 0 0);
   --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.85 0.18 90); /* Yellow accent */
+  --accent: oklch(0.85 0.18 90);
   --accent-foreground: oklch(0.1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
@@ -42,6 +49,7 @@
 @theme inline {
   --font-sans: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "SF Mono", "Geist Mono", monospace;
+  --font-spacema: 'Spacema', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -78,6 +86,12 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --animate-spin: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @layer base {
@@ -92,7 +106,6 @@
   }
 }
 
-/* Apple-style fade-in animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -105,12 +118,8 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes scaleIn {
@@ -136,14 +145,12 @@
   animation: scaleIn 0.8s ease-out forwards;
 }
 
-/* Staggered animation delays */
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
 
-/* Initial state for animated elements */
 .animate-on-scroll {
   opacity: 0;
 }
@@ -152,14 +159,9 @@
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Sponsors scroll animation */
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-scroll {
@@ -170,7 +172,6 @@
   animation-play-state: paused;
 }
 
-/* Apple-style section styling */
 .section-apple {
   @apply py-24 md:py-32;
 }
@@ -187,7 +188,6 @@
   @apply bg-black text-white;
 }
 
-/* Apple-style heading */
 .heading-apple {
   @apply text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-balance;
 }
@@ -196,7 +196,6 @@
   @apply text-xl md:text-2xl text-gray-400 font-normal max-w-2xl mx-auto text-balance;
 }
 
-/* Apple-style button */
 .btn-apple {
   @apply inline-flex items-center justify-center px-8 py-4 text-lg font-medium rounded-full transition-all duration-300;
 }

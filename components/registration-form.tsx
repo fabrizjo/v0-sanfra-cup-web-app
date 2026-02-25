@@ -279,7 +279,7 @@ export function RegistrationForm({ sport = "calcio" }: RegistrationFormProps) {
       {submitStatus === "success" && (
         <div className="bg-yellow-500/20 border border-yellow-500 text-yellow-400 px-4 py-3 rounded-lg">
           <p className="font-medium">Registrazione completata con successo!</p>
-          <p className="text-sm">La tua squadra è stata iscritta alla SanfraCup.</p>
+          <p className="text-sm">La tua squadra è stata iscritta alla Sanfra Cup.</p>
         </div>
       )}
 

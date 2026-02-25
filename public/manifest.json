@@ -1,7 +1,7 @@
 {
-  "name": "SanfraCup",
-  "short_name": "SanfraCup",
-  "description": "Il torneo di calcio a 6 più famoso di Salerno",
+  "name": "Sanfra Cup",
+  "short_name": "Sanfra Cup",
+  "description": "Il torneo di calcio a 5 più famoso di Salerno",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",

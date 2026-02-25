@@ -193,6 +193,15 @@ export function LiquidMetalIDCard({
             }}
           />
 
+          {/* Sanfra logo background */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-15">
+            <img
+              src="/images/sanfra-logo.png"
+              alt=""
+              className="w-3/4 h-3/4 object-contain"
+            />
+          </div>
+
           {/* Animated liquid metal ripples */}
           <motion.div
             className="absolute inset-0"

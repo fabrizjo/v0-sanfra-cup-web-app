@@ -12,6 +12,7 @@ import { PixelImage } from "@/components/pixel-image"
 import { FlipWords } from "@/components/ui/flip-words"
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover"
 import { WhatsAppContact } from "@/components/whatsapp-contact"
+import { LiquidMetalIDCard } from "@/components/liquid-metal-id-card"
 
 
 // Gradient Reveal Text Component
@@ -239,6 +240,11 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
               />
             </div>
           </div>
+        </section>
+
+        {/* ID Card Section */}
+        <section className="py-20 bg-black flex items-center justify-center">
+          <LiquidMetalIDCard />
         </section>
 
         {/* Sponsors Section */}

@@ -13,6 +13,7 @@ import { FlipWords } from "@/components/ui/flip-words"
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover"
 import { WhatsAppContact } from "@/components/whatsapp-contact"
 import { LiquidMetalIDCard } from "@/components/liquid-metal-id-card"
+import { FscClassifica } from "@/components/fsc-classifica"
 
 
 // Gradient Reveal Text Component
@@ -193,7 +194,24 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           </div>
         </section>
 
-        {/* Non solo un torneo Section */}
+      {/* FSC Classifica Section */}
+      {sport === "fsc" && (
+        <section className="py-20 bg-black">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="text-center mb-12 animate-on-scroll">
+              <h2 className="text-3xl md:text-5xl font-spacema tracking-tight">
+                <span className="text-white">CLASSIFICA</span>{' '}<span className="text-yellow-400">LIVE</span>
+              </h2>
+              <p className="text-gray-400 mt-4">Aggiornata in tempo reale</p>
+            </div>
+            <div className="animate-on-scroll rounded-2xl border border-yellow-500/20 bg-black/50 backdrop-blur-sm p-4 md:p-6">
+              <FscClassifica />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Non solo un torneo Section */}
         <section className="min-h-[60vh] flex items-center justify-center bg-black">
           <div className="container mx-auto px-4 text-center">
             <GradientRevealText text="Non solo un torneo." />

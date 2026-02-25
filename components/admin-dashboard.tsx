@@ -4,7 +4,8 @@ import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Users, Search, Mail, Phone, UserCircle, Hash, Trash2 } from "lucide-react"
+import { Users, Search, Mail, Phone, UserCircle, Hash, Trash2, Trophy, Plus, Save } from "lucide-react"
+import { createBrowserClient } from "@/lib/supabase/client"
 import { Badge } from "@/components/ui/badge"
 import { RegistrationToggle } from "./registration-toggle"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -32,10 +33,93 @@ interface AdminDashboardProps {
   volleyRegistrationsOpen: boolean
 }
 
+type FscTeam = {
+  id?: string
+  team_name: string
+  points: number
+  games_played: number
+  wins: number
+  draws: number
+  losses: number
+  goals_scored: number
+  goals_conceded: number
+  position: number
+}
+
 export function AdminDashboard({ teams, calcioRegistrationsOpen, volleyRegistrationsOpen }: AdminDashboardProps) {
   const [searchQuery, setSearchQuery] = useState("")
-  const [activeTab, setActiveTab] = useState<"calcio" | "volley">("calcio")
+  const [activeTab, setActiveTab] = useState<"calcio" | "volley" | "fsc">("calcio")
   const [deletingTeamId, setDeletingTeamId] = useState<string | null>(null)
+  const [fscTeams, setFscTeams] = useState<FscTeam[]>([])
+  const [fscLoading, setFscLoading] = useState(false)
+  const [fscSaving, setFscSaving] = useState(false)
+  const [fscLoaded, setFscLoaded] = useState(false)
+
+  const loadFscClassifica = async () => {
+    setFscLoading(true)
+    const supabase = createBrowserClient()
+    const { data } = await supabase
+      .from("fsc_classifica")
+      .select("*")
+      .order("position", { ascending: true })
+    if (data) setFscTeams(data)
+    setFscLoading(false)
+    setFscLoaded(true)
+  }
+
+  const addFscTeam = () => {
+    setFscTeams(prev => [...prev, {
+      team_name: "",
+      points: 0,
+      games_played: 0,
+      wins: 0,
+      draws: 0,
+      losses: 0,
+      goals_scored: 0,
+      goals_conceded: 0,
+      position: prev.length + 1,
+    }])
+  }
+
+  const updateFscTeam = (index: number, field: keyof FscTeam, value: string | number) => {
+    setFscTeams(prev => prev.map((t, i) => i === index ? { ...t, [field]: value } : t))
+  }
+
+  const removeFscTeam = async (index: number) => {
+    const team = fscTeams[index]
+    if (team.id) {
+      const supabase = createBrowserClient()
+      await supabase.from("fsc_classifica").delete().eq("id", team.id)
+    }
+    setFscTeams(prev => prev.filter((_, i) => i !== index))
+  }
+
+  const saveFscClassifica = async () => {
+    setFscSaving(true)
+    const supabase = createBrowserClient()
+    
+    for (const team of fscTeams) {
+      const teamData = {
+        team_name: team.team_name,
+        points: team.points,
+        games_played: team.games_played,
+        wins: team.wins,
+        draws: team.draws,
+        losses: team.losses,
+        goals_scored: team.goals_scored,
+        goals_conceded: team.goals_conceded,
+        position: team.position,
+      }
+      if (team.id) {
+        await supabase.from("fsc_classifica").update(teamData).eq("id", team.id)
+      } else {
+        const { data } = await supabase.from("fsc_classifica").insert(teamData).select().single()
+        if (data) team.id = data.id
+      }
+    }
+    setFscSaving(false)
+    alert("Classifica salvata!")
+  }
 
   const handleDeleteTeam = async (teamId: string, teamName: string) => {
     if (!confirm(`Sei sicuro di voler cancellare la squadra "${teamName}"? Questa azione non può essere annullata.`)) {
@@ -73,19 +157,29 @@ export function AdminDashboard({ teams, calcioRegistrationsOpen, volleyRegistrat
       />
 
       {/* Tabs for Calcio / Volley */}
-      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "calcio" | "volley")}>
-        <TabsList className="grid w-full grid-cols-2 bg-black/50 border border-yellow-500/30">
+      <Tabs value={activeTab} onValueChange={(v) => {
+        setActiveTab(v as "calcio" | "volley" | "fsc")
+        if (v === "fsc" && !fscLoaded) loadFscClassifica()
+      }}>
+        <TabsList className="grid w-full grid-cols-3 bg-black/50 border border-yellow-500/30">
           <TabsTrigger 
             value="calcio" 
             className="data-[state=active]:bg-yellow-500 data-[state=active]:text-black text-white"
           >
-            Calcio ({calcioTeams.length} squadre)
+            Calcio ({calcioTeams.length})
           </TabsTrigger>
           <TabsTrigger 
             value="volley" 
             className="data-[state=active]:bg-yellow-500 data-[state=active]:text-black text-white"
           >
-            Volley ({volleyTeams.length} squadre)
+            Volley ({volleyTeams.length})
+          </TabsTrigger>
+          <TabsTrigger 
+            value="fsc" 
+            className="data-[state=active]:bg-yellow-500 data-[state=active]:text-black text-white"
+          >
+            <Trophy className="h-4 w-4 mr-1" />
+            FSC
           </TabsTrigger>
         </TabsList>
 

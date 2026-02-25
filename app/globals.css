@@ -7,15 +7,7 @@
   src: url('/fonts/Spacema-Bold.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
-  font-display: block;
-}
-
-@font-face {
-  font-family: 'Spacema';
-  src: url('/fonts/Spacema-Black.ttf') format('truetype');
-  font-weight: 800 900;
-  font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 
 :root {
@@ -57,7 +49,7 @@
 @theme inline {
   --font-sans: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "SF Mono", "Geist Mono", monospace;
-  --font-spacema: 'Spacema', sans-serif;
+  --font-spacema: var(--font-bebas), 'Bebas Neue', 'Spacema', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

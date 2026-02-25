@@ -313,6 +313,142 @@ export function AdminDashboard({ teams, calcioRegistrationsOpen, volleyRegistrat
             )}
           </div>
         </TabsContent>
+
+        {/* FSC Classifica Tab */}
+        <TabsContent value="fsc" className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg font-semibold text-white">Classifica Fantacalcio</h3>
+            <div className="flex gap-2">
+              <button
+                onClick={addFscTeam}
+                className="flex items-center gap-2 px-4 py-2 bg-yellow-500 text-black rounded-lg hover:bg-yellow-400 transition-colors text-sm font-medium"
+              >
+                <Plus className="h-4 w-4" />
+                Aggiungi squadra
+              </button>
+              <button
+                onClick={saveFscClassifica}
+                disabled={fscSaving}
+                className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors text-sm font-medium disabled:opacity-50"
+              >
+                <Save className="h-4 w-4" />
+                {fscSaving ? "Salvataggio..." : "Salva classifica"}
+              </button>
+            </div>
+          </div>
+
+          {fscLoading ? (
+            <p className="text-gray-400 text-center py-8">Caricamento...</p>
+          ) : fscTeams.length === 0 ? (
+            <p className="text-gray-400 text-center py-8">Nessuna squadra. Clicca &quot;Aggiungi squadra&quot; per iniziare.</p>
+          ) : (
+            <div className="overflow-x-auto rounded-xl border border-yellow-500/20">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-yellow-500/10 border-b border-yellow-500/20">
+                    <th className="px-3 py-3 text-left text-yellow-400 font-medium">#</th>
+                    <th className="px-3 py-3 text-left text-yellow-400 font-medium">Squadra</th>
+                    <th className="px-3 py-3 text-center text-yellow-400 font-medium">Pt</th>
+                    <th className="px-3 py-3 text-center text-yellow-400 font-medium">G</th>
+                    <th className="px-3 py-3 text-center text-yellow-400 font-medium">V</th>
+                    <th className="px-3 py-3 text-center text-yellow-400 font-medium">N</th>
+                    <th className="px-3 py-3 text-center text-yellow-400 font-medium">P</th>
+                    <th className="px-3 py-3 text-center text-yellow-400 font-medium">GF</th>
+                    <th className="px-3 py-3 text-center text-yellow-400 font-medium">GS</th>
+                    <th className="px-3 py-3 text-center text-yellow-400 font-medium"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {fscTeams.map((team, index) => (
+                    <tr key={team.id || index} className="border-b border-white/5 hover:bg-white/5">
+                      <td className="px-3 py-2">
+                        <input
+                          type="number"
+                          value={team.position}
+                          onChange={(e) => updateFscTeam(index, "position", parseInt(e.target.value) || 0)}
+                          className="w-12 bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-center text-sm"
+                        />
+                      </td>
+                      <td className="px-3 py-2">
+                        <input
+                          type="text"
+                          value={team.team_name}
+                          onChange={(e) => updateFscTeam(index, "team_name", e.target.value)}
+                          placeholder="Nome squadra"
+                          className="w-full bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-sm min-w-[140px]"
+                        />
+                      </td>
+                      <td className="px-3 py-2">
+                        <input
+                          type="number"
+                          value={team.points}
+                          onChange={(e) => updateFscTeam(index, "points", parseInt(e.target.value) || 0)}
+                          className="w-14 bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-center text-sm"
+                        />
+                      </td>
+                      <td className="px-3 py-2">
+                        <input
+                          type="number"
+                          value={team.games_played}
+                          onChange={(e) => updateFscTeam(index, "games_played", parseInt(e.target.value) || 0)}
+                          className="w-14 bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-center text-sm"
+                        />
+                      </td>
+                      <td className="px-3 py-2">
+                        <input
+                          type="number"
+                          value={team.wins}
+                          onChange={(e) => updateFscTeam(index, "wins", parseInt(e.target.value) || 0)}
+                          className="w-14 bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-center text-sm"
+                        />
+                      </td>
+                      <td className="px-3 py-2">
+                        <input
+                          type="number"
+                          value={team.draws}
+                          onChange={(e) => updateFscTeam(index, "draws", parseInt(e.target.value) || 0)}
+                          className="w-14 bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-center text-sm"
+                        />
+                      </td>
+                      <td className="px-3 py-2">
+                        <input
+                          type="number"
+                          value={team.losses}
+                          onChange={(e) => updateFscTeam(index, "losses", parseInt(e.target.value) || 0)}
+                          className="w-14 bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-center text-sm"
+                        />
+                      </td>
+                      <td className="px-3 py-2">
+                        <input
+                          type="number"
+                          value={team.goals_scored}
+                          onChange={(e) => updateFscTeam(index, "goals_scored", parseInt(e.target.value) || 0)}
+                          className="w-14 bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-center text-sm"
+                        />
+                      </td>
+                      <td className="px-3 py-2">
+                        <input
+                          type="number"
+                          value={team.goals_conceded}
+                          onChange={(e) => updateFscTeam(index, "goals_conceded", parseInt(e.target.value) || 0)}
+                          className="w-14 bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-center text-sm"
+                        />
+                      </td>
+                      <td className="px-3 py-2">
+                        <button
+                          onClick={() => removeFscTeam(index)}
+                          className="text-red-400 hover:text-red-300 transition-colors"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </TabsContent>
       </Tabs>
     </div>
   )

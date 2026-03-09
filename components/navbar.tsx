@@ -216,6 +216,48 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
             >
               {t("aboutUs")}
             </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (currentSport !== "home") {
+                  onSportChange("home")
+                  setTimeout(() => {
+                    const el = document.getElementById("eventi")
+                    el?.scrollIntoView({ behavior: "smooth" })
+                  }, 300)
+                } else {
+                  const el = document.getElementById("eventi")
+                  el?.scrollIntoView({ behavior: "smooth" })
+                }
+              }}
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
+              I Nostri Eventi
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (currentSport !== "home") {
+                  onSportChange("home")
+                  setTimeout(() => {
+                    const el = document.getElementById("sponsor")
+                    el?.scrollIntoView({ behavior: "smooth" })
+                  }, 300)
+                } else {
+                  const el = document.getElementById("sponsor")
+                  el?.scrollIntoView({ behavior: "smooth" })
+                }
+              }}
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
+              I Nostri Sponsor
+            </button>
+            <Link
+              href="/registrazione"
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
+              Card Sanfra Cup
+            </Link>
             <SocialDropdown />
             <span className="text-yellow-500/30">|</span>
             <button
@@ -311,6 +353,51 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
               >
                 {t("aboutUs")}
               </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  if (currentSport !== "home") {
+                    onSportChange("home")
+                    setTimeout(() => {
+                      const el = document.getElementById("eventi")
+                      el?.scrollIntoView({ behavior: "smooth" })
+                    }, 300)
+                  } else {
+                    const el = document.getElementById("eventi")
+                    el?.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+                className="text-gray-400 hover:text-white transition-colors py-2 text-left"
+              >
+                I Nostri Eventi
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false)
+                  if (currentSport !== "home") {
+                    onSportChange("home")
+                    setTimeout(() => {
+                      const el = document.getElementById("sponsor")
+                      el?.scrollIntoView({ behavior: "smooth" })
+                    }, 300)
+                  } else {
+                    const el = document.getElementById("sponsor")
+                    el?.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+                className="text-gray-400 hover:text-white transition-colors py-2 text-left"
+              >
+                I Nostri Sponsor
+              </button>
+              <Link
+                href="/registrazione"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-400 hover:text-white transition-colors py-2 text-left"
+              >
+                Card Sanfra Cup
+              </Link>
               
               {/* Social links in mobile */}
               <div className="py-2">

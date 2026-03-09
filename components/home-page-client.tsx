@@ -356,6 +356,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
                 <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Contattaci</h4>
                 <ul className="space-y-2">
                   <li><a href="mailto:sanfracup@gmail.com" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">sanfracup@gmail.com</a></li>
+                  <li><a href="tel:+393914897361" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Andrea Gallo: 391 489 7361</a></li>
                 </ul>
               </div>
             </div>
@@ -633,6 +634,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
               <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Contattaci</h4>
               <ul className="space-y-2">
                 <li><a href="mailto:sanfracup@gmail.com" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">sanfracup@gmail.com</a></li>
+                <li><a href="tel:+393914897361" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Andrea Gallo: 391 489 7361</a></li>
               </ul>
             </div>
           </div>

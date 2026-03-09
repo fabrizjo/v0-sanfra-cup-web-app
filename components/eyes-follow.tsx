@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useRef, useState, useCallback } from "react"
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion"
 
 const sizeMap = {
   sm: { eye: 50, pupil: 24, highlight: 7 },
@@ -13,8 +13,6 @@ const sizeMap = {
 export function EyesFollow() {
   const containerRef = useRef<HTMLDivElement>(null)
   const eyesRef = useRef<HTMLDivElement>(null)
-  const [leftPupilPos, setLeftPupilPos] = useState({ x: 0, y: 0 })
-  const [rightPupilPos, setRightPupilPos] = useState({ x: 0, y: 0 })
   const [showText, setShowText] = useState(false)
 
   const size = "xl"
@@ -26,6 +24,19 @@ export function EyesFollow() {
   const highlightSize = dimensions.highlight
   const maxMoveX = (eyeWidth - pupilWidth) / 2
   const maxMoveY = (eyeHeight - pupilHeight) / 2
+
+  // Use motion values for smooth animation without re-renders
+  const leftX = useMotionValue(0)
+  const leftY = useMotionValue(0)
+  const rightX = useMotionValue(0)
+  const rightY = useMotionValue(0)
+
+  // Spring config for smooth movement
+  const springConfig = { stiffness: 300, damping: 25, mass: 0.5 }
+  const leftXSpring = useSpring(leftX, springConfig)
+  const leftYSpring = useSpring(leftY, springConfig)
+  const rightXSpring = useSpring(rightX, springConfig)
+  const rightYSpring = useSpring(rightY, springConfig)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -46,10 +57,11 @@ export function EyesFollow() {
       const leftDist = Math.hypot(leftDx, leftDy)
       const leftNorm = Math.min(leftDist / 200, 1)
       
-      const leftX = Math.cos(leftAngle) * leftNorm * maxMoveX
-      const leftY = Math.sin(leftAngle) * leftNorm * maxMoveY
+      const newLeftX = Math.cos(leftAngle) * leftNorm * maxMoveX
+      const newLeftY = Math.sin(leftAngle) * leftNorm * maxMoveY
       
-      setLeftPupilPos({ x: leftX, y: leftY })
+      leftX.set(newLeftX)
+      leftY.set(newLeftY)
 
       // Right eye
       const rightDx = e.clientX - rightEyeCenterX
@@ -58,20 +70,21 @@ export function EyesFollow() {
       const rightDist = Math.hypot(rightDx, rightDy)
       const rightNorm = Math.min(rightDist / 200, 1)
       
-      const rightX = Math.cos(rightAngle) * rightNorm * maxMoveX
-      const rightY = Math.sin(rightAngle) * rightNorm * maxMoveY
+      const newRightX = Math.cos(rightAngle) * rightNorm * maxMoveX
+      const newRightY = Math.sin(rightAngle) * rightNorm * maxMoveY
       
-      setRightPupilPos({ x: rightX, y: rightY })
+      rightX.set(newRightX)
+      rightY.set(newRightY)
 
       // Show text when both eyes look down
-      setShowText(leftY > maxMoveY * 0.5 && rightY > maxMoveY * 0.5)
+      setShowText(newLeftY > maxMoveY * 0.5 && newRightY > maxMoveY * 0.5)
     }
 
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [eyeWidth, eyeHeight, maxMoveX, maxMoveY])
+  }, [eyeWidth, eyeHeight, maxMoveX, maxMoveY, leftX, leftY, rightX, rightY])
 
-  const Eye = ({ pupilPos }: { pupilPos: { x: number; y: number } }) => (
+  const Eye = ({ xSpring, ySpring }: { xSpring: typeof leftXSpring; ySpring: typeof leftYSpring }) => (
     <div
       className="relative flex items-center justify-center"
       style={{
@@ -88,9 +101,9 @@ export function EyesFollow() {
           height: pupilHeight,
           backgroundColor: "black",
           borderRadius: "50%",
+          x: xSpring,
+          y: ySpring,
         }}
-        animate={{ x: pupilPos.x, y: pupilPos.y }}
-        transition={{ type: "spring", stiffness: 500, damping: 30 }}
       >
         <div
           className="absolute"
@@ -118,8 +131,8 @@ export function EyesFollow() {
         className="flex items-center"
         style={{ gap: eyeWidth * 0.2 }}
       >
-        <Eye pupilPos={leftPupilPos} />
-        <Eye pupilPos={rightPupilPos} />
+        <Eye xSpring={leftXSpring} ySpring={leftYSpring} />
+        <Eye xSpring={rightXSpring} ySpring={rightYSpring} />
       </div>
 
       {/* Text that appears when eyes look down */}

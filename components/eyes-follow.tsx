@@ -20,9 +20,9 @@ export function EyesFollow() {
       const deltaY = e.clientY - centerY
 
       // Limit pupil movement within the eye
-      const maxMove = 10
+      const maxMove = 18
       const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
-      const scale = Math.min(distance / 300, 1)
+      const scale = Math.min(distance / 150, 1)
 
       const angle = Math.atan2(deltaY, deltaX)
       const x = Math.cos(angle) * maxMove * scale
@@ -31,11 +31,12 @@ export function EyesFollow() {
       setPupilPosition({ x, y })
 
       // Show text when eyes look down
-      setShowText(y > 5)
+      setShowText(y > 8)
     }
 
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
+    // Listen on document for better iframe compatibility
+    document.addEventListener("mousemove", handleMouseMove)
+    return () => document.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
   const Eye = () => (

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 
 export function EyesFollow() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [eyeOffset, setEyeOffset] = useState({ x: 0, y: 0 })
+  const [pupilPosition, setPupilPosition] = useState({ x: 0, y: 0 })
   const [showText, setShowText] = useState(false)
 
   useEffect(() => {
@@ -19,69 +19,48 @@ export function EyesFollow() {
       const deltaX = e.clientX - centerX
       const deltaY = e.clientY - centerY
 
-      // Normalize and limit movement
-      const maxMove = 15
+      // Limit pupil movement within the eye
+      const maxMove = 10
       const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
       const scale = Math.min(distance / 300, 1)
-      
+
       const angle = Math.atan2(deltaY, deltaX)
       const x = Math.cos(angle) * maxMove * scale
       const y = Math.sin(angle) * maxMove * scale
 
-      setEyeOffset({ x, y })
+      setPupilPosition({ x, y })
 
-      // Show text when looking down
-      setShowText(y > 8)
+      // Show text when eyes look down
+      setShowText(y > 5)
     }
 
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
+  const Eye = () => (
+    <div className="relative">
+      {/* White part of the eye - oval shape */}
+      <div className="w-14 h-20 md:w-20 md:h-28 bg-white rounded-[50%] flex items-center justify-center">
+        {/* Pupil - black circle */}
+        <motion.div
+          className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-black"
+          animate={{ x: pupilPosition.x, y: pupilPosition.y }}
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        />
+      </div>
+    </div>
+  )
+
   return (
     <section 
       ref={containerRef}
-      className="py-24 md:py-32 bg-black flex flex-col items-center justify-center gap-12 min-h-[60vh]"
+      className="py-24 md:py-32 bg-black flex flex-col items-center justify-center gap-12 min-h-[50vh]"
     >
       {/* Eyes container */}
-      <div className="flex items-center gap-3 md:gap-5">
-        {/* Left eye - ) shape */}
-        <motion.svg
-          width="24"
-          height="48"
-          viewBox="0 0 24 48"
-          fill="none"
-          animate={{ x: eyeOffset.x, y: eyeOffset.y }}
-          transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="md:w-[36px] md:h-[72px]"
-        >
-          <path
-            d="M6 4 Q 20 24, 6 44"
-            stroke="white"
-            strokeWidth="6"
-            strokeLinecap="round"
-            fill="none"
-          />
-        </motion.svg>
-
-        {/* Right eye - ( shape */}
-        <motion.svg
-          width="24"
-          height="48"
-          viewBox="0 0 24 48"
-          fill="none"
-          animate={{ x: eyeOffset.x, y: eyeOffset.y }}
-          transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="md:w-[36px] md:h-[72px]"
-        >
-          <path
-            d="M18 4 Q 4 24, 18 44"
-            stroke="white"
-            strokeWidth="6"
-            strokeLinecap="round"
-            fill="none"
-          />
-        </motion.svg>
+      <div className="flex gap-4 md:gap-6">
+        <Eye />
+        <Eye />
       </div>
 
       {/* Text that appears when eyes look down */}

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 
 export function EyesFollow() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [rotation, setRotation] = useState(0)
+  const [eyeOffset, setEyeOffset] = useState({ x: 0, y: 0 })
   const [showText, setShowText] = useState(false)
 
   useEffect(() => {
@@ -19,49 +19,69 @@ export function EyesFollow() {
       const deltaX = e.clientX - centerX
       const deltaY = e.clientY - centerY
 
-      // Calculate angle in degrees
-      const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI)
-      setRotation(angle)
+      // Normalize and limit movement
+      const maxMove = 15
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+      const scale = Math.min(distance / 300, 1)
+      
+      const angle = Math.atan2(deltaY, deltaX)
+      const x = Math.cos(angle) * maxMove * scale
+      const y = Math.sin(angle) * maxMove * scale
 
-      // Show text when eyes look down (between 45 and 135 degrees)
-      const normalizedAngle = angle > 0 ? angle : angle + 360
-      setShowText(normalizedAngle > 45 && normalizedAngle < 135)
+      setEyeOffset({ x, y })
+
+      // Show text when looking down
+      setShowText(y > 8)
     }
 
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
-  // Minimalist curved eye shape (like the Framer component)
-  const Eye = ({ mirror = false }: { mirror?: boolean }) => (
-    <motion.svg
-      width="40"
-      height="80"
-      viewBox="0 0 40 80"
-      fill="none"
-      animate={{ rotate: rotation + (mirror ? 180 : 0) }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="md:w-[60px] md:h-[120px]"
-    >
-      <path
-        d="M35 10 C 10 25, 10 55, 35 70"
-        stroke="white"
-        strokeWidth="8"
-        strokeLinecap="round"
-        fill="none"
-      />
-    </motion.svg>
-  )
-
   return (
     <section 
       ref={containerRef}
       className="py-24 md:py-32 bg-black flex flex-col items-center justify-center gap-12 min-h-[60vh]"
     >
-      {/* Eyes */}
-      <div className="flex gap-4 md:gap-6">
-        <Eye />
-        <Eye mirror />
+      {/* Eyes container */}
+      <div className="flex items-center gap-3 md:gap-5">
+        {/* Left eye - ) shape */}
+        <motion.svg
+          width="24"
+          height="48"
+          viewBox="0 0 24 48"
+          fill="none"
+          animate={{ x: eyeOffset.x, y: eyeOffset.y }}
+          transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          className="md:w-[36px] md:h-[72px]"
+        >
+          <path
+            d="M6 4 Q 20 24, 6 44"
+            stroke="white"
+            strokeWidth="6"
+            strokeLinecap="round"
+            fill="none"
+          />
+        </motion.svg>
+
+        {/* Right eye - ( shape */}
+        <motion.svg
+          width="24"
+          height="48"
+          viewBox="0 0 24 48"
+          fill="none"
+          animate={{ x: eyeOffset.x, y: eyeOffset.y }}
+          transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          className="md:w-[36px] md:h-[72px]"
+        >
+          <path
+            d="M18 4 Q 4 24, 18 44"
+            stroke="white"
+            strokeWidth="6"
+            strokeLinecap="round"
+            fill="none"
+          />
+        </motion.svg>
       </div>
 
       {/* Text that appears when eyes look down */}

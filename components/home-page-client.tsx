@@ -213,16 +213,23 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
               text="La Sanfra Cup nasce nel 2022 nell'oratorio di San Francesco, dove siamo cresciuti con valori molto forti: rispetto, fratellanza, empatia. Questo torneo nasce da un'esigenza specifica: riavvicinare i giovani ragazzi dopo il periodo del Covid. Fin dalla prima edizione ci siamo sempre divertiti prima noi e poi abbiamo visto quanto il torneo fosse potente e facesse bene alla comunità. Edizione dopo edizione, il nostro cerchio si è allargato sempre più, e continuerà a farlo sempre!" 
               size="medium"
             />
-            <div className="mt-12">
-              <AnimatedPillButton 
-                text="I nostri eventi" 
-                onClick={() => {
-                  const eventsSection = document.getElementById('eventi')
-                  eventsSection?.scrollIntoView({ behavior: 'smooth' })
-                }}
-                className="bg-yellow-400 text-black hover:shadow-yellow-400/30"
-              />
-            </div>
+          </div>
+        </section>
+
+        {/* Events CTA Section */}
+        <section className="py-24 bg-black flex flex-col items-center justify-center">
+          <div className="container mx-auto px-4 text-center">
+            <AnimatedPillButton 
+              text="I nostri eventi" 
+              onClick={() => {
+                const eventsSection = document.getElementById('eventi')
+                eventsSection?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              className="bg-yellow-400 text-black hover:shadow-yellow-400/30"
+            />
+            <p className="mt-6 text-gray-400 text-lg md:text-xl">
+              Scopri tutti i nostri eventi e le date in cui si terranno!
+            </p>
           </div>
         </section>
 

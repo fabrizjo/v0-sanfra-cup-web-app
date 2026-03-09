@@ -14,6 +14,7 @@ import { DirectionAwareHover } from "@/components/ui/direction-aware-hover"
 import { WhatsAppContact } from "@/components/whatsapp-contact"
 import { LiquidMetalIDCard } from "@/components/liquid-metal-id-card"
 import { FscClassifica } from "@/components/fsc-classifica"
+import { EyesFollow } from "@/components/eyes-follow"
 
 
 // Gradient Reveal Text Component
@@ -193,6 +194,9 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
             <ChevronDown className="h-8 w-8 text-gray-600" />
           </div>
         </section>
+
+        {/* Eyes Follow Section */}
+        <EyesFollow />
 
       {/* Non solo un torneo Section */}
         <section className="min-h-[60vh] flex items-center justify-center bg-black">

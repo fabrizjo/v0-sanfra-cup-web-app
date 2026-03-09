@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 
 export function EyesFollow() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [pupilPosition, setPupilPosition] = useState({ x: 0, y: 0 })
+  const [rotation, setRotation] = useState(0)
   const [showText, setShowText] = useState(false)
 
   useEffect(() => {
@@ -19,54 +19,49 @@ export function EyesFollow() {
       const deltaX = e.clientX - centerX
       const deltaY = e.clientY - centerY
 
-      const maxMove = 12
-      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
-      const clampedDistance = Math.min(distance, 200)
-      const scale = clampedDistance / 200
+      // Calculate angle in degrees
+      const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI)
+      setRotation(angle)
 
-      const angle = Math.atan2(deltaY, deltaX)
-      const x = Math.cos(angle) * maxMove * scale
-      const y = Math.sin(angle) * maxMove * scale
-
-      setPupilPosition({ x, y })
-
-      // Show text when eyes look down (y > threshold)
-      setShowText(y > 6)
+      // Show text when eyes look down (between 45 and 135 degrees)
+      const normalizedAngle = angle > 0 ? angle : angle + 360
+      setShowText(normalizedAngle > 45 && normalizedAngle < 135)
     }
 
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
 
-  const Eye = ({ className = "" }: { className?: string }) => (
-    <div className={`relative ${className}`}>
-      {/* Eye white */}
-      <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-white flex items-center justify-center shadow-[inset_0_4px_20px_rgba(0,0,0,0.1)]">
-        {/* Iris */}
-        <motion.div
-          className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-amber-800 via-amber-600 to-amber-900 flex items-center justify-center"
-          animate={{ x: pupilPosition.x, y: pupilPosition.y }}
-          transition={{ type: "spring", stiffness: 500, damping: 30 }}
-        >
-          {/* Pupil */}
-          <div className="w-5 h-5 md:w-7 md:h-7 rounded-full bg-black relative">
-            {/* Reflection */}
-            <div className="absolute top-1 left-1 w-2 h-2 rounded-full bg-white/60" />
-          </div>
-        </motion.div>
-      </div>
-    </div>
+  // Minimalist curved eye shape (like the Framer component)
+  const Eye = ({ mirror = false }: { mirror?: boolean }) => (
+    <motion.svg
+      width="40"
+      height="80"
+      viewBox="0 0 40 80"
+      fill="none"
+      animate={{ rotate: rotation + (mirror ? 180 : 0) }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className="md:w-[60px] md:h-[120px]"
+    >
+      <path
+        d="M35 10 C 10 25, 10 55, 35 70"
+        stroke="white"
+        strokeWidth="8"
+        strokeLinecap="round"
+        fill="none"
+      />
+    </motion.svg>
   )
 
   return (
     <section 
       ref={containerRef}
-      className="py-20 bg-black flex flex-col items-center justify-center gap-8 min-h-[50vh]"
+      className="py-24 md:py-32 bg-black flex flex-col items-center justify-center gap-12 min-h-[60vh]"
     >
       {/* Eyes */}
-      <div className="flex gap-6 md:gap-10">
+      <div className="flex gap-4 md:gap-6">
         <Eye />
-        <Eye />
+        <Eye mirror />
       </div>
 
       {/* Text that appears when eyes look down */}

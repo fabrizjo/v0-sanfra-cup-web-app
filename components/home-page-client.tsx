@@ -325,7 +325,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
               <div>
                 <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Navigazione</h4>
                 <ul className="space-y-2">
-                  <li><button type="button" onClick={() => handleSportChange("home")} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Home</button></li>
+<li><button type="button" onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); handleSportChange("home"); }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Home</button></li>
                   <li><button type="button" onClick={() => { const el = document.getElementById("chi-siamo"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Chi Siamo</button></li>
                   <li><a href="mailto:sanfracup@gmail.com" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Contattaci</a></li>
                 </ul>

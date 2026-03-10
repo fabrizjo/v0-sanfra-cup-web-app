@@ -299,24 +299,6 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           <LiquidMetalIDCard />
         </section>
 
-        {/* Sponsors Section */}
-        <section className="py-16 bg-black border-y border-yellow-500/10">
-          <div className="overflow-hidden">
-            <div className="animate-scroll flex gap-16 whitespace-nowrap">
-              {["QUANTO BASTA", "CAPRICCIO DI PEPE", "MD22TEAM", "ARECHI", "DOLCE E CAFFE"].map((sponsor, i) => (
-                <span key={`${sponsor}-${i}`} className="text-2xl font-medium text-yellow-500/30 tracking-widest">
-                  {sponsor}
-                </span>
-              ))}
-              {["QUANTO BASTA", "CAPRICCIO DI PEPE", "MD22TEAM", "ARECHI", "DOLCE E CAFFE"].map((sponsor, i) => (
-                <span key={`${sponsor}-dup-${i}`} className="text-2xl font-medium text-yellow-500/30 tracking-widest">
-                  {sponsor}
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Footer */}
         <footer className="py-16 bg-black border-t border-yellow-500/10">
           <div className="container mx-auto px-4">

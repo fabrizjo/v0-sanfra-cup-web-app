@@ -125,7 +125,7 @@ export default function EventiPage() {
       {/* Footer */}
       <footer className="bg-black border-t border-yellow-500/10 py-8">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-500 text-sm">© 2024 Sanfra Cup. Tutti i diritti riservati.</p>
+          <p className="text-gray-500 text-sm">© 2026 Sanfra Cup. Tutti i diritti riservati.</p>
         </div>
       </footer>
     </div>

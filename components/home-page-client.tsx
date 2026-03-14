@@ -301,8 +301,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
                   <li><button type="button" onClick={() => { const el = document.getElementById("chi-siamo"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Chi Siamo</button></li>
 <li><Link href="/eventi" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">I Nostri Eventi</Link></li>
                   <li><button type="button" onClick={() => { const el = document.getElementById("sponsor"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">I Nostri Sponsor</button></li>
-                  <li><a href="/registrazione" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Card Sanfra Cup</a></li>
-                  <li><a href="mailto:sanfracup@gmail.com" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Contattaci</a></li>
+                  <li><a href="/card-sanfra-cup" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Card Sanfra Cup</a></li>
                 </ul>
               </div>
               {/* Social */}
@@ -561,8 +560,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
                 <li><button type="button" onClick={() => { const el = document.getElementById("chi-siamo"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Chi Siamo</button></li>
                 <li><Link href="/eventi" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">I Nostri Eventi</Link></li>
                 <li><button type="button" onClick={() => { const el = document.getElementById("sponsor"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">I Nostri Sponsor</button></li>
-                <li><Link href="/registrazione" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Card Sanfra Cup</Link></li>
-                <li><a href="mailto:sanfracup@gmail.com" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Contattaci</a></li>
+                <li><Link href="/card-sanfra-cup" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Card Sanfra Cup</Link></li>
               </ul>
             </div>
             {/* Social */}

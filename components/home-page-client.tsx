@@ -222,10 +222,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           <div className="container mx-auto px-4 text-center">
             <AnimatedPillButton 
               text="I nostri eventi" 
-              onClick={() => {
-                const eventsSection = document.getElementById('eventi')
-                eventsSection?.scrollIntoView({ behavior: 'smooth' })
-              }}
+              href="/eventi"
               className="bg-yellow-400 text-black hover:shadow-yellow-400/30"
             />
             <p className="mt-6 text-gray-400 text-lg md:text-xl">

@@ -1,24 +1,26 @@
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 interface AnimatedPillButtonProps {
   text?: string
   className?: string
   onClick?: () => void
+  href?: string
 }
 
 export function AnimatedPillButton({
   text = "Get Started",
   className,
   onClick,
+  href,
 }: AnimatedPillButtonProps) {
-  return (
-    <button
-      onClick={onClick}
-      className={cn(
-        "group relative overflow-hidden rounded-full bg-foreground px-8 py-3 text-background font-medium tracking-wide transition-shadow duration-300 hover:shadow-lg hover:shadow-foreground/20",
-        className
-      )}
-    >
+  const buttonClasses = cn(
+    "group relative overflow-hidden rounded-full bg-foreground px-8 py-3 text-background font-medium tracking-wide transition-shadow duration-300 hover:shadow-lg hover:shadow-foreground/20",
+    className
+  )
+
+  const content = (
+    <>
       <span className="sr-only">{text}</span>
       <span aria-hidden="true" className="flex">
         {text.split("").map((letter, index) => {
@@ -55,6 +57,23 @@ export function AnimatedPillButton({
           )
         })}
       </span>
+    </>
+  )
+
+  if (href) {
+    return (
+      <Link href={href} className={buttonClasses}>
+        {content}
+      </Link>
+    )
+  }
+
+  return (
+    <button
+      onClick={onClick}
+      className={buttonClasses}
+    >
+      {content}
     </button>
   )
 }

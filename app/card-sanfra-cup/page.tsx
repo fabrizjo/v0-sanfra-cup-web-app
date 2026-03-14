@@ -12,7 +12,7 @@ export default function CardSanfraCupPage() {
   const [currentLang, setCurrentLang] = useState<"it" | "en">("it")
   const [currentSport, setCurrentSport] = useState<"home" | "calcio" | "volley" | "fsc">("home")
 
-  const whatsappNumber = "393331234567" // Andrea Gallo - da aggiornare con numero reale
+  const whatsappNumber = "393914897361" // Andrea Gallo
   const whatsappMessage = encodeURIComponent("Ciao, voglio più informazioni sulla Card Sanfra Cup")
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 

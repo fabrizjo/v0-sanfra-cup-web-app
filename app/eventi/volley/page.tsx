@@ -129,25 +129,25 @@ export default function VolleyPage() {
               </div>
               <div className="bg-neutral-900 border border-yellow-500/20 rounded-2xl p-6">
                 <p className="text-gray-400 text-sm uppercase tracking-wider mb-2">Data Inizio</p>
-                <p className="text-white text-xl font-semibold">Da definire</p>
+                <p className="text-white text-xl font-semibold">9 Giugno 2026</p>
               </div>
               <div className="bg-neutral-900 border border-yellow-500/20 rounded-2xl p-6">
                 <p className="text-gray-400 text-sm uppercase tracking-wider mb-2">Giorni del Torneo</p>
-                <p className="text-white text-xl font-semibold">Da definire</p>
+                <p className="text-white text-xl font-semibold">Ogni Martedi, Mercoledi e Giovedi</p>
               </div>
               <div className="bg-neutral-900 border border-yellow-500/20 rounded-2xl p-6">
                 <p className="text-gray-400 text-sm uppercase tracking-wider mb-2">Data Finale</p>
-                <p className="text-white text-xl font-semibold">Da definire</p>
+                <p className="text-white text-xl font-semibold">21 Giugno 2026</p>
               </div>
             </div>
 
             {/* Location */}
             <div className="bg-neutral-900 border border-yellow-500/20 rounded-2xl p-6 mb-8">
               <p className="text-gray-400 text-sm uppercase tracking-wider mb-4">Sede</p>
-              <p className="text-white text-xl font-semibold mb-6">Via Nicola Acocella, 7 - 84131 Salerno SA</p>
+              <p className="text-white text-xl font-semibold mb-6">Palestra Matteo Senatore, Via Paolo de Granita - Salerno</p>
               <div className="rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3018.5!2d14.7847!3d40.6754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133bc1c1c1c1c1c1%3A0x1234567890abcdef!2sVia%20Nicola%20Acocella%2C%207%2C%2084131%20Salerno%20SA%2C%20Italy!5e0!3m2!1sen!2sit!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3018.5!2d14.7847!3d40.6754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVia%20Paolo%20de%20Granita%2C%20Salerno%2C%20Italy!5e0!3m2!1sen!2sit!4v1234567890"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}

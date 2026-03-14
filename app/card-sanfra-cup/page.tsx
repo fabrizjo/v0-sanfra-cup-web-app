@@ -196,6 +196,69 @@ export default function CardSanfraCupPage() {
         </div>
       </section>
 
+      {/* Dove posso usare la Card Section */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-spacema text-center mb-12"
+          >
+            <span className="text-white">Dove posso usare la</span>{' '}<span className="text-yellow-400">Card Sanfra Cup?</span>
+          </motion.h2>
+
+          {/* Sezione vuota per ora */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-center text-gray-500"
+          >
+            <p>Coming soon...</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Come posso utilizzare Section */}
+      <section className="py-20 bg-neutral-950">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-spacema text-center mb-16"
+          >
+            <span className="text-white">Come posso utilizzare la mia</span>{' '}<span className="text-yellow-400">Card Sanfra Cup</span>
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              { step: "1", title: "Acquista la Card Sanfra Cup" },
+              { step: "2", title: "Ricevi la tessera digitale" },
+              { step: "3", title: "Mostrala all'interno del locale sponsor per ottenere i vantaggi" }
+            ].map((item, index) => (
+              <motion.div
+                key={item.step}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="text-center"
+              >
+                <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-black text-2xl font-bold">{item.step}</span>
+                </div>
+                <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-black border-t border-yellow-500/10 py-8">
         <div className="container mx-auto px-4 text-center">

@@ -5,7 +5,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Navbar } from "@/components/navbar"
-import { ArrowLeft, MessageCircle } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
+import SlideTextButton from "@/components/slide-text-button"
 import { type Language, type Sport } from "@/lib/i18n"
 
 export default function CalcioJuniorPage() {
@@ -96,15 +97,13 @@ export default function CalcioJuniorPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <a
+            <SlideTextButton
+              text="Voglio più informazioni"
+              hoverText="Antonio Dattoli"
               href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/30 hover:scale-105"
-            >
-              <MessageCircle className="w-5 h-5" />
-              <span>Voglio piu informazioni</span>
-            </a>
+              variant="whatsapp"
+              external
+            />
           </motion.div>
         </div>
       </section>

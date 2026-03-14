@@ -222,24 +222,12 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
             >
               I Nostri Eventi
             </Link>
-            <button
-              type="button"
-              onClick={() => {
-                if (currentSport !== "home") {
-                  onSportChange("home")
-                  setTimeout(() => {
-                    const el = document.getElementById("sponsor")
-                    el?.scrollIntoView({ behavior: "smooth" })
-                  }, 300)
-                } else {
-                  const el = document.getElementById("sponsor")
-                  el?.scrollIntoView({ behavior: "smooth" })
-                }
-              }}
+            <Link
+              href="/sponsor"
               className="text-sm text-gray-400 hover:text-white transition-colors"
             >
               I Nostri Sponsor
-            </button>
+            </Link>
             <Link
               href="/registrazione"
               className="text-sm text-gray-400 hover:text-white transition-colors"
@@ -314,25 +302,13 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
               >
                 I Nostri Eventi
               </Link>
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false)
-                  if (currentSport !== "home") {
-                    onSportChange("home")
-                    setTimeout(() => {
-                      const el = document.getElementById("sponsor")
-                      el?.scrollIntoView({ behavior: "smooth" })
-                    }, 300)
-                  } else {
-                    const el = document.getElementById("sponsor")
-                    el?.scrollIntoView({ behavior: "smooth" })
-                  }
-                }}
+              <Link
+                href="/sponsor"
+                onClick={() => setMobileMenuOpen(false)}
                 className="text-gray-400 hover:text-white transition-colors py-2 text-left"
               >
                 I Nostri Sponsor
-              </button>
+              </Link>
               <Link
                 href="/registrazione"
                 onClick={() => setMobileMenuOpen(false)}

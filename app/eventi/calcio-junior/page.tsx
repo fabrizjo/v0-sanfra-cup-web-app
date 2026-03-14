@@ -126,11 +126,11 @@ export default function CalcioJuniorPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
               <div className="bg-neutral-900 border border-yellow-500/20 rounded-2xl p-6">
                 <p className="text-gray-400 text-sm uppercase tracking-wider mb-2">Categoria</p>
-                <p className="text-white text-xl font-semibold">Junior</p>
+                <p className="text-white text-xl font-semibold">2010-2012</p>
               </div>
               <div className="bg-neutral-900 border border-yellow-500/20 rounded-2xl p-6">
                 <p className="text-gray-400 text-sm uppercase tracking-wider mb-2">Data Inizio</p>
-                <p className="text-white text-xl font-semibold">8 Maggio 2026</p>
+                <p className="text-white text-xl font-semibold">12 Giugno 2026</p>
               </div>
               <div className="bg-neutral-900 border border-yellow-500/20 rounded-2xl p-6">
                 <p className="text-gray-400 text-sm uppercase tracking-wider mb-2">Giorni del Torneo</p>
@@ -138,7 +138,7 @@ export default function CalcioJuniorPage() {
               </div>
               <div className="bg-neutral-900 border border-yellow-500/20 rounded-2xl p-6">
                 <p className="text-gray-400 text-sm uppercase tracking-wider mb-2">Data Finale</p>
-                <p className="text-white text-xl font-semibold">7 Giugno 2026</p>
+                <p className="text-white text-xl font-semibold">21 Giugno 2026</p>
               </div>
             </div>
 

@@ -26,9 +26,22 @@ export default function CalcioOpenPage() {
       />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-neutral-900 to-black" />
+      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        {/* Background Logo */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="absolute inset-0"
+        >
+          <div className="absolute inset-0 flex items-center justify-center opacity-30">
+            <img 
+              src="/images/sanfra-transparent.png"
+              alt=""
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </motion.div>
         
         <div className="relative z-10 container mx-auto px-4 text-center">
           {/* Back button */}
@@ -45,22 +58,6 @@ export default function CalcioOpenPage() {
               <ArrowLeft className="w-4 h-4" />
               <span>Torna agli Eventi</span>
             </Link>
-          </motion.div>
-
-          {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8"
-          >
-            <Image
-              src="/images/sanfra-logo.png"
-              alt="Sanfra Cup Logo"
-              width={200}
-              height={200}
-              className="mx-auto"
-            />
           </motion.div>
 
           {/* Title */}

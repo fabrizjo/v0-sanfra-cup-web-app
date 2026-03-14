@@ -24,7 +24,7 @@ export default function SponsorCard({
 
   return (
     <div
-      className="group relative h-[320px] w-full max-w-[280px] [perspective:2000px]"
+      className="group relative h-[320px] w-[280px] min-w-[280px] [perspective:2000px]"
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
@@ -43,50 +43,29 @@ export default function SponsorCard({
             "absolute inset-0 h-full w-full",
             "[backface-visibility:hidden] [transform:rotateY(0deg)]",
             "overflow-hidden rounded-2xl",
-            "bg-zinc-50 dark:bg-zinc-900",
-            "border border-yellow-500/20 dark:border-yellow-500/20",
-            "shadow-xs dark:shadow-lg",
+            "bg-white",
+            "border-2 border-yellow-500/30",
+            "shadow-lg shadow-yellow-500/10",
             "transition-all duration-700",
-            "group-hover:shadow-lg group-hover:shadow-yellow-500/10 dark:group-hover:shadow-xl",
+            "group-hover:shadow-xl group-hover:shadow-yellow-500/20 group-hover:border-yellow-500/50",
             isFlipped ? "opacity-0" : "opacity-100"
           )}
         >
           <div className="relative h-full overflow-hidden bg-white flex items-center justify-center">
             {image && (
-              <div className="flex items-center justify-center p-6">
+              <div className="flex items-center justify-center p-8">
                 <Image
                   src={image}
                   alt={title}
-                  width={220}
-                  height={220}
+                  width={200}
+                  height={200}
                   className="object-contain max-h-[200px] w-auto"
                 />
               </div>
             )}
           </div>
 
-          <div className="absolute right-0 bottom-0 left-0 p-5 bg-gradient-to-t from-black/80 to-transparent">
-            <div className="flex items-center justify-between gap-3">
-              <div className="space-y-1.5">
-                <h3 className="font-semibold text-lg text-white leading-snug tracking-tighter transition-all duration-500 ease-out-expo group-hover:translate-y-[-4px]">
-                  {title}
-                </h3>
-                <p className="line-clamp-2 text-sm text-gray-300 tracking-tight transition-all delay-[50ms] duration-500 ease-out-expo group-hover:translate-y-[-4px]">
-                  {subtitle}
-                </p>
-              </div>
-              <div className="group/icon relative">
-                <div
-                  className={cn(
-                    "absolute inset-[-8px] rounded-lg transition-opacity duration-300",
-                    "bg-gradient-to-br from-yellow-500/20 via-yellow-500/10 to-transparent"
-                  )}
-                />
-                <Repeat2 className="group-hover/icon:-rotate-12 relative z-10 h-4 w-4 text-yellow-500 transition-transform duration-300 group-hover/icon:scale-110" />
-              </div>
-            </div>
           </div>
-        </div>
 
 {/* Back of card */}
         <div
@@ -108,8 +87,8 @@ export default function SponsorCard({
               <h3 className="font-semibold text-lg text-white leading-snug tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px]">
                 {title}
               </h3>
-              <p className="text-sm text-gray-400 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] line-clamp-3">
-                {subtitle}
+              <p className="text-sm text-gray-400 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px]">
+                {description}
               </p>
             </div>
 

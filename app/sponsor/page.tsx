@@ -14,6 +14,7 @@ const sponsors = [
     id: "grill-house",
     name: "Grill House",
     subtitle: "Partner Ufficiale",
+    backText: "Il principale punto di riferimento per gli amanti della carne.",
     description: "A due passi dal Corso, GRILL HOUSE rappresenta oggi, per Salerno, il principale punto di riferimento per gli amanti della carne. Nasce con l'obiettivo di fondere un ambiente giovanile e di intrattenimento con una cucina diversificata e di qualità. Un'offerta che spazia dagli antipasti alla carne, dai primi ai dolci, tutti rigorosamente artigianali, oltre ad un vasto assortimento di birre. La location moderna e tecnologica consente di trascorrere ore piacevoli avvolti in un'atmosfera calda e luminosa.",
     address: "Via Giovan Angelo Papio, 39, 84122 Salerno SA",
     image: "/images/sponsors/grill-house.jpg",
@@ -23,6 +24,7 @@ const sponsors = [
     id: "mythos",
     name: "Mythos",
     subtitle: "Partner Ufficiale",
+    backText: "Un angolo di Grecia nel cuore di Salerno.",
     description: "Dal 2001 Mythos Ristorante Greco è un angolo di Grecia nel cuore di Salerno. I colori, l'atmosfera, la musica del locale accompagnano la tradizione culinaria greca. I piatti tipici e genuini, seguendo esclusivamente le ricette originali, sono preparati con prodotti freschi. Inoltre, Mythos Ristorante Greco propone prodotti di importazione greca, frutto dell'esperienza ultradecennale e della continua ricerca, al fine di offrire una completa esperienza ellenica. La qualità dei prodotti e l'ambiente confortevole e caratteristico, insieme alla gentilezza e disponibilità del personale, ha reso negli anni Mythos Ristorante Greco un punto di riferimento per palati delicati e curiosi.",
     address: "Via Roma, 62 / Via Dalmazia, 39 - Salerno",
     image: "/images/sponsors/mythos.png",
@@ -32,6 +34,7 @@ const sponsors = [
     id: "caffe-grieco",
     name: "Caffe Grieco",
     subtitle: "Partner Ufficiale",
+    backText: "Molto più di un caffè.",
     description: "La storia di Grieco Industria del Caffè inizia nel 1952 quando Alfonso Grieco, fondatore dell'azienda, realizza la sua prima miscela di caffè, all'interno dell'antica torrefazione nella città di Salerno. Da allora crescita e sviluppo hanno caratterizzato il lungo percorso di evoluzione ed oggi nel nuovo stabilimento di via Acquasanta, nella zona orientale della città si svolge la produzione. La scelta delle materie prime accuratamente selezionate ed il tradizionale procedimento di tostatura portano alla realizzazione di un espresso dolce, corposo e aromatico.",
     address: "Via Roberto Wenner, 5, 84131 Salerno SA",
     image: "/images/sponsors/grieco.jpg",
@@ -137,6 +140,7 @@ export default function SponsorPage() {
                     title={sponsor.name}
                     subtitle={sponsor.subtitle}
                     description={sponsor.description}
+                    backText={sponsor.backText}
                     image={sponsor.image}
                     features={sponsor.features}
                   />

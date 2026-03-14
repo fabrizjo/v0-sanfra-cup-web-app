@@ -9,6 +9,7 @@ export interface SponsorCardProps {
   title?: string;
   subtitle?: string;
   description?: string;
+  backText?: string;
   features?: string[];
   image?: string;
 }
@@ -17,6 +18,7 @@ export default function SponsorCard({
   title = "Sponsor",
   subtitle = "Partner ufficiale",
   description = "Scopri di più su questo sponsor.",
+  backText,
   features = [],
   image,
 }: SponsorCardProps) {
@@ -82,63 +84,16 @@ export default function SponsorCard({
             isFlipped ? "opacity-100" : "opacity-0"
           )}
         >
-          <div className="flex-1 space-y-6">
-            <div className="space-y-2">
-              <h3 className="font-semibold text-lg text-white leading-snug tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px]">
-                {title}
-              </h3>
-              <p className="text-sm text-gray-400 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px]">
-                {description}
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              {features.map((feature, index) => (
-                <div
-                  className="flex items-center gap-2 text-sm text-gray-300 transition-all duration-500"
-                  key={feature}
-                  style={{
-                    transform: isFlipped
-                      ? "translateX(0)"
-                      : "translateX(-10px)",
-                    opacity: isFlipped ? 1 : 0,
-                    transitionDelay: `${index * 100 + 200}ms`,
-                  }}
-                >
-                  <ArrowRight className="h-3 w-3 text-yellow-500" />
-                  <span>{feature}</span>
-                </div>
-              ))}
-            </div>
+          <div className="flex-1 flex flex-col items-center justify-center text-center">
+            <h3 className="font-semibold text-xl text-white leading-snug tracking-tight mb-4">
+              {title}
+            </h3>
+            <p className="text-lg text-yellow-400 italic">
+              {backText || subtitle}
+            </p>
           </div>
 
-          <div className="mt-6 border-yellow-500/20 border-t pt-6">
-            <div
-              className={cn(
-                "group/start relative",
-                "flex items-center justify-between",
-                "-m-3 rounded-xl p-3",
-                "transition-all duration-300",
-                "bg-gradient-to-r from-neutral-800 via-neutral-800 to-neutral-800",
-                "hover:from-0% hover:from-yellow-500/10 hover:via-100% hover:via-yellow-500/5 hover:to-100% hover:to-transparent",
-                "hover:scale-[1.02] hover:cursor-pointer"
-              )}
-            >
-              <span className="font-medium text-sm text-white transition-colors duration-300 group-hover/start:text-yellow-400">
-                Partner ufficiale
-              </span>
-              <div className="group/icon relative">
-                <div
-                  className={cn(
-                    "absolute inset-[-6px] rounded-lg transition-all duration-300",
-                    "bg-gradient-to-br from-yellow-500/20 via-yellow-500/10 to-transparent",
-                    "scale-90 opacity-0 group-hover/start:scale-100 group-hover/start:opacity-100"
-                  )}
-                />
-                <ArrowRight className="relative z-10 h-4 w-4 text-yellow-500 transition-all duration-300 group-hover/start:translate-x-0.5 group-hover/start:scale-110" />
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>

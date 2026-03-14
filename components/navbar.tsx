@@ -34,14 +34,14 @@ const socialLinks = [
   {
     id: "facebook",
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/share/1DbZXYynja/?mibextid=wwXIfr",
     icon: "https://img.icons8.com/?size=100&id=118497&format=png&color=000000",
     color: "#1877F2",
   },
   {
     id: "whatsapp",
     label: "WhatsApp",
-    href: "#",
+    href: "https://chat.whatsapp.com/EZvIxYFol6aF4xrs6MDAuC",
     icon: "https://img.icons8.com/?size=100&id=16713&format=png&color=000000",
     color: "#25D366",
   },
@@ -216,41 +216,25 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
             >
               {t("aboutUs")}
             </button>
+            <Link
+              href="/eventi"
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
+              I Nostri Eventi
+            </Link>
+            <Link
+              href="/sponsor"
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
+              I Nostri Sponsor
+            </Link>
+            <Link
+              href="/card-sanfra-cup"
+              className="text-sm text-gray-400 hover:text-white transition-colors"
+            >
+              Card Sanfra Cup
+            </Link>
             <SocialDropdown />
-            <span className="text-yellow-500/30">|</span>
-            <button
-              type="button"
-              onClick={() => onSportChange("calcio")}
-              className={`text-sm transition-colors ${
-                currentSport === "calcio"
-                  ? "text-yellow-400 font-medium"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              {t("calcio")}
-            </button>
-            <button
-              type="button"
-              onClick={() => onSportChange("volley")}
-              className={`text-sm transition-colors ${
-                currentSport === "volley"
-                  ? "text-yellow-400 font-medium"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              {t("volley")}
-            </button>
-            <button
-              type="button"
-              onClick={() => onSportChange("fsc")}
-              className={`text-sm transition-colors ${
-                currentSport === "fsc"
-                  ? "text-yellow-400 font-medium"
-                  : "text-gray-400 hover:text-white"
-              }`}
-            >
-              {t("fsc")}
-            </button>
           </div>
 
           {/* Right: Language, Admin */}
@@ -311,6 +295,27 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
               >
                 {t("aboutUs")}
               </button>
+              <Link
+                href="/eventi"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-400 hover:text-white transition-colors py-2 text-left"
+              >
+                I Nostri Eventi
+              </Link>
+              <Link
+                href="/sponsor"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-400 hover:text-white transition-colors py-2 text-left"
+              >
+                I Nostri Sponsor
+              </Link>
+              <Link
+                href="/card-sanfra-cup"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-gray-400 hover:text-white transition-colors py-2 text-left"
+              >
+                Card Sanfra Cup
+              </Link>
               
               {/* Social links in mobile */}
               <div className="py-2">
@@ -334,51 +339,6 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
                     </a>
                   ))}
                 </div>
-              </div>
-              
-              <div className="border-t border-yellow-500/10 pt-4 flex gap-6">
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSportChange("calcio")
-                    setMobileMenuOpen(false)
-                  }}
-                  className={`transition-colors ${
-                    currentSport === "calcio"
-                      ? "text-yellow-400 font-medium"
-                      : "text-gray-400 hover:text-white"
-                  }`}
-                >
-                  {t("calcio")}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSportChange("volley")
-                    setMobileMenuOpen(false)
-                  }}
-                  className={`transition-colors ${
-                    currentSport === "volley"
-                      ? "text-yellow-400 font-medium"
-                      : "text-gray-400 hover:text-white"
-                  }`}
-                >
-                  {t("volley")}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onSportChange("fsc")
-                    setMobileMenuOpen(false)
-                  }}
-                  className={`transition-colors ${
-                    currentSport === "fsc"
-                      ? "text-yellow-400 font-medium"
-                      : "text-gray-400 hover:text-white"
-                  }`}
-                >
-                  {t("fsc")}
-                </button>
               </div>
               
               <div className="flex items-center gap-4 pt-4 border-t border-yellow-500/10">

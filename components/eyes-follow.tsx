@@ -1,55 +1,122 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useRef, useState, useCallback } from "react"
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion"
+
+const sizeMap = {
+  sm: { eye: 50, pupil: 24, highlight: 7 },
+  md: { eye: 80, pupil: 38, highlight: 10 },
+  lg: { eye: 110, pupil: 52, highlight: 14 },
+  xl: { eye: 150, pupil: 70, highlight: 18 },
+}
 
 export function EyesFollow() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [pupilPosition, setPupilPosition] = useState({ x: 0, y: 0 })
+  const eyesRef = useRef<HTMLDivElement>(null)
   const [showText, setShowText] = useState(false)
+
+  const size = "xl"
+  const dimensions = sizeMap[size]
+  const eyeWidth = dimensions.eye * 0.75
+  const eyeHeight = dimensions.eye
+  const pupilWidth = dimensions.pupil * 0.85
+  const pupilHeight = dimensions.pupil * 1.2
+  const highlightSize = dimensions.highlight
+  const maxMoveX = (eyeWidth - pupilWidth) / 2
+  const maxMoveY = (eyeHeight - pupilHeight) / 2
+
+  // Use motion values for smooth animation without re-renders
+  const leftX = useMotionValue(0)
+  const leftY = useMotionValue(0)
+  const rightX = useMotionValue(0)
+  const rightY = useMotionValue(0)
+
+  // Spring config for smooth movement
+  const springConfig = { stiffness: 300, damping: 25, mass: 0.5 }
+  const leftXSpring = useSpring(leftX, springConfig)
+  const leftYSpring = useSpring(leftY, springConfig)
+  const rightXSpring = useSpring(rightX, springConfig)
+  const rightYSpring = useSpring(rightY, springConfig)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return
+      if (!eyesRef.current) return
 
-      const rect = containerRef.current.getBoundingClientRect()
-      const centerX = rect.left + rect.width / 2
-      const centerY = rect.top + rect.height / 2
+      const rect = eyesRef.current.getBoundingClientRect()
+      
+      const gap = eyeWidth * 0.2
+      const leftEyeCenterX = rect.left + eyeWidth / 2
+      const leftEyeCenterY = rect.top + eyeHeight / 2
+      const rightEyeCenterX = rect.left + eyeWidth + gap + eyeWidth / 2
+      const rightEyeCenterY = rect.top + eyeHeight / 2
 
-      const deltaX = e.clientX - centerX
-      const deltaY = e.clientY - centerY
+      // Left eye
+      const leftDx = e.clientX - leftEyeCenterX
+      const leftDy = e.clientY - leftEyeCenterY
+      const leftAngle = Math.atan2(leftDy, leftDx)
+      const leftDist = Math.hypot(leftDx, leftDy)
+      const leftNorm = Math.min(leftDist / 200, 1)
+      
+      const newLeftX = Math.cos(leftAngle) * leftNorm * maxMoveX
+      const newLeftY = Math.sin(leftAngle) * leftNorm * maxMoveY
+      
+      leftX.set(newLeftX)
+      leftY.set(newLeftY)
 
-      // Limit pupil movement within the eye
-      const maxMove = 18
-      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
-      const scale = Math.min(distance / 150, 1)
+      // Right eye
+      const rightDx = e.clientX - rightEyeCenterX
+      const rightDy = e.clientY - rightEyeCenterY
+      const rightAngle = Math.atan2(rightDy, rightDx)
+      const rightDist = Math.hypot(rightDx, rightDy)
+      const rightNorm = Math.min(rightDist / 200, 1)
+      
+      const newRightX = Math.cos(rightAngle) * rightNorm * maxMoveX
+      const newRightY = Math.sin(rightAngle) * rightNorm * maxMoveY
+      
+      rightX.set(newRightX)
+      rightY.set(newRightY)
 
-      const angle = Math.atan2(deltaY, deltaX)
-      const x = Math.cos(angle) * maxMove * scale
-      const y = Math.sin(angle) * maxMove * scale
-
-      setPupilPosition({ x, y })
-
-      // Show text when eyes look down
-      setShowText(y > 8)
+      // Show text when both eyes look down
+      setShowText(newLeftY > maxMoveY * 0.5 && newRightY > maxMoveY * 0.5)
     }
 
-    // Listen on document for better iframe compatibility
-    document.addEventListener("mousemove", handleMouseMove)
-    return () => document.removeEventListener("mousemove", handleMouseMove)
-  }, [])
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [eyeWidth, eyeHeight, maxMoveX, maxMoveY, leftX, leftY, rightX, rightY])
 
-  const Eye = () => (
-    <div className="relative">
-      {/* White part of the eye - oval shape */}
-      <div className="w-14 h-20 md:w-20 md:h-28 bg-white rounded-[50%] flex items-center justify-center">
-        {/* Pupil - black circle */}
-        <motion.div
-          className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-black"
-          animate={{ x: pupilPosition.x, y: pupilPosition.y }}
-          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+  const Eye = ({ xSpring, ySpring }: { xSpring: typeof leftXSpring; ySpring: typeof leftYSpring }) => (
+    <div
+      className="relative flex items-center justify-center"
+      style={{
+        width: eyeWidth,
+        height: eyeHeight,
+        backgroundColor: "white",
+        borderRadius: 9999,
+      }}
+    >
+      <motion.div
+        className="absolute"
+        style={{
+          width: pupilWidth,
+          height: pupilHeight,
+          backgroundColor: "black",
+          borderRadius: "50%",
+          x: xSpring,
+          y: ySpring,
+        }}
+      >
+        <div
+          className="absolute"
+          style={{
+            width: highlightSize,
+            height: highlightSize,
+            backgroundColor: "white",
+            borderRadius: "50%",
+            top: "12%",
+            left: "12%",
+          }}
         />
-      </div>
+      </motion.div>
     </div>
   )
 
@@ -59,9 +126,13 @@ export function EyesFollow() {
       className="py-24 md:py-32 bg-black flex flex-col items-center justify-center gap-12 min-h-[50vh]"
     >
       {/* Eyes container */}
-      <div className="flex gap-4 md:gap-6">
-        <Eye />
-        <Eye />
+      <div
+        ref={eyesRef}
+        className="flex items-center"
+        style={{ gap: eyeWidth * 0.2 }}
+      >
+        <Eye xSpring={leftXSpring} ySpring={leftYSpring} />
+        <Eye xSpring={rightXSpring} ySpring={rightYSpring} />
       </div>
 
       {/* Text that appears when eyes look down */}

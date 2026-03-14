@@ -88,25 +88,23 @@ export default function EventiPage() {
               >
                 <Link
                   href={event.href}
-                  className="group block relative overflow-hidden rounded-2xl border border-yellow-500/20 bg-gradient-to-br from-neutral-900 to-black transition-all hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/10"
+                  className="group block relative overflow-hidden rounded-2xl border border-yellow-500/20 bg-gradient-to-br from-neutral-900 to-black transition-all hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/10 min-h-[280px]"
                 >
-                  {/* Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={event.image}
-                      alt={event.title}
-                      fill
-                      className={`transition-transform duration-500 group-hover:scale-110 ${event.id === 'volley' ? 'object-contain p-4 bg-neutral-900' : 'object-cover'}`}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                  </div>
+                  {/* Full card background image */}
+                  <Image
+                    src={event.image}
+                    alt={event.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
                   
                   {/* Content */}
-                  <div className="relative z-10 p-6">
+                  <div className="relative z-10 p-6 flex flex-col justify-end h-full min-h-[280px]">
                     <h3 className="text-2xl md:text-3xl font-spacema text-white mb-2 group-hover:text-yellow-400 transition-colors">
                       {event.title}
                     </h3>
-                    <p className="text-gray-400 text-sm md:text-base">
+                    <p className="text-gray-300 text-sm md:text-base">
                       {event.description}
                     </p>
                     <div className="mt-4 flex items-center gap-2 text-yellow-400 text-sm font-medium">

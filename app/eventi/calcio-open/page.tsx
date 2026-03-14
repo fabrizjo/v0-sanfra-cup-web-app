@@ -12,7 +12,7 @@ export default function CalcioOpenPage() {
   const [currentSport, setCurrentSport] = useState<Sport>("home")
   const [currentLang, setCurrentLang] = useState<Language>("it")
 
-  const whatsappNumber = "393314473069" // Antonio Dattoli
+  const whatsappNumber = "393406272496" // Antonio Dattoli
   const whatsappMessage = encodeURIComponent("Ciao, desidero avere più informazioni riguardo Sanfra Cup Calcio Open")
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 

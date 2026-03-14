@@ -22,18 +22,18 @@ export function AnimatedPillButton({
   const content = (
     <>
       <span className="sr-only">{text}</span>
-      <span aria-hidden="true" className="flex">
+      <span aria-hidden="true" className="flex items-center">
         {text.split("").map((letter, index) => {
           const isFromTop = index % 2 === 0
           return (
             <span
               key={`${letter}-${index}`}
-              className="relative inline-block h-5 overflow-hidden"
-              style={{ width: letter === " " ? "0.25em" : "auto" }}
+              className="relative inline-block h-6 overflow-hidden leading-6"
+              style={{ width: letter === " " ? "0.3em" : "auto" }}
             >
               <span
                 className={cn(
-                  "inline-block transition-transform duration-300 ease-out",
+                  "inline-block transition-transform duration-300 ease-out leading-6",
                   isFromTop
                     ? "group-hover:-translate-y-full"
                     : "group-hover:translate-y-full"
@@ -44,7 +44,7 @@ export function AnimatedPillButton({
               </span>
               <span
                 className={cn(
-                  "absolute left-0 top-0 inline-block transition-transform duration-300 ease-out",
+                  "absolute left-0 top-0 inline-block transition-transform duration-300 ease-out leading-6",
                   isFromTop
                     ? "translate-y-full group-hover:translate-y-0"
                     : "-translate-y-full group-hover:translate-y-0"

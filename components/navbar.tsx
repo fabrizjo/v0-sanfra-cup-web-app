@@ -34,14 +34,14 @@ const socialLinks = [
   {
     id: "facebook",
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/share/1DbZXYynja/?mibextid=wwXIfr",
     icon: "https://img.icons8.com/?size=100&id=118497&format=png&color=000000",
     color: "#1877F2",
   },
   {
     id: "whatsapp",
     label: "WhatsApp",
-    href: "#",
+    href: "https://chat.whatsapp.com/EZvIxYFol6aF4xrs6MDAuC",
     icon: "https://img.icons8.com/?size=100&id=16713&format=png&color=000000",
     color: "#25D366",
   },

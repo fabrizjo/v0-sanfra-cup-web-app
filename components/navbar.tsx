@@ -188,34 +188,18 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
 
           {/* Center: Navigation Links (Desktop) */}
           <div className="hidden md:flex items-center gap-8">
-            <button
-              type="button"
-              onClick={() => {
-                onSportChange("home")
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-              }}
+            <Link
+              href="/"
               className="text-sm text-gray-400 hover:text-white transition-colors"
             >
               {t("home")}
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                if (currentSport !== "home") {
-                  onSportChange("home")
-                  setTimeout(() => {
-                    const el = document.getElementById("chi-siamo")
-                    el?.scrollIntoView({ behavior: "smooth" })
-                  }, 300)
-                } else {
-                  const el = document.getElementById("chi-siamo")
-                  el?.scrollIntoView({ behavior: "smooth" })
-                }
-              }}
+            </Link>
+            <Link
+              href="/#chi-siamo"
               className="text-sm text-gray-400 hover:text-white transition-colors"
             >
               {t("aboutUs")}
-            </button>
+            </Link>
             <Link
               href="/eventi"
               className="text-sm text-gray-400 hover:text-white transition-colors"
@@ -265,36 +249,20 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
         {mobileMenuOpen && (
           <div className="md:hidden py-6 border-t border-yellow-500/10 bg-black">
             <div className="flex flex-col gap-4">
-              <button
-                type="button"
-                onClick={() => {
-                  onSportChange("home")
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
-                  setMobileMenuOpen(false)
-                }}
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
                 className="text-gray-400 hover:text-white transition-colors py-2 text-left"
               >
                 {t("home")}
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false)
-                  if (currentSport !== "home") {
-                    onSportChange("home")
-                    setTimeout(() => {
-                      const el = document.getElementById("chi-siamo")
-                      el?.scrollIntoView({ behavior: "smooth" })
-                    }, 300)
-                  } else {
-                    const el = document.getElementById("chi-siamo")
-                    el?.scrollIntoView({ behavior: "smooth" })
-                  }
-                }}
+              </Link>
+              <Link
+                href="/#chi-siamo"
+                onClick={() => setMobileMenuOpen(false)}
                 className="text-gray-400 hover:text-white transition-colors py-2 text-left"
               >
                 {t("aboutUs")}
-              </button>
+              </Link>
               <Link
                 href="/eventi"
                 onClick={() => setMobileMenuOpen(false)}

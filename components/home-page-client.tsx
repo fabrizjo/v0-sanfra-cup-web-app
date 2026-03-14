@@ -220,11 +220,12 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
         {/* Events CTA Section */}
         <section className="py-24 bg-black flex flex-col items-center justify-center">
           <div className="container mx-auto px-4 text-center">
-            <AnimatedPillButton 
-              text="I nostri eventi" 
+            <Link 
               href="/eventi"
-              className="bg-yellow-400 text-black hover:shadow-yellow-400/30"
-            />
+              className="inline-block rounded-full bg-yellow-400 px-8 py-3 text-black font-medium tracking-wide transition-all duration-300 hover:shadow-lg hover:shadow-yellow-400/30 hover:scale-105"
+            >
+              I nostri eventi
+            </Link>
             <p className="mt-6 text-gray-400 text-lg md:text-xl">
               Scopri tutti i nostri eventi e le date in cui si terranno!
             </p>

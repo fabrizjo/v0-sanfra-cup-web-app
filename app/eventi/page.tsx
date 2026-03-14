@@ -43,7 +43,7 @@ export default function EventiPage() {
       description: "Il fantacalcio della Sanfra Cup. Crea la tua squadra e sfida gli altri fantallenatori!",
       sport: "fsc" as const,
       image: "/images/fsc-background.png",
-      href: "/?sport=fsc"
+      href: "/eventi/fanta-sanfra-cup"
     }
   ]
 

@@ -299,6 +299,68 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           <LiquidMetalIDCard />
         </section>
 
+        {/* Events Selection Section */}
+        <section id="eventi" className="py-24 bg-black">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-5xl font-spacema tracking-tight text-center mb-16">
+              <span className="text-white">I Nostri</span>{' '}<span className="text-yellow-400">Eventi</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* Calcio Open */}
+              <button
+                type="button"
+                onClick={() => handleSportChange("calcio")}
+                className="group relative overflow-hidden rounded-2xl border border-yellow-500/20 bg-gradient-to-br from-neutral-900 to-black p-8 transition-all hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/10"
+              >
+                <div className="relative z-10">
+                  <h3 className="text-2xl md:text-3xl font-spacema text-white mb-2 group-hover:text-yellow-400 transition-colors">Calcio Open</h3>
+                  <p className="text-gray-400 text-sm md:text-base">Torneo di calcio a 5 per tutte le eta</p>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
+              
+              {/* Calcio Junior */}
+              <button
+                type="button"
+                onClick={() => handleSportChange("calcio")}
+                className="group relative overflow-hidden rounded-2xl border border-yellow-500/20 bg-gradient-to-br from-neutral-900 to-black p-8 transition-all hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/10"
+              >
+                <div className="relative z-10">
+                  <h3 className="text-2xl md:text-3xl font-spacema text-white mb-2 group-hover:text-yellow-400 transition-colors">Calcio Junior</h3>
+                  <p className="text-gray-400 text-sm md:text-base">Torneo di calcio a 5 per i piu giovani</p>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
+              
+              {/* Volley */}
+              <button
+                type="button"
+                onClick={() => handleSportChange("volley")}
+                className="group relative overflow-hidden rounded-2xl border border-yellow-500/20 bg-gradient-to-br from-neutral-900 to-black p-8 transition-all hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/10"
+              >
+                <div className="relative z-10">
+                  <h3 className="text-2xl md:text-3xl font-spacema text-white mb-2 group-hover:text-yellow-400 transition-colors">Volley</h3>
+                  <p className="text-gray-400 text-sm md:text-base">Torneo di pallavolo misto</p>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
+              
+              {/* Fanta Sanfra Cup */}
+              <button
+                type="button"
+                onClick={() => handleSportChange("fsc")}
+                className="group relative overflow-hidden rounded-2xl border border-yellow-500/20 bg-gradient-to-br from-neutral-900 to-black p-8 transition-all hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/10"
+              >
+                <div className="relative z-10">
+                  <h3 className="text-2xl md:text-3xl font-spacema text-white mb-2 group-hover:text-yellow-400 transition-colors">Fanta Sanfra Cup</h3>
+                  <p className="text-gray-400 text-sm md:text-base">Il fantacalcio della Sanfra Cup</p>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
+            </div>
+          </div>
+        </section>
+
         {/* Footer */}
         <footer className="py-16 bg-black border-t border-yellow-500/10">
           <div className="container mx-auto px-4">

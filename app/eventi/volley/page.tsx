@@ -137,7 +137,7 @@ export default function VolleyPage() {
               </div>
               <div className="bg-neutral-900 border border-yellow-500/20 rounded-2xl p-6">
                 <p className="text-gray-400 text-sm uppercase tracking-wider mb-2">Data Finale</p>
-                <p className="text-white text-xl font-semibold">21 Giugno 2026</p>
+                <p className="text-white text-xl font-semibold">26 Giugno 2026</p>
               </div>
             </div>
 

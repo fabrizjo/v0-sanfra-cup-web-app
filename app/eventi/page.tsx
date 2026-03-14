@@ -96,7 +96,7 @@ export default function EventiPage() {
                       src={event.image}
                       alt={event.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      className={`transition-transform duration-500 group-hover:scale-110 ${event.id === 'volley' ? 'object-contain p-4 bg-neutral-900' : 'object-cover'}`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                   </div>

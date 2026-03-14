@@ -14,9 +14,10 @@ const sponsors = [
     id: "grill-house",
     name: "Grill House",
     subtitle: "Partner Ufficiale",
-    description: "Ristorante specializzato in grigliate e carne alla brace. Il gusto autentico della tradizione.",
+    description: "A due passi dal Corso, GRILL HOUSE rappresenta oggi, per Salerno, il principale punto di riferimento per gli amanti della carne. Nasce con l'obiettivo di fondere un ambiente giovanile e di intrattenimento con una cucina diversificata e di qualità. Un'offerta che spazia dagli antipasti alla carne, dai primi ai dolci, tutti rigorosamente artigianali, oltre ad un vasto assortimento di birre. La location moderna e tecnologica consente di trascorrere ore piacevoli avvolti in un'atmosfera calda e luminosa.",
+    address: "Via Giovan Angelo Papio, 39, 84122 Salerno SA",
     image: "/images/sponsors/grill-house.jpg",
-    features: ["Grigliate", "Carne alla brace", "Tradizione culinaria"]
+    features: ["Carne alla brace", "Cucina artigianale", "Birre artigianali"]
   },
   {
     id: "mythos",
@@ -144,9 +145,18 @@ export default function SponsorPage() {
                   <h2 className="text-3xl md:text-4xl font-spacema text-white mb-4">
                     {sponsor.name}
                   </h2>
-                  <p className="text-gray-400 text-lg leading-relaxed">
+                  <p className="text-gray-400 text-lg leading-relaxed mb-4">
                     {sponsor.description}
                   </p>
+                  {sponsor.address && (
+                    <p className="text-yellow-400 text-sm flex items-center gap-2 justify-center md:justify-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                      </svg>
+                      {sponsor.address}
+                    </p>
+                  )}
                 </div>
               </motion.div>
             ))}

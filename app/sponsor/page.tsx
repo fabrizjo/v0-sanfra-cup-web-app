@@ -23,9 +23,10 @@ const sponsors = [
     id: "mythos",
     name: "Mythos",
     subtitle: "Partner Ufficiale",
-    description: "Un viaggio nel gusto della cucina greca e mediterranea. Sapori unici e atmosfera accogliente.",
+    description: "Dal 2001 Mythos Ristorante Greco è un angolo di Grecia nel cuore di Salerno. I colori, l'atmosfera, la musica del locale accompagnano la tradizione culinaria greca. I piatti tipici e genuini, seguendo esclusivamente le ricette originali, sono preparati con prodotti freschi. Inoltre, Mythos Ristorante Greco propone prodotti di importazione greca, frutto dell'esperienza ultradecennale e della continua ricerca, al fine di offrire una completa esperienza ellenica. La qualità dei prodotti e l'ambiente confortevole e caratteristico, insieme alla gentilezza e disponibilità del personale, ha reso negli anni Mythos Ristorante Greco un punto di riferimento per palati delicati e curiosi.",
+    address: "Via Roma, 62 / Via Dalmazia, 39 - Salerno",
     image: "/images/sponsors/mythos.png",
-    features: ["Cucina greca", "Mediterranea", "Atmosfera unica"]
+    features: ["Cucina greca", "Prodotti freschi", "Dal 2001"]
   },
   {
     id: "caffe-grieco",

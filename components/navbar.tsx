@@ -229,7 +229,7 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
               I Nostri Sponsor
             </Link>
             <Link
-              href="/registrazione"
+              href="/card-sanfra-cup"
               className="text-sm text-gray-400 hover:text-white transition-colors"
             >
               Card Sanfra Cup
@@ -310,7 +310,7 @@ export function Navbar({ currentLang, onLanguageChange, currentSport, onSportCha
                 I Nostri Sponsor
               </Link>
               <Link
-                href="/registrazione"
+                href="/card-sanfra-cup"
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-gray-400 hover:text-white transition-colors py-2 text-left"
               >

@@ -24,10 +24,10 @@ export default function EventiPage() {
     {
       id: "calcio-junior",
       title: "Calcio Junior",
-      description: "Torneo di calcio a 5 dedicato ai più giovani. Il futuro del calcio inizia qui!",
+      description: "Torneo di calcio a 6 dedicato ai più giovani. Il futuro del calcio inizia qui!",
       sport: "calcio" as const,
       image: "/images/calcio-junior.jpg",
-      href: "/?sport=calcio"
+      href: "/eventi/calcio-junior"
     },
     {
       id: "volley",

@@ -32,9 +32,10 @@ const sponsors = [
     id: "caffe-grieco",
     name: "Caffe Grieco",
     subtitle: "Partner Ufficiale",
-    description: "Dal 1952 l'espresso per vocazione. La tradizione del caffè italiano nel cuore di Salerno.",
+    description: "La storia di Grieco Industria del Caffè inizia nel 1952 quando Alfonso Grieco, fondatore dell'azienda, realizza la sua prima miscela di caffè, all'interno dell'antica torrefazione nella città di Salerno. Da allora crescita e sviluppo hanno caratterizzato il lungo percorso di evoluzione ed oggi nel nuovo stabilimento di via Acquasanta, nella zona orientale della città si svolge la produzione. La scelta delle materie prime accuratamente selezionate ed il tradizionale procedimento di tostatura portano alla realizzazione di un espresso dolce, corposo e aromatico.",
+    address: "Via Roberto Wenner, 5, 84131 Salerno SA",
     image: "/images/sponsors/grieco.jpg",
-    features: ["Espresso italiano", "Dal 1952", "Tradizione"]
+    features: ["Espresso italiano", "Dal 1952", "Tostatura tradizionale"]
   }
 ]
 

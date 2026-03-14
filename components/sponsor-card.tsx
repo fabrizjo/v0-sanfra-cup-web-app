@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight, Repeat2 } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -66,8 +65,7 @@ export default function SponsorCard({
               </div>
             )}
           </div>
-
-          </div>
+        </div>
 
 {/* Back of card */}
         <div
@@ -92,8 +90,6 @@ export default function SponsorCard({
               {backText || subtitle}
             </p>
           </div>
-
-          
         </div>
       </div>
     </div>

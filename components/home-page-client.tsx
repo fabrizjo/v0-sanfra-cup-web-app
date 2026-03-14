@@ -289,14 +289,6 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           </div>
         </section>
 
-        {/* ID Card Section */}
-        <section className="py-20 bg-black flex flex-col items-center justify-center gap-8">
-          <h2 className="text-2xl md:text-4xl font-spacema tracking-tight text-center">
-            <span className="text-white">Card soci in arrivo,</span>{' '}<span className="text-yellow-400">stay tuned!</span>
-          </h2>
-          <LiquidMetalIDCard />
-        </section>
-
         {/* Footer */}
         <footer className="py-16 bg-black border-t border-yellow-500/10">
           <div className="container mx-auto px-4">

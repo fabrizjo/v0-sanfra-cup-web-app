@@ -197,8 +197,10 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           </div>
         </section>
 
-        {/* Eyes Follow Section */}
-        <EyesFollow />
+        {/* Eyes Follow Section - Hidden on mobile */}
+        <div className="hidden md:block">
+          <EyesFollow />
+        </div>
 
       {/* Non solo un torneo Section */}
         <section className="min-h-[60vh] flex items-center justify-center bg-black">

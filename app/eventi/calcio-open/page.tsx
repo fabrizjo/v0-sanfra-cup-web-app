@@ -1,0 +1,123 @@
+"use client"
+
+import { useState } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { motion } from "framer-motion"
+import { Navbar } from "@/components/navbar"
+import { ArrowLeft, MessageCircle } from "lucide-react"
+import { type Language, type Sport } from "@/lib/i18n"
+
+export default function CalcioOpenPage() {
+  const [currentSport, setCurrentSport] = useState<Sport>("home")
+  const [currentLang, setCurrentLang] = useState<Language>("it")
+
+  const whatsappNumber = "393314473069" // Antonio Dattoli
+  const whatsappMessage = encodeURIComponent("Ciao, desidero avere più informazioni riguardo Sanfra Cup Calcio Open")
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
+
+  return (
+    <div className="min-h-screen bg-black">
+      <Navbar 
+        currentLang={currentLang} 
+        onLanguageChange={setCurrentLang} 
+        currentSport={currentSport} 
+        onSportChange={setCurrentSport} 
+      />
+      
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center pt-20">
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-neutral-900 to-black" />
+        
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          {/* Back button */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="absolute top-0 left-4"
+          >
+            <Link 
+              href="/eventi"
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Torna agli Eventi</span>
+            </Link>
+          </motion.div>
+
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8"
+          >
+            <Image
+              src="/images/sanfra-logo.png"
+              alt="Sanfra Cup Logo"
+              width={200}
+              height={200}
+              className="mx-auto"
+            />
+          </motion.div>
+
+          {/* Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-spacema tracking-tight mb-4"
+          >
+            <span className="text-white">Calcio</span>{' '}<span className="text-yellow-400">Open</span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-2xl md:text-3xl text-yellow-400/80 font-spacema mb-8"
+          >
+            Torneo di calcio a 5
+          </motion.p>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12"
+          >
+            Sfida i tuoi amici e dimostra il tuo valore sul campo! Il torneo di calcio a 5 per tutte le eta.
+          </motion.p>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-green-500/30 hover:scale-105"
+            >
+              <MessageCircle className="w-5 h-5" />
+              <span>Voglio piu informazioni</span>
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-black border-t border-yellow-500/10 py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-gray-500 text-sm">© 2026 Sanfra Cup. Tutti i diritti riservati.</p>
+        </div>
+      </footer>
+    </div>
+  )
+}

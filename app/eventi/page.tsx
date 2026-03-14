@@ -18,28 +18,32 @@ export default function EventiPage() {
       title: "Calcio Open",
       description: "Torneo di calcio a 5 per tutte le età. Sfida i tuoi amici e dimostra il tuo valore sul campo!",
       sport: "calcio" as const,
-      image: "/images/calcio-open.jpg"
+      image: "/images/calcio-open.jpg",
+      href: "/eventi/calcio-open"
     },
     {
       id: "calcio-junior",
       title: "Calcio Junior",
       description: "Torneo di calcio a 5 dedicato ai più giovani. Il futuro del calcio inizia qui!",
       sport: "calcio" as const,
-      image: "/images/calcio-junior.jpg"
+      image: "/images/calcio-junior.jpg",
+      href: "/?sport=calcio"
     },
     {
       id: "volley",
       title: "Volley",
       description: "Torneo di pallavolo misto. Divertimento e competizione sulla sabbia!",
       sport: "volley" as const,
-      image: "/images/volley-hero.jpg"
+      image: "/images/volley-hero.jpg",
+      href: "/?sport=volley"
     },
     {
       id: "fsc",
       title: "Fanta Sanfra Cup",
       description: "Il fantacalcio della Sanfra Cup. Crea la tua squadra e sfida gli altri fantallenatori!",
       sport: "fsc" as const,
-      image: "/images/fsc-background.png"
+      image: "/images/fsc-background.png",
+      href: "/?sport=fsc"
     }
   ]
 
@@ -83,7 +87,7 @@ export default function EventiPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Link
-                  href={`/?sport=${event.sport}`}
+                  href={event.href}
                   className="group block relative overflow-hidden rounded-2xl border border-yellow-500/20 bg-gradient-to-br from-neutral-900 to-black transition-all hover:border-yellow-500/50 hover:shadow-lg hover:shadow-yellow-500/10"
                 >
                   {/* Image */}

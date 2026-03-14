@@ -6,9 +6,11 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Navbar } from "@/components/navbar"
 import { ArrowLeft } from "lucide-react"
+import { type Language, type Sport } from "@/lib/i18n"
 
 export default function EventiPage() {
-  const [currentSport, setCurrentSport] = useState<"home" | "calcio" | "volley" | "fsc">("home")
+  const [currentSport, setCurrentSport] = useState<Sport>("home")
+  const [currentLang, setCurrentLang] = useState<Language>("it")
 
   const events = [
     {
@@ -43,7 +45,12 @@ export default function EventiPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      <Navbar currentSport={currentSport} onSportChange={setCurrentSport} />
+      <Navbar 
+        currentLang={currentLang} 
+        onLanguageChange={setCurrentLang} 
+        currentSport={currentSport} 
+        onSportChange={setCurrentSport} 
+      />
       
       <main className="pt-24 pb-20">
         <div className="container mx-auto px-4">

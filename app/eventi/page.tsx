@@ -32,10 +32,10 @@ export default function EventiPage() {
     {
       id: "volley",
       title: "Volley",
-      description: "Torneo di pallavolo misto. Divertimento e competizione sulla sabbia!",
+      description: "Torneo di pallavolo misto. Divertimento e competizione!",
       sport: "volley" as const,
       image: "/images/volley-hero.jpg",
-      href: "/?sport=volley"
+      href: "/eventi/volley"
     },
     {
       id: "fsc",

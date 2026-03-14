@@ -51,18 +51,16 @@ export default function SponsorCard({
             isFlipped ? "opacity-0" : "opacity-100"
           )}
         >
-          <div className="relative h-full overflow-hidden bg-gradient-to-b from-neutral-800 to-neutral-900">
+          <div className="relative h-full overflow-hidden bg-white flex items-center justify-center">
             {image && (
-              <div className="absolute inset-0 flex items-center justify-center p-6">
-                <div className="bg-white rounded-xl p-4 shadow-lg">
-                  <Image
-                    src={image}
-                    alt={title}
-                    width={180}
-                    height={180}
-                    className="object-contain max-h-[160px]"
-                  />
-                </div>
+              <div className="flex items-center justify-center p-6">
+                <Image
+                  src={image}
+                  alt={title}
+                  width={220}
+                  height={220}
+                  className="object-contain max-h-[200px] w-auto"
+                />
               </div>
             )}
           </div>
@@ -110,8 +108,8 @@ export default function SponsorCard({
               <h3 className="font-semibold text-lg text-white leading-snug tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px]">
                 {title}
               </h3>
-              <p className="text-sm text-gray-400 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px]">
-                {description}
+              <p className="text-sm text-gray-400 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] line-clamp-3">
+                {subtitle}
               </p>
             </div>
 

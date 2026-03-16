@@ -439,9 +439,10 @@ export function AdminDashboard({ teams, calcioRegistrationsOpen, volleyRegistrat
                         <td className="px-3 py-2">
                           <input
                             type="number"
+                            step="0.5"
                             value={team.points}
-                            onChange={(e) => updateFscTeam(index, "points", parseInt(e.target.value) || 0)}
-                            className="w-14 bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-center text-sm"
+                            onChange={(e) => updateFscTeam(index, "points", parseFloat(e.target.value) || 0)}
+                            className="w-16 bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-center text-sm"
                           />
                         </td>
                         <td className="px-3 py-2">

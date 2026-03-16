@@ -13,7 +13,7 @@ export default function VolleyPage() {
   const [currentSport, setCurrentSport] = useState<Sport>("home")
   const [currentLang, setCurrentLang] = useState<Language>("it")
 
-  const whatsappNumber = "393406272496" // Antonio Dattoli
+  const whatsappNumber = "393391532127" // Lorenzo
   const whatsappMessage = encodeURIComponent("Ciao, desidero avere più informazioni riguardo Sanfra Cup Volley.")
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 
@@ -99,7 +99,7 @@ export default function VolleyPage() {
           >
             <SlideTextButton
               text="Voglio più informazioni"
-              hoverText="Antonio Dattoli"
+              hoverText="Lorenzo"
               href={whatsappLink}
               variant="whatsapp"
               external

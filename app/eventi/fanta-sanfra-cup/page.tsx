@@ -14,7 +14,7 @@ export default function FantaSanfraCupPage() {
   const [currentSport, setCurrentSport] = useState<Sport>("home")
   const [currentLang, setCurrentLang] = useState<Language>("it")
 
-  const whatsappNumber = "393406272496" // Antonio Dattoli
+  const whatsappNumber = "393406576613" // Marco
   const whatsappMessage = encodeURIComponent("Ciao, desidero avere più informazioni riguardo Fanta Sanfra Cup.")
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 
@@ -92,7 +92,7 @@ export default function FantaSanfraCupPage() {
           >
             <SlideTextButton
               text="Voglio più informazioni"
-              hoverText="Antonio Dattoli"
+              hoverText="Marco"
               href={whatsappLink}
               variant="whatsapp"
               external

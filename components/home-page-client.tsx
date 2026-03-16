@@ -201,6 +201,15 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
         <div className="hidden md:block">
           <EyesFollow />
         </div>
+        
+        {/* Summer Edition text - Mobile only */}
+        <div className="block md:hidden py-16 bg-black">
+          <div className="container mx-auto px-4 text-center">
+            <p className="text-2xl font-spacema text-yellow-400">
+              Summer Edition in arrivo
+            </p>
+          </div>
+        </div>
 
       {/* Non solo un torneo Section */}
         <section className="min-h-[60vh] flex items-center justify-center bg-black">

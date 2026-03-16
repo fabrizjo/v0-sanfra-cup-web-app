@@ -197,8 +197,10 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           </div>
         </section>
 
-        {/* Eyes Follow Section */}
-        <EyesFollow />
+        {/* Eyes Follow Section - Hidden on mobile */}
+        <div className="hidden md:block">
+          <EyesFollow />
+        </div>
 
       {/* Non solo un torneo Section */}
         <section className="min-h-[60vh] flex items-center justify-center bg-black">
@@ -301,8 +303,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
                   <li><button type="button" onClick={() => { const el = document.getElementById("chi-siamo"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Chi Siamo</button></li>
 <li><Link href="/eventi" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">I Nostri Eventi</Link></li>
                   <li><button type="button" onClick={() => { const el = document.getElementById("sponsor"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">I Nostri Sponsor</button></li>
-                  <li><a href="/registrazione" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Card Sanfra Cup</a></li>
-                  <li><a href="mailto:sanfracup@gmail.com" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Contattaci</a></li>
+                  <li><a href="/card-sanfra-cup" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Card Sanfra Cup</a></li>
                 </ul>
               </div>
               {/* Social */}
@@ -315,10 +316,10 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
                   <a href="https://www.tiktok.com/@sanfracup?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
                     <img src="https://img.icons8.com/?size=100&id=118638&format=png&color=000000" alt="TikTok" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
                   </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                  <a href="https://www.facebook.com/share/1DbZXYynja/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
                     <img src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000" alt="Facebook" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
                   </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                  <a href="https://chat.whatsapp.com/EZvIxYFol6aF4xrs6MDAuC" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
                     <img src="https://img.icons8.com/?size=100&id=16713&format=png&color=000000" alt="WhatsApp" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
                   </a>
                 </div>
@@ -561,8 +562,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
                 <li><button type="button" onClick={() => { const el = document.getElementById("chi-siamo"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Chi Siamo</button></li>
                 <li><Link href="/eventi" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">I Nostri Eventi</Link></li>
                 <li><button type="button" onClick={() => { const el = document.getElementById("sponsor"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">I Nostri Sponsor</button></li>
-                <li><Link href="/registrazione" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Card Sanfra Cup</Link></li>
-                <li><a href="mailto:sanfracup@gmail.com" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Contattaci</a></li>
+                <li><Link href="/card-sanfra-cup" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Card Sanfra Cup</Link></li>
               </ul>
             </div>
             {/* Social */}
@@ -575,10 +575,10 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
                 <a href="https://www.tiktok.com/@sanfracup?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
                   <img src="https://img.icons8.com/?size=100&id=118638&format=png&color=000000" alt="TikTok" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                <a href="https://www.facebook.com/share/1DbZXYynja/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
                   <img src="https://img.icons8.com/?size=100&id=118497&format=png&color=000000" alt="Facebook" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
+                <a href="https://chat.whatsapp.com/EZvIxYFol6aF4xrs6MDAuC" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-yellow-400 transition-colors">
                   <img src="https://img.icons8.com/?size=100&id=16713&format=png&color=000000" alt="WhatsApp" className="h-6 w-6 invert opacity-50 hover:opacity-100 transition-opacity" />
                 </a>
               </div>

@@ -28,13 +28,14 @@ interface MiniTorneoRow {
 export function FscClassifica() {
   const [teams, setTeams] = useState<TeamRow[]>([])
   const [miniTorneoTeams, setMiniTorneoTeams] = useState<MiniTorneoRow[]>([])
+  const [miniTorneoNumber, setMiniTorneoNumber] = useState<string>("6")
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const supabase = createBrowserClient()
 
     async function fetchClassifica() {
-      const [campionatoRes, miniTorneoRes] = await Promise.all([
+      const [campionatoRes, miniTorneoRes, miniTorneoNumberRes] = await Promise.all([
         supabase
           .from("fsc_classifica")
           .select("*")
@@ -42,7 +43,12 @@ export function FscClassifica() {
         supabase
           .from("fsc_minitorneo")
           .select("*")
-          .order("position", { ascending: true })
+          .order("position", { ascending: true }),
+        supabase
+          .from("tournament_settings")
+          .select("setting_value_text")
+          .eq("setting_key", "minitorneo_number")
+          .single()
       ])
 
       if (!campionatoRes.error && campionatoRes.data) {
@@ -50,6 +56,9 @@ export function FscClassifica() {
       }
       if (!miniTorneoRes.error && miniTorneoRes.data) {
         setMiniTorneoTeams(miniTorneoRes.data)
+      }
+      if (!miniTorneoNumberRes.error && miniTorneoNumberRes.data?.setting_value_text) {
+        setMiniTorneoNumber(miniTorneoNumberRes.data.setting_value_text)
       }
       setLoading(false)
     }
@@ -153,7 +162,7 @@ export function FscClassifica() {
       {/* Classifica Minitorneo */}
       {miniTorneoTeams.length > 0 && (
         <div>
-          <h3 className="text-xl font-spacema text-yellow-400 mb-4">Minitorneo</h3>
+          <h3 className="text-xl font-spacema text-yellow-400 mb-4">{miniTorneoNumber}° Minitorneo</h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>

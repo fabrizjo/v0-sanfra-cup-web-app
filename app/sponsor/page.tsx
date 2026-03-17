@@ -47,7 +47,7 @@ const sponsors = [
     backText: "Un'oasi gastronomica nel cuore di Salerno.",
     description: "Il Ristorante Pizzeria Quanto Basta si trova in pieno centro a Salerno. Il nostro ristorante pizzeria tipico italiano, situato nel cuore del centro, è un'accogliente oasi gastronomica che celebra l'autentica cucina italiana. Con un'atmosfera accogliente, offriamo ai nostri clienti un'esperienza culinaria indimenticabile. Il nostro menu comprende una vasta selezione di piatti tradizionali italiani, dalle classiche pizze fragranti e croccanti ai piatti di pasta fatti in casa con salse ricche e saporite. Utilizziamo solo ingredienti freschi e di alta qualità per garantire che i nostri piatti riflettano appieno il gusto e la tradizione della vera cucina italiana. Il nostro personale cordiale e professionale si impegna a offrire un servizio impeccabile, creando un'esperienza gastronomica autentica e memorabile per i nostri clienti.",
     address: "Corso Giuseppe Garibaldi, 201, 84122 Salerno Italia",
-    image: "/images/sponsors/quanto-basta.jpg",
+    image: "/images/sponsors/quanto-basta.png",
     features: ["Cucina italiana", "Pizza artigianale", "Centro storico"]
   }
 ]

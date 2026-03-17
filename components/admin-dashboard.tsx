@@ -71,8 +71,8 @@ export function AdminDashboard({ teams, calcioRegistrationsOpen, volleyRegistrat
     setFscLoading(true)
     const supabase = createBrowserClient()
     const [campionatoRes, miniTorneoRes, miniTorneoNumberRes] = await Promise.all([
-      supabase.from("fsc_classifica").select("*").order("position", { ascending: true }),
-      supabase.from("fsc_minitorneo").select("*").order("position", { ascending: true }),
+      supabase.from("fsc_classifica").select("*").order("points", { ascending: false }),
+      supabase.from("fsc_minitorneo").select("*").order("points", { ascending: false }),
       supabase.from("tournament_settings").select("setting_value_text").eq("setting_key", "minitorneo_number").single()
     ])
     if (campionatoRes.data) setFscTeams(campionatoRes.data)

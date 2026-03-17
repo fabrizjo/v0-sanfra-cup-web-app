@@ -311,7 +311,7 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
                   <li><button type="button" onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Home</button></li>
                   <li><button type="button" onClick={() => { const el = document.getElementById("chi-siamo"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Chi Siamo</button></li>
 <li><Link href="/eventi" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">I Nostri Eventi</Link></li>
-                  <li><button type="button" onClick={() => { const el = document.getElementById("sponsor"); el?.scrollIntoView({ behavior: "smooth" }) }} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">I Nostri Sponsor</button></li>
+<li><Link href="/sponsor" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">I Nostri Sponsor</Link></li>
                   <li><a href="/card-sanfra-cup" className="text-gray-500 hover:text-yellow-400 text-sm transition-colors">Card Sanfra Cup</a></li>
                 </ul>
               </div>

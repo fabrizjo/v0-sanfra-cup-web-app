@@ -64,16 +64,20 @@ export function AdminDashboard({ teams, calcioRegistrationsOpen, volleyRegistrat
   const [fscLoaded, setFscLoaded] = useState(false)
   const [miniTorneoTeams, setMiniTorneoTeams] = useState<MiniTorneoTeam[]>([])
   const [miniTorneoSaving, setMiniTorneoSaving] = useState(false)
+  const [miniTorneoNumber, setMiniTorneoNumber] = useState<string>("6")
+  const [miniTorneoNumberSaving, setMiniTorneoNumberSaving] = useState(false)
 
   const loadFscClassifica = async () => {
     setFscLoading(true)
     const supabase = createBrowserClient()
-    const [campionatoRes, miniTorneoRes] = await Promise.all([
-      supabase.from("fsc_classifica").select("*").order("position", { ascending: true }),
-      supabase.from("fsc_minitorneo").select("*").order("position", { ascending: true })
+    const [campionatoRes, miniTorneoRes, miniTorneoNumberRes] = await Promise.all([
+      supabase.from("fsc_classifica").select("*").order("points", { ascending: false }),
+      supabase.from("fsc_minitorneo").select("*").order("points", { ascending: false }),
+      supabase.from("tournament_settings").select("setting_value_text").eq("setting_key", "minitorneo_number").single()
     ])
     if (campionatoRes.data) setFscTeams(campionatoRes.data)
     if (miniTorneoRes.data) setMiniTorneoTeams(miniTorneoRes.data)
+    if (miniTorneoNumberRes.data?.setting_value_text) setMiniTorneoNumber(miniTorneoNumberRes.data.setting_value_text)
     setFscLoading(false)
     setFscLoaded(true)
   }
@@ -175,6 +179,14 @@ export function AdminDashboard({ teams, calcioRegistrationsOpen, volleyRegistrat
     }
     setMiniTorneoSaving(false)
     alert("Classifica minitorneo salvata!")
+  }
+
+  const saveMiniTorneoNumber = async () => {
+    setMiniTorneoNumberSaving(true)
+    const supabase = createBrowserClient()
+    await supabase.from("tournament_settings").update({ setting_value_text: miniTorneoNumber }).eq("setting_key", "minitorneo_number")
+    setMiniTorneoNumberSaving(false)
+    alert("Numero minitorneo salvato!")
   }
 
   const handleDeleteTeam = async (teamId: string, teamName: string) => {
@@ -511,8 +523,27 @@ export function AdminDashboard({ teams, calcioRegistrationsOpen, volleyRegistrat
 
           {/* Minitorneo Section */}
           <div className="space-y-4 pt-8 border-t border-yellow-500/20">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg font-semibold text-white">Classifica Minitorneo</h3>
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="flex items-center gap-4">
+                <h3 className="text-lg font-semibold text-white">Classifica Minitorneo</h3>
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-400 text-sm">N°</span>
+                  <input
+                    type="text"
+                    value={miniTorneoNumber}
+                    onChange={(e) => setMiniTorneoNumber(e.target.value)}
+                    className="w-16 bg-black/50 border border-white/10 rounded px-2 py-1 text-white text-center text-sm"
+                    placeholder="6"
+                  />
+                  <button
+                    onClick={saveMiniTorneoNumber}
+                    disabled={miniTorneoNumberSaving}
+                    className="px-2 py-1 bg-blue-600 text-white rounded hover:bg-blue-500 transition-colors text-xs font-medium disabled:opacity-50"
+                  >
+                    {miniTorneoNumberSaving ? "..." : "Salva N°"}
+                  </button>
+                </div>
+              </div>
               <div className="flex gap-2">
                 <button
                   onClick={addMiniTorneoTeam}

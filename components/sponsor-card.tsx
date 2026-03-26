@@ -58,16 +58,16 @@ export default function SponsorCard({
             {image && (
               <div className={cn(
                 "flex items-center justify-center",
-                logoSize === "large" ? "p-4" : "p-8"
+                logoSize === "large" ? "p-2" : "p-8"
               )}>
                 <Image
                   src={image}
                   alt={title}
-                  width={logoSize === "large" ? 260 : 200}
-                  height={logoSize === "large" ? 260 : 200}
+                  width={logoSize === "large" ? 300 : 200}
+                  height={logoSize === "large" ? 300 : 200}
                   className={cn(
                     "object-contain w-auto",
-                    logoSize === "large" ? "max-h-[260px]" : "max-h-[200px]"
+                    logoSize === "large" ? "max-h-[300px]" : "max-h-[200px]"
                   )}
                 />
               </div>

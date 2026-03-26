@@ -57,7 +57,7 @@ const sponsors = [
     backText: "Cinque generazioni di eccellenza nell'edilizia.",
     description: "La D.C.G. è un'impresa operante nel settore dell'edilizia da cinque generazioni. Esegue prevalentemente attività di costruzione di immobili, occupandosi di lavori in proprio ed in appalto con committenze private. Ha un organico tecnico ed amministrativo e sede legale a Salerno. Ha lavorato in provincia di Potenza e sta attualmente operando oltre che in Salerno e provincia anche nella città di Milano.",
     address: "Salerno",
-    image: "/images/sponsors/dcg.jpg",
+    image: "/images/sponsors/dcg.png",
     features: ["Edilizia", "5 generazioni", "Costruzioni"]
   },
   {
@@ -67,7 +67,7 @@ const sponsors = [
     backText: "Le migliori graffe di Salerno.",
     description: "Ottima friggitoria che propone il marchio Zio Savino Qualità (famoso network campano) anche a Salerno nelle vicinanze del lungomare. Le graffe (comunemente chiamate zeppole) sono una specialità napoletana soprattutto nel periodo del carnevale. Ma da Giacomo le trovi tutti i giorni dalle 17 fino a notte inoltrata. Vengono cotte al momento dell'ordine e possono essere gustate lisce o farcite con diverse creme di propria produzione. L'impasto è soffice e profumato e la frittura è leggera e assolutamente non unta. Il personale è attento, simpatico e professionale. Da gustare anche i cornetti, davvero ottimi e le brioche.",
     address: "Via Alfredo de Marsico n 5, Salerno",
-    image: "/images/sponsors/da-giacomo.jpg",
+    image: "/images/sponsors/da-giacomo.png",
     features: ["Graffe napoletane", "Zio Savino Qualità", "Friggitoria"]
   },
   {
@@ -107,7 +107,7 @@ const sponsors = [
     backText: "Bellezza e benessere ogni giorno.",
     description: "Professional Cosmetics offre una vasta gamma di cosmetici e prodotti per la cura della persona, selezionati per garantire qualità, sicurezza ed efficacia. Situato a Salerno, il negozio propone soluzioni per la skincare, il make-up e la cura dei capelli, adatte sia all'uso quotidiano sia a esigenze più specifiche. Grazie alla professionalità e all'attenzione verso il cliente, Professional Cosmetics rappresenta un punto di riferimento sul territorio per chi desidera prendersi cura del proprio benessere e della propria bellezza ogni giorno.",
     address: "Piazza Grasso Monsignore Gregorio Maria, 17, 84131 Salerno (SA)",
-    image: "/images/sponsors/professional-cosmetics.jpg",
+    image: "/images/sponsors/professional-cosmetics.png",
     features: ["Skincare", "Make-up", "Cura capelli"]
   },
   {
@@ -127,7 +127,7 @@ const sponsors = [
     backText: "Il pollo è il re dello street food.",
     description: "Il pollo in tutte le sue varianti è il re dello street food. StiPolli è il posto ideale per gli amanti della carne bianca. Qui potrete gustare il pollo allo spiedo in tutte le sue declinazioni, cotto con forno a legna. Avrete la possibilità di scegliere una varietà di prodotti che vanno dal classico pollo allo spiedo alle gustosissime alette, dal pulled pork alle costine di maiale, passando per gli straccetti impanati e fritti. Inoltre potrete trovare ribs di maiale, salsicce dolci e piccanti, stinco di maiale, spiedini misti, porchetta, patate al forno di vario tipo, varietà di contorni, verdure, carciofi arrostiti, fritture, crocchè, arancini, e tante altre gustosità.",
     address: "Via Nizza 214, Salerno",
-    image: "/images/sponsors/sti-polli.jpg",
+    image: "/images/sponsors/sti-polli.png",
     features: ["Pollo allo spiedo", "Forno a legna", "Street food"]
   }
 ]

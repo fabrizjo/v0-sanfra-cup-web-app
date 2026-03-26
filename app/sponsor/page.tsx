@@ -117,7 +117,7 @@ const sponsors = [
     backText: "Stile e tendenza per ogni occasione.",
     description: "Goa è un negozio di abbigliamento uomo e donna che propone capi moderni e di tendenza, selezionati per offrire qualità, stile e comfort in ogni occasione. Situato a Salerno, il punto vendita offre un'ampia scelta di outfit, dagli abiti casual per il tempo libero alle soluzioni più eleganti, accompagnando i clienti nella scelta del look più adatto alla propria personalità. Grazie all'attenzione ai dettagli e alle ultime novità della moda, Goa rappresenta un punto di riferimento per chi desidera vestirsi con stile ogni giorno.",
     address: "Via Rocco Cocchia, 23, 84129 Salerno SA",
-    image: "/images/sponsors/goa-abbigliamento.jpg",
+    image: "/images/sponsors/goa-abbigliamento.png",
     features: ["Abbigliamento uomo", "Abbigliamento donna", "Tendenze moda"]
   },
   {

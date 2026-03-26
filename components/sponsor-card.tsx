@@ -11,6 +11,7 @@ export interface SponsorCardProps {
   backText?: string;
   features?: string[];
   image?: string;
+  logoSize?: "normal" | "large";
 }
 
 export default function SponsorCard({
@@ -20,6 +21,7 @@ export default function SponsorCard({
   backText,
   features = [],
   image,
+  logoSize = "normal",
 }: SponsorCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -54,13 +56,19 @@ export default function SponsorCard({
         >
           <div className="relative h-full overflow-hidden bg-white flex items-center justify-center">
             {image && (
-              <div className="flex items-center justify-center p-8">
+              <div className={cn(
+                "flex items-center justify-center",
+                logoSize === "large" ? "p-2" : "p-8"
+              )}>
                 <Image
                   src={image}
                   alt={title}
-                  width={200}
-                  height={200}
-                  className="object-contain max-h-[200px] w-auto"
+                  width={logoSize === "large" ? 300 : 200}
+                  height={logoSize === "large" ? 300 : 200}
+                  className={cn(
+                    "object-contain w-auto",
+                    logoSize === "large" ? "max-h-[300px]" : "max-h-[200px]"
+                  )}
                 />
               </div>
             )}

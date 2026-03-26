@@ -99,6 +99,36 @@ const sponsors = [
     address: "Via Rocco Cocchia n 77, Salerno",
     image: "/images/sponsors/my-training-academy.jpg",
     features: ["Formazione sportiva", "Certificazioni CONI", "500+ corsisti"]
+  },
+  {
+    id: "professional-cosmetics",
+    name: "Professional Cosmetics",
+    subtitle: "Partner Ufficiale",
+    backText: "Bellezza e benessere ogni giorno.",
+    description: "Professional Cosmetics offre una vasta gamma di cosmetici e prodotti per la cura della persona, selezionati per garantire qualità, sicurezza ed efficacia. Situato a Salerno, il negozio propone soluzioni per la skincare, il make-up e la cura dei capelli, adatte sia all'uso quotidiano sia a esigenze più specifiche. Grazie alla professionalità e all'attenzione verso il cliente, Professional Cosmetics rappresenta un punto di riferimento sul territorio per chi desidera prendersi cura del proprio benessere e della propria bellezza ogni giorno.",
+    address: "Piazza Grasso Monsignore Gregorio Maria, 17, 84131 Salerno (SA)",
+    image: "/images/sponsors/professional-cosmetics.jpg",
+    features: ["Skincare", "Make-up", "Cura capelli"]
+  },
+  {
+    id: "goa-abbigliamento",
+    name: "Goa Abbigliamento",
+    subtitle: "Partner Ufficiale",
+    backText: "Stile e tendenza per ogni occasione.",
+    description: "Goa è un negozio di abbigliamento uomo e donna che propone capi moderni e di tendenza, selezionati per offrire qualità, stile e comfort in ogni occasione. Situato a Salerno, il punto vendita offre un'ampia scelta di outfit, dagli abiti casual per il tempo libero alle soluzioni più eleganti, accompagnando i clienti nella scelta del look più adatto alla propria personalità. Grazie all'attenzione ai dettagli e alle ultime novità della moda, Goa rappresenta un punto di riferimento per chi desidera vestirsi con stile ogni giorno.",
+    address: "Via Rocco Cocchia, 23, 84129 Salerno SA",
+    image: "/images/sponsors/goa-abbigliamento.jpg",
+    features: ["Abbigliamento uomo", "Abbigliamento donna", "Tendenze moda"]
+  },
+  {
+    id: "sti-polli",
+    name: "Sti Polli",
+    subtitle: "Partner Ufficiale",
+    backText: "Il pollo è il re dello street food.",
+    description: "Il pollo in tutte le sue varianti è il re dello street food. StiPolli è il posto ideale per gli amanti della carne bianca. Qui potrete gustare il pollo allo spiedo in tutte le sue declinazioni, cotto con forno a legna. Avrete la possibilità di scegliere una varietà di prodotti che vanno dal classico pollo allo spiedo alle gustosissime alette, dal pulled pork alle costine di maiale, passando per gli straccetti impanati e fritti. Inoltre potrete trovare ribs di maiale, salsicce dolci e piccanti, stinco di maiale, spiedini misti, porchetta, patate al forno di vario tipo, varietà di contorni, verdure, carciofi arrostiti, fritture, crocchè, arancini, e tante altre gustosità.",
+    address: "Via Nizza 214, Salerno",
+    image: "/images/sponsors/sti-polli.jpg",
+    features: ["Pollo allo spiedo", "Forno a legna", "Street food"]
   }
 ]
 

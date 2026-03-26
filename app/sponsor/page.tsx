@@ -11,6 +11,16 @@ import { type Language, type Sport } from "@/lib/i18n"
 
 const sponsors = [
   {
+    id: "dcg",
+    name: "DCG",
+    subtitle: "Partner Ufficiale",
+    backText: "Cinque generazioni di eccellenza nell'edilizia.",
+    description: "La D.C.G. è un'impresa operante nel settore dell'edilizia da cinque generazioni. Esegue prevalentemente attività di costruzione di immobili, occupandosi di lavori in proprio ed in appalto con committenze private. Ha un organico tecnico ed amministrativo e sede legale a Salerno. Ha lavorato in provincia di Potenza e sta attualmente operando oltre che in Salerno e provincia anche nella città di Milano.",
+    address: "Salerno",
+    image: "/images/sponsors/dcg.png",
+    features: ["Edilizia", "5 generazioni", "Costruzioni"]
+  },
+  {
     id: "grill-house",
     name: "Grill House",
     subtitle: "Partner Ufficiale",
@@ -21,26 +31,6 @@ const sponsors = [
     features: ["Carne alla brace", "Cucina artigianale", "Birre artigianali"]
   },
   {
-    id: "mythos",
-    name: "Mythos",
-    subtitle: "Partner Ufficiale",
-    backText: "Un angolo di Grecia nel cuore di Salerno.",
-    description: "Dal 2001 Mythos Ristorante Greco è un angolo di Grecia nel cuore di Salerno. I colori, l'atmosfera, la musica del locale accompagnano la tradizione culinaria greca. I piatti tipici e genuini, seguendo esclusivamente le ricette originali, sono preparati con prodotti freschi. Inoltre, Mythos Ristorante Greco propone prodotti di importazione greca, frutto dell'esperienza ultradecennale e della continua ricerca, al fine di offrire una completa esperienza ellenica. La qualità dei prodotti e l'ambiente confortevole e caratteristico, insieme alla gentilezza e disponibilità del personale, ha reso negli anni Mythos Ristorante Greco un punto di riferimento per palati delicati e curiosi.",
-    address: "Via Roma, 62 / Via Dalmazia, 39 - Salerno",
-    image: "/images/sponsors/mythos.png",
-    features: ["Cucina greca", "Prodotti freschi", "Dal 2001"]
-  },
-  {
-    id: "caffe-grieco",
-    name: "Caffe Grieco",
-    subtitle: "Partner Ufficiale",
-    backText: "Molto più di un caffè.",
-    description: "La storia di Grieco Industria del Caffè inizia nel 1952 quando Alfonso Grieco, fondatore dell'azienda, realizza la sua prima miscela di caffè, all'interno dell'antica torrefazione nella città di Salerno. Da allora crescita e sviluppo hanno caratterizzato il lungo percorso di evoluzione ed oggi nel nuovo stabilimento di via Acquasanta, nella zona orientale della città si svolge la produzione. La scelta delle materie prime accuratamente selezionate ed il tradizionale procedimento di tostatura portano alla realizzazione di un espresso dolce, corposo e aromatico.",
-    address: "Via Roberto Wenner, 5, 84131 Salerno SA",
-    image: "/images/sponsors/grieco.jpg",
-    features: ["Espresso italiano", "Dal 1952", "Tostatura tradizionale"]
-  },
-  {
     id: "quanto-basta",
     name: "Quanto Basta",
     subtitle: "Partner Ufficiale",
@@ -49,16 +39,6 @@ const sponsors = [
     address: "Corso Giuseppe Garibaldi, 201, 84122 Salerno Italia",
     image: "/images/sponsors/quanto-basta.png",
     features: ["Cucina italiana", "Pizza artigianale", "Centro storico"]
-  },
-  {
-    id: "dcg",
-    name: "DCG",
-    subtitle: "Partner Ufficiale",
-    backText: "Cinque generazioni di eccellenza nell'edilizia.",
-    description: "La D.C.G. è un'impresa operante nel settore dell'edilizia da cinque generazioni. Esegue prevalentemente attività di costruzione di immobili, occupandosi di lavori in proprio ed in appalto con committenze private. Ha un organico tecnico ed amministrativo e sede legale a Salerno. Ha lavorato in provincia di Potenza e sta attualmente operando oltre che in Salerno e provincia anche nella città di Milano.",
-    address: "Salerno",
-    image: "/images/sponsors/dcg.png",
-    features: ["Edilizia", "5 generazioni", "Costruzioni"]
   },
   {
     id: "da-giacomo",
@@ -81,6 +61,26 @@ const sponsors = [
     features: ["Residenza anziani", "Assistenza geriatrica", "Valle dell'Irno"]
   },
   {
+    id: "mythos",
+    name: "Mythos",
+    subtitle: "Partner Ufficiale",
+    backText: "Un angolo di Grecia nel cuore di Salerno.",
+    description: "Dal 2001 Mythos Ristorante Greco è un angolo di Grecia nel cuore di Salerno. I colori, l'atmosfera, la musica del locale accompagnano la tradizione culinaria greca. I piatti tipici e genuini, seguendo esclusivamente le ricette originali, sono preparati con prodotti freschi. Inoltre, Mythos Ristorante Greco propone prodotti di importazione greca, frutto dell'esperienza ultradecennale e della continua ricerca, al fine di offrire una completa esperienza ellenica. La qualità dei prodotti e l'ambiente confortevole e caratteristico, insieme alla gentilezza e disponibilità del personale, ha reso negli anni Mythos Ristorante Greco un punto di riferimento per palati delicati e curiosi.",
+    address: "Via Roma, 62 / Via Dalmazia, 39 - Salerno",
+    image: "/images/sponsors/mythos.png",
+    features: ["Cucina greca", "Prodotti freschi", "Dal 2001"]
+  },
+  {
+    id: "caffe-grieco",
+    name: "Caffe Grieco",
+    subtitle: "Partner Ufficiale",
+    backText: "Molto più di un caffè.",
+    description: "La storia di Grieco Industria del Caffè inizia nel 1952 quando Alfonso Grieco, fondatore dell'azienda, realizza la sua prima miscela di caffè, all'interno dell'antica torrefazione nella città di Salerno. Da allora crescita e sviluppo hanno caratterizzato il lungo percorso di evoluzione ed oggi nel nuovo stabilimento di via Acquasanta, nella zona orientale della città si svolge la produzione. La scelta delle materie prime accuratamente selezionate ed il tradizionale procedimento di tostatura portano alla realizzazione di un espresso dolce, corposo e aromatico.",
+    address: "Via Roberto Wenner, 5, 84131 Salerno SA",
+    image: "/images/sponsors/grieco.jpg",
+    features: ["Espresso italiano", "Dal 1952", "Tostatura tradizionale"]
+  },
+  {
     id: "murano-barber-club",
     name: "Murano Barber Club",
     subtitle: "Partner Ufficiale",
@@ -89,6 +89,16 @@ const sponsors = [
     address: "Corso Giuseppe Garibaldi n.171, Salerno",
     image: "/images/sponsors/murano-barber.png",
     features: ["Barberia", "Grooming", "Rasatura tradizionale"]
+  },
+  {
+    id: "sti-polli",
+    name: "Sti Polli",
+    subtitle: "Partner Ufficiale",
+    backText: "Il pollo è il re dello street food.",
+    description: "Il pollo in tutte le sue varianti è il re dello street food. StiPolli è il posto ideale per gli amanti della carne bianca. Qui potrete gustare il pollo allo spiedo in tutte le sue declinazioni, cotto con forno a legna. Avrete la possibilità di scegliere una varietà di prodotti che vanno dal classico pollo allo spiedo alle gustosissime alette, dal pulled pork alle costine di maiale, passando per gli straccetti impanati e fritti. Inoltre potrete trovare ribs di maiale, salsicce dolci e piccanti, stinco di maiale, spiedini misti, porchetta, patate al forno di vario tipo, varietà di contorni, verdure, carciofi arrostiti, fritture, crocchè, arancini, e tante altre gustosità.",
+    address: "Via Nizza 214, Salerno",
+    image: "/images/sponsors/sti-polli.png",
+    features: ["Pollo allo spiedo", "Forno a legna", "Street food"]
   },
   {
     id: "my-training-academy",
@@ -119,16 +129,6 @@ const sponsors = [
     address: "Via Rocco Cocchia, 23, 84129 Salerno SA",
     image: "/images/sponsors/goa-abbigliamento.png",
     features: ["Abbigliamento uomo", "Abbigliamento donna", "Tendenze moda"]
-  },
-  {
-    id: "sti-polli",
-    name: "Sti Polli",
-    subtitle: "Partner Ufficiale",
-    backText: "Il pollo è il re dello street food.",
-    description: "Il pollo in tutte le sue varianti è il re dello street food. StiPolli è il posto ideale per gli amanti della carne bianca. Qui potrete gustare il pollo allo spiedo in tutte le sue declinazioni, cotto con forno a legna. Avrete la possibilità di scegliere una varietà di prodotti che vanno dal classico pollo allo spiedo alle gustosissime alette, dal pulled pork alle costine di maiale, passando per gli straccetti impanati e fritti. Inoltre potrete trovare ribs di maiale, salsicce dolci e piccanti, stinco di maiale, spiedini misti, porchetta, patate al forno di vario tipo, varietà di contorni, verdure, carciofi arrostiti, fritture, crocchè, arancini, e tante altre gustosità.",
-    address: "Via Nizza 214, Salerno",
-    image: "/images/sponsors/sti-polli.png",
-    features: ["Pollo allo spiedo", "Forno a legna", "Street food"]
   }
 ]
 

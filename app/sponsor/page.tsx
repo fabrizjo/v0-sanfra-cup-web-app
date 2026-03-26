@@ -87,7 +87,7 @@ const sponsors = [
     backText: "Tradizione e eccellenza contemporanea.",
     description: "Murano Barber Club è il salone dove la tradizione della barberia incontra l'eccellenza contemporanea. Nato dalla visione di Gianluca Murano, barber con esperienze internazionali, il club è oggi un punto di riferimento per chi cerca uno stile autentico, ambienti curati e servizi su misura. Con tre sedi operative in Campania – ad Avellino, Monteforte Irpino e Salerno – Murano Barber Club propone un servizio di grooming completo, realizzato da professionisti che mettono al centro il cliente e la sua personalità. Servizi offerti: Taglio uomo su misura, rasatura tradizionale all'italiana con panno caldo, Luxury Beard Trim, cura del cuoio capelluto, trattamenti anticaduta e antiforfora.",
     address: "Corso Giuseppe Garibaldi n.171, Salerno",
-    image: "/images/sponsors/murano-barber.jpg",
+    image: "/images/sponsors/murano-barber.png",
     features: ["Barberia", "Grooming", "Rasatura tradizionale"]
   },
   {
@@ -97,7 +97,7 @@ const sponsors = [
     backText: "Formazione sportiva di eccellenza.",
     description: "Training Academy è l'accademia di formazione professionale sportiva di riferimento per chi vuole trasformare la propria passione in una carriera di successo. Specializzata nella preparazione di tecnici altamente qualificati, offre certificazioni riconosciute ai massimi livelli del settore. Con oltre 500 corsisti formati e affiliazioni con enti riconosciuti dal CONI, i nostri programmi rappresentano un vero trampolino di lancio nel mondo dello sport, garantendo competenze di alto livello e opportunità concrete di inserimento lavorativo. La nostra missione è formare i migliori allenatori e professionisti del panorama nazionale, grazie a programmi di eccellenza tenuti da docenti esperti e figure di spicco del settore.",
     address: "Via Rocco Cocchia n 77, Salerno",
-    image: "/images/sponsors/my-training-academy.jpg",
+    image: "/images/sponsors/my-training-academy.png",
     features: ["Formazione sportiva", "Certificazioni CONI", "500+ corsisti"]
   },
   {

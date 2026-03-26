@@ -77,7 +77,7 @@ const sponsors = [
     backText: "Un'oasi di tranquillità per gli anziani.",
     description: "La Residenza Socio Assistenziale per Anziani di Calvanico si trova in Largo Sacerdote Gismondi, 72, nel comune di Calvanico, in provincia di Salerno, immersa tra verdi montagne e lussureggianti vallate. Questa struttura, a soli 18 km da Salerno, rappresenta un'oasi di tranquillità e serenità, facilmente raggiungibile anche dai grandi centri urbani e dai comuni della Valle dell'Irno. Realizzata su tre livelli, la residenza è concepita modernamente per soddisfare le esigenze dei suoi ospiti. Dispone di ampi spazi all'aperto per il tempo libero e camere arredate in modo funzionale e confortevole, dotate di tutti i servizi necessari. Gli ospiti sono quotidianamente assistiti da un team altamente qualificato, composto da personale medico, paramedico e operatori socio-assistenziali specializzati in geriatria.",
     address: "Largo Sacerdote Gismondi, 72, Calvanico SA",
-    image: "/images/sponsors/rsa-calvanico.jpg",
+    image: "/images/sponsors/rsa-calvanico.png",
     features: ["Residenza anziani", "Assistenza geriatrica", "Valle dell'Irno"]
   },
   {

@@ -68,8 +68,8 @@ export default function CardSanfraCupPage() {
           name: "Il Baretto 3.0",
           offer: "Caffè + cornetto a 2€ | 20% di sconto con una spesa minima di 5€",
           details: "",
-          address: "Via da definire, Salerno",
-          logo: null
+          address: "Via Michele Vernieri 113, Salerno",
+          logo: "/images/sponsors/baretto.png"
         },
         {
           name: "Caffè Grieco",
@@ -82,8 +82,8 @@ export default function CardSanfraCupPage() {
           name: "Portico",
           offer: "20% di sconto su consumazione minima di 15€ | Menù panino + patatine + bibita a 10€ | 20% di sconto per cene o aperitivi di gruppo (minimo 4 persone)",
           details: "",
-          address: "Via da definire, Salerno",
-          logo: null
+          address: "Via Antonio Gramsci 5, Salerno",
+          logo: "/images/sponsors/portico.png"
         }
       ]
     },
@@ -95,8 +95,8 @@ export default function CardSanfraCupPage() {
           name: "Nuovo Campetto Cappuccini – Assocalcio",
           offer: "20% di sconto sulla quota campo",
           details: "Lo sconto è personale e valido solo per il possessore della card.",
-          address: "Via da definire, Salerno",
-          logo: null
+          address: "Via Nicola Acocella 7, Salerno",
+          logo: "/images/sponsors/assocalcio.png"
         }
       ]
     }

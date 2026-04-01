@@ -353,11 +353,14 @@ export default function CardSanfraCupPage() {
                     {/* Content */}
                     <div className="flex-1">
                       <h4 className="text-xl font-semibold text-yellow-400 mb-3">{sponsor.name}</h4>
-                      <div className="mb-2">
+                      <ul className="mb-2 space-y-1">
                         {sponsor.offers.map((offer, i) => (
-                          <p key={i} className="text-white">{offer}</p>
+                          <li key={i} className="text-white flex items-start gap-2">
+                            <span className="text-yellow-400 mt-1.5">•</span>
+                            <span>{offer}</span>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                       {sponsor.details && (
                         <p className="text-gray-400 text-sm mb-3">{sponsor.details}</p>
                       )}

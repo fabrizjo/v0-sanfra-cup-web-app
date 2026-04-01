@@ -363,10 +363,16 @@ export default function CardSanfraCupPage() {
                       )}
                       <div className="text-gray-500 text-sm">
                         {sponsor.addresses.map((addr, i) => (
-                          <div key={i} className="flex items-center gap-2">
+                          <a 
+                            key={i} 
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 hover:text-yellow-400 transition-colors cursor-pointer"
+                          >
                             <MapPin className="w-4 h-4 flex-shrink-0" />
-                            <span>{addr}</span>
-                          </div>
+                            <span className="underline">{addr}</span>
+                          </a>
                         ))}
                       </div>
                     </div>

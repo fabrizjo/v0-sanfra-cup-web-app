@@ -242,6 +242,20 @@ export function HomePageClient({ calcioRegistrationsOpen, volleyRegistrationsOpe
           </div>
         </section>
 
+        {/* Card Sanfra Cup CTA Section */}
+        <section className="py-24 bg-black flex flex-col items-center justify-center">
+          <div className="container mx-auto px-4 text-center">
+            <AnimatedPillButton 
+              text="Card Sanfra Cup" 
+              href="/card-sanfra-cup"
+              className="bg-yellow-400 text-black hover:shadow-yellow-400/30"
+            />
+            <p className="mt-6 text-gray-400 text-lg md:text-xl">
+              Scopri la Card Sanfra Cup e tutti i vantaggi
+            </p>
+          </div>
+        </section>
+
         {/* Image Section - Pixel Reveal */}
         <section className="section-apple section-dark">
           <div className="container mx-auto px-4">

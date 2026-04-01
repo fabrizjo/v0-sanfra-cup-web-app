@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Navbar } from "@/components/navbar"
 import { ArrowLeft, Calendar, Gift, Percent, ChevronDown, MapPin, Utensils, Coffee, Dumbbell } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { LiquidMetalIDCard } from "@/components/liquid-metal-id-card"
 import SlideTextButton from "@/components/slide-text-button"
@@ -26,31 +27,36 @@ export default function CardSanfraCupPage() {
           name: "Da Giacomo – Grafferia Napoletana",
           offer: "30% di sconto sul conto totale",
           details: "Valido sia per consumo sul posto che per asporto.",
-          address: "Via Alfredo de Marsico n 5, Salerno"
+          address: "Via Alfredo de Marsico n 5, Salerno",
+          logo: "/images/sponsors/da-giacomo.png"
         },
         {
           name: "Mythos – Ristorante Greco",
           offer: "Bibita in omaggio ogni 2 pita acquistate",
           details: "Valido sia sul posto che per asporto.",
-          address: "Via Roma, 62 / Via Dalmazia, 39 - Salerno"
+          address: "Via Roma, 62 / Via Dalmazia, 39 - Salerno",
+          logo: "/images/sponsors/mythos.png"
         },
         {
           name: "Grill House",
           offer: "Bibita in omaggio con l'acquisto di un panino (valido anche per asporto) | Fritto in omaggio con panino + bibita (solo consumo sul posto)",
           details: "",
-          address: "Via Giovan Angelo Papio, 39, 84122 Salerno SA"
+          address: "Via Giovan Angelo Papio, 39, 84122 Salerno SA",
+          logo: "/images/sponsors/grill-house.jpg"
         },
         {
           name: "Quanto Basta",
           offer: "20% di sconto sul conto totale (escluse le bibite)",
           details: "Valido solo per consumo sul posto.",
-          address: "Corso Giuseppe Garibaldi, 201, 84122 Salerno"
+          address: "Corso Giuseppe Garibaldi, 201, 84122 Salerno",
+          logo: "/images/sponsors/quanto-basta.png"
         },
         {
           name: "Sti Polli",
           offer: "10% di sconto su tutti gli acquisti",
           details: "Valido sia sul posto che per asporto.",
-          address: "Via Nizza 214, Salerno"
+          address: "Via Nizza 214, Salerno",
+          logo: "/images/sponsors/sti-polli.png"
         }
       ]
     },
@@ -62,19 +68,22 @@ export default function CardSanfraCupPage() {
           name: "Il Baretto 3.0",
           offer: "Caffè + cornetto a 2€ | 20% di sconto con una spesa minima di 5€",
           details: "",
-          address: "Via da definire, Salerno"
+          address: "Via da definire, Salerno",
+          logo: null
         },
         {
           name: "Caffè Grieco",
           offer: "Box 150 cialde: 24,99€ → 20,99€ | Con 2 box da 150, ricevi 1 box da 50 in regalo | Con 4 box da 150 (100€), ricevi 1 box da 150 in regalo",
           details: "",
-          address: "Via Roberto Wenner, 5, 84131 Salerno SA"
+          address: "Via Roberto Wenner, 5, 84131 Salerno SA",
+          logo: "/images/sponsors/grieco.jpg"
         },
         {
           name: "Portico",
           offer: "20% di sconto su consumazione minima di 15€ | Menù panino + patatine + bibita a 10€ | 20% di sconto per cene o aperitivi di gruppo (minimo 4 persone)",
           details: "",
-          address: "Via da definire, Salerno"
+          address: "Via da definire, Salerno",
+          logo: null
         }
       ]
     },
@@ -86,7 +95,8 @@ export default function CardSanfraCupPage() {
           name: "Nuovo Campetto Cappuccini – Assocalcio",
           offer: "20% di sconto sulla quota campo",
           details: "Lo sconto è personale e valido solo per il possessore della card.",
-          address: "Via da definire, Salerno"
+          address: "Via da definire, Salerno",
+          logo: null
         }
       ]
     }
@@ -326,16 +336,31 @@ export default function CardSanfraCupPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="bg-neutral-900 border border-yellow-500/20 rounded-xl p-6 hover:border-yellow-500/40 transition-colors"
+                    className="bg-neutral-900 border border-yellow-500/20 rounded-xl p-6 hover:border-yellow-500/40 transition-colors flex gap-6"
                   >
-                    <h4 className="text-xl font-semibold text-yellow-400 mb-3">{sponsor.name}</h4>
-                    <p className="text-white mb-2">{sponsor.offer}</p>
-                    {sponsor.details && (
-                      <p className="text-gray-400 text-sm mb-3">{sponsor.details}</p>
+                    {/* Logo */}
+                    {sponsor.logo && (
+                      <div className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 bg-white rounded-xl overflow-hidden flex items-center justify-center">
+                        <Image
+                          src={sponsor.logo}
+                          alt={sponsor.name}
+                          width={96}
+                          height={96}
+                          className="object-contain w-full h-full p-2"
+                        />
+                      </div>
                     )}
-                    <div className="flex items-center gap-2 text-gray-500 text-sm">
-                      <MapPin className="w-4 h-4" />
-                      <span>{sponsor.address}</span>
+                    {/* Content */}
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold text-yellow-400 mb-3">{sponsor.name}</h4>
+                      <p className="text-white mb-2">{sponsor.offer}</p>
+                      {sponsor.details && (
+                        <p className="text-gray-400 text-sm mb-3">{sponsor.details}</p>
+                      )}
+                      <div className="flex items-center gap-2 text-gray-500 text-sm">
+                        <MapPin className="w-4 h-4" />
+                        <span>{sponsor.address}</span>
+                      </div>
                     </div>
                   </motion.div>
                 ))}

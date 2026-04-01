@@ -73,6 +73,16 @@ const sponsors = [
     features: ["Cucina greca", "Prodotti freschi", "Dal 2001"]
   },
   {
+    id: "portico",
+    name: "Il Portico",
+    subtitle: "Partner Ufficiale",
+    backText: "Un punto di ritrovo per ogni momento della giornata.",
+    description: "Il Portico è un bar situato a Salerno che offre un ambiente accogliente e familiare, ideale per ogni momento della giornata. Dalla colazione con caffè e cornetto fino agli aperitivi serali, Il Portico rappresenta un punto di ritrovo per chi desidera trascorrere del tempo in compagnia, in un'atmosfera rilassata e piacevole. Grazie alla qualità dei prodotti e alla cortesia del servizio, è diventato un riferimento per molti clienti abituali della zona.",
+    address: "Via Antonio Gramsci 5, Salerno",
+    image: "/images/sponsors/portico.png",
+    features: ["Colazione", "Aperitivi", "Centro città"]
+  },
+  {
     id: "caffe-grieco",
     name: "Caffe Grieco",
     subtitle: "Partner Ufficiale",

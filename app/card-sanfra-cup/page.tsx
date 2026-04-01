@@ -25,37 +25,37 @@ export default function CardSanfraCupPage() {
       sponsors: [
         {
           name: "Da Giacomo – Grafferia Napoletana",
-          offer: "30% di sconto sul conto totale",
+          offers: ["30% di sconto sul conto totale"],
           details: "Valido sia per consumo sul posto che per asporto.",
-          address: "Via Alfredo de Marsico n 5, Salerno",
+          addresses: ["Via Alfredo de Marsico n 5, Salerno"],
           logo: "/images/sponsors/da-giacomo.png"
         },
         {
           name: "Mythos – Ristorante Greco",
-          offer: "Bibita in omaggio ogni 2 pita acquistate",
+          offers: ["Bibita in omaggio ogni 2 pita acquistate"],
           details: "Valido sia sul posto che per asporto.",
-          address: "Via Roma, 62 / Via Dalmazia, 39 - Salerno",
+          addresses: ["Via Roma, 62 - Salerno", "Via Dalmazia, 39 - Salerno"],
           logo: "/images/sponsors/mythos.png"
         },
         {
           name: "Grill House",
-          offer: "Bibita in omaggio con l'acquisto di un panino (valido anche per asporto) | Fritto in omaggio con panino + bibita (solo consumo sul posto)",
+          offers: ["Bibita in omaggio con l'acquisto di un panino (valido anche per asporto)", "Fritto in omaggio con panino + bibita (solo consumo sul posto)"],
           details: "",
-          address: "Via Giovan Angelo Papio, 39, 84122 Salerno SA",
+          addresses: ["Via Giovan Angelo Papio, 39, 84122 Salerno SA"],
           logo: "/images/sponsors/grill-house.jpg"
         },
         {
           name: "Quanto Basta",
-          offer: "20% di sconto sul conto totale (escluse le bibite)",
+          offers: ["20% di sconto sul conto totale (escluse le bibite)"],
           details: "Valido solo per consumo sul posto.",
-          address: "Corso Giuseppe Garibaldi, 201, 84122 Salerno",
+          addresses: ["Corso Giuseppe Garibaldi, 201, 84122 Salerno"],
           logo: "/images/sponsors/quanto-basta.png"
         },
         {
           name: "Sti Polli",
-          offer: "10% di sconto su tutti gli acquisti",
+          offers: ["10% di sconto su tutti gli acquisti con una spesa minima di 10€"],
           details: "Valido sia sul posto che per asporto.",
-          address: "Via Nizza 214, Salerno",
+          addresses: ["Via Nizza 214, Salerno"],
           logo: "/images/sponsors/sti-polli.png"
         }
       ]
@@ -66,23 +66,23 @@ export default function CardSanfraCupPage() {
       sponsors: [
         {
           name: "Il Baretto 3.0",
-          offer: "Caffè + cornetto a 2€ | 20% di sconto con una spesa minima di 5€",
+          offers: ["Caffè + cornetto a 2€", "20% di sconto con una spesa minima di 5€"],
           details: "",
-          address: "Via Michele Vernieri 113, Salerno",
+          addresses: ["Via Michele Vernieri 113, Salerno"],
           logo: "/images/sponsors/baretto.png"
         },
         {
           name: "Caffè Grieco",
-          offer: "Box 150 cialde: 24,99€ → 20,99€ | Con 2 box da 150, ricevi 1 box da 50 in regalo | Con 4 box da 150 (100€), ricevi 1 box da 150 in regalo",
+          offers: ["Box 150 cialde: 24,99€ → 20,99€", "Con 2 box da 150, ricevi 1 box da 50 in regalo", "Con 4 box da 150 (100€), ricevi 1 box da 150 in regalo"],
           details: "",
-          address: "Via Roberto Wenner, 5, 84131 Salerno SA",
+          addresses: ["Via Roberto Wenner, 5, 84131 Salerno SA"],
           logo: "/images/sponsors/grieco.jpg"
         },
         {
           name: "Portico",
-          offer: "20% di sconto su consumazione minima di 15€ | Menù panino + patatine + bibita a 10€ | 20% di sconto per cene o aperitivi di gruppo (minimo 4 persone)",
+          offers: ["20% di sconto su consumazione minima di 15€", "Menù panino + patatine + bibita a 10€"],
           details: "",
-          address: "Via Antonio Gramsci 5, Salerno",
+          addresses: ["Via Antonio Gramsci 5, Salerno"],
           logo: "/images/sponsors/portico.png"
         }
       ]
@@ -93,9 +93,9 @@ export default function CardSanfraCupPage() {
       sponsors: [
         {
           name: "Nuovo Campetto Cappuccini – Assocalcio",
-          offer: "20% di sconto sulla quota campo",
+          offers: ["20% di sconto sulla quota campo"],
           details: "Lo sconto è personale e valido solo per il possessore della card.",
-          address: "Via Nicola Acocella 7, Salerno",
+          addresses: ["Via Nicola Acocella 7, Salerno"],
           logo: "/images/sponsors/assocalcio.png"
         }
       ]
@@ -353,13 +353,30 @@ export default function CardSanfraCupPage() {
                     {/* Content */}
                     <div className="flex-1">
                       <h4 className="text-xl font-semibold text-yellow-400 mb-3">{sponsor.name}</h4>
-                      <p className="text-white mb-2">{sponsor.offer}</p>
+                      <ul className="mb-2 space-y-1">
+                        {sponsor.offers.map((offer, i) => (
+                          <li key={i} className="text-white flex items-start gap-2">
+                            <span className="text-yellow-400 mt-1.5">•</span>
+                            <span>{offer}</span>
+                          </li>
+                        ))}
+                      </ul>
                       {sponsor.details && (
                         <p className="text-gray-400 text-sm mb-3">{sponsor.details}</p>
                       )}
-                      <div className="flex items-center gap-2 text-gray-500 text-sm">
-                        <MapPin className="w-4 h-4" />
-                        <span>{sponsor.address}</span>
+                      <div className="text-gray-500 text-sm">
+                        {sponsor.addresses.map((addr, i) => (
+                          <a 
+                            key={i} 
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(addr)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 hover:text-yellow-400 transition-colors cursor-pointer"
+                          >
+                            <MapPin className="w-4 h-4 flex-shrink-0" />
+                            <span className="underline">{addr}</span>
+                          </a>
+                        ))}
                       </div>
                     </div>
                   </motion.div>

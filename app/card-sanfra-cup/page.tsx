@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Navbar } from "@/components/navbar"
-import { ArrowLeft, Calendar, Gift, Percent } from "lucide-react"
+import { ArrowLeft, Calendar, Gift, Percent, ChevronDown, MapPin, Utensils, Coffee, Dumbbell } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 import { LiquidMetalIDCard } from "@/components/liquid-metal-id-card"
@@ -11,10 +11,86 @@ import SlideTextButton from "@/components/slide-text-button"
 export default function CardSanfraCupPage() {
   const [currentLang, setCurrentLang] = useState<"it" | "en">("it")
   const [currentSport, setCurrentSport] = useState<"home" | "calcio" | "volley" | "fsc">("home")
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
   const whatsappNumber = "393914897361" // Andrea Gallo
   const whatsappMessage = encodeURIComponent("Ciao, voglio più informazioni sulla Card Sanfra Cup")
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
+
+  const sponsorCategories = {
+    "ristoranti": {
+      title: "Ristoranti e Street Food",
+      icon: Utensils,
+      sponsors: [
+        {
+          name: "Da Giacomo – Grafferia Napoletana",
+          offer: "30% di sconto sul conto totale",
+          details: "Valido sia per consumo sul posto che per asporto.",
+          address: "Via Alfredo de Marsico n 5, Salerno"
+        },
+        {
+          name: "Mythos – Ristorante Greco",
+          offer: "Bibita in omaggio ogni 2 pita acquistate",
+          details: "Valido sia sul posto che per asporto.",
+          address: "Via Roma, 62 / Via Dalmazia, 39 - Salerno"
+        },
+        {
+          name: "Grill House",
+          offer: "Bibita in omaggio con l'acquisto di un panino (valido anche per asporto) | Fritto in omaggio con panino + bibita (solo consumo sul posto)",
+          details: "",
+          address: "Via Giovan Angelo Papio, 39, 84122 Salerno SA"
+        },
+        {
+          name: "Quanto Basta",
+          offer: "20% di sconto sul conto totale (escluse le bibite)",
+          details: "Valido solo per consumo sul posto.",
+          address: "Corso Giuseppe Garibaldi, 201, 84122 Salerno"
+        },
+        {
+          name: "Sti Polli",
+          offer: "10% di sconto su tutti gli acquisti",
+          details: "Valido sia sul posto che per asporto.",
+          address: "Via Nizza 214, Salerno"
+        }
+      ]
+    },
+    "bar": {
+      title: "Bar e Caffetterie",
+      icon: Coffee,
+      sponsors: [
+        {
+          name: "Il Baretto 3.0",
+          offer: "Caffè + cornetto a 2€ | 20% di sconto con una spesa minima di 5€",
+          details: "",
+          address: "Via da definire, Salerno"
+        },
+        {
+          name: "Caffè Grieco",
+          offer: "Box 150 cialde: 24,99€ → 20,99€ | Con 2 box da 150, ricevi 1 box da 50 in regalo | Con 4 box da 150 (100€), ricevi 1 box da 150 in regalo",
+          details: "",
+          address: "Via Roberto Wenner, 5, 84131 Salerno SA"
+        },
+        {
+          name: "Portico",
+          offer: "20% di sconto su consumazione minima di 15€ | Menù panino + patatine + bibita a 10€ | 20% di sconto per cene o aperitivi di gruppo (minimo 4 persone)",
+          details: "",
+          address: "Via da definire, Salerno"
+        }
+      ]
+    },
+    "sport": {
+      title: "Sport e Tempo libero",
+      icon: Dumbbell,
+      sponsors: [
+        {
+          name: "Nuovo Campetto Cappuccini – Assocalcio",
+          offer: "20% di sconto sulla quota campo",
+          details: "Lo sconto è personale e valido solo per il possessore della card.",
+          address: "Via da definire, Salerno"
+        }
+      ]
+    }
+  }
 
   const vantaggi = [
     {
@@ -209,16 +285,63 @@ export default function CardSanfraCupPage() {
             <span className="text-white">Dove posso usare la</span>{' '}<span className="text-yellow-400">Card Sanfra Cup?</span>
           </motion.h2>
 
-          {/* Sezione vuota per ora */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-center text-gray-500"
-          >
-            <p>Coming soon...</p>
-          </motion.div>
+          {/* Category Buttons */}
+          <div className="flex flex-col md:flex-row gap-4 justify-center max-w-4xl mx-auto mb-8">
+            {Object.entries(sponsorCategories).map(([key, category], index) => (
+              <motion.button
+                key={key}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => setSelectedCategory(selectedCategory === key ? null : key)}
+                className={`flex items-center justify-between gap-3 px-6 py-4 rounded-xl border transition-all duration-300 w-full md:w-auto ${
+                  selectedCategory === key
+                    ? "bg-yellow-400 border-yellow-400 text-black"
+                    : "bg-neutral-900 border-yellow-500/20 text-white hover:border-yellow-500/50"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <category.icon className="w-5 h-5" />
+                  <span className="font-semibold">{category.title}</span>
+                </div>
+                <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${selectedCategory === key ? "rotate-180" : ""}`} />
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Sponsors Dropdown */}
+          {selectedCategory && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="max-w-4xl mx-auto"
+            >
+              <div className="grid gap-4">
+                {sponsorCategories[selectedCategory as keyof typeof sponsorCategories].sponsors.map((sponsor, index) => (
+                  <motion.div
+                    key={sponsor.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    className="bg-neutral-900 border border-yellow-500/20 rounded-xl p-6 hover:border-yellow-500/40 transition-colors"
+                  >
+                    <h4 className="text-xl font-semibold text-yellow-400 mb-3">{sponsor.name}</h4>
+                    <p className="text-white mb-2">{sponsor.offer}</p>
+                    {sponsor.details && (
+                      <p className="text-gray-400 text-sm mb-3">{sponsor.details}</p>
+                    )}
+                    <div className="flex items-center gap-2 text-gray-500 text-sm">
+                      <MapPin className="w-4 h-4" />
+                      <span>{sponsor.address}</span>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </div>
       </section>
 

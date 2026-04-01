@@ -53,7 +53,7 @@ export default function CardSanfraCupPage() {
         },
         {
           name: "Sti Polli",
-          offers: ["10% di sconto su tutti gli acquisti"],
+          offers: ["10% di sconto su tutti gli acquisti con una spesa minima di 10€"],
           details: "Valido sia sul posto che per asporto.",
           addresses: ["Via Nizza 214, Salerno"],
           logo: "/images/sponsors/sti-polli.png"
@@ -80,7 +80,7 @@ export default function CardSanfraCupPage() {
         },
         {
           name: "Portico",
-          offers: ["20% di sconto su consumazione minima di 15€", "Menù panino + patatine + bibita a 10€", "20% di sconto per cene o aperitivi di gruppo (minimo 4 persone)"],
+          offers: ["20% di sconto su consumazione minima di 15€", "Menù panino + patatine + bibita a 10€"],
           details: "",
           addresses: ["Via Antonio Gramsci 5, Salerno"],
           logo: "/images/sponsors/portico.png"

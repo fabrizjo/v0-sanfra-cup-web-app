@@ -73,6 +73,16 @@ const sponsors = [
     features: ["Cucina greca", "Prodotti freschi", "Dal 2001"]
   },
   {
+    id: "portico",
+    name: "Portico Bar & Bistrot",
+    subtitle: "Partner Ufficiale",
+    backText: "Bar e bistrot nel cuore di Salerno.",
+    description: "Portico Bar & Bistrot è un locale accogliente e moderno situato nel centro di Salerno. Offre una vasta selezione di bevande, cocktail e piatti leggeri, perfetti per un aperitivo con amici o una pausa pranzo veloce. L'atmosfera elegante e rilassata rende Portico il luogo ideale per trascorrere momenti piacevoli in compagnia, con un servizio attento e cordiale che mette al centro il cliente.",
+    address: "Via Antonio Gramsci 5, Salerno",
+    image: "/images/sponsors/portico.png",
+    features: ["Bar & Bistrot", "Aperitivi", "Centro città"]
+  },
+  {
     id: "caffe-grieco",
     name: "Caffe Grieco",
     subtitle: "Partner Ufficiale",

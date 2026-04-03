@@ -89,7 +89,7 @@ const sponsors = [
     backText: "Molto più di un caffè.",
     description: "La storia di Grieco Industria del Caffè inizia nel 1952 quando Alfonso Grieco, fondatore dell'azienda, realizza la sua prima miscela di caffè, all'interno dell'antica torrefazione nella città di Salerno. Da allora crescita e sviluppo hanno caratterizzato il lungo percorso di evoluzione ed oggi nel nuovo stabilimento di via Acquasanta, nella zona orientale della città si svolge la produzione. La scelta delle materie prime accuratamente selezionate ed il tradizionale procedimento di tostatura portano alla realizzazione di un espresso dolce, corposo e aromatico.",
     address: "Via Roberto Wenner, 5, 84131 Salerno SA",
-    image: "/images/sponsors/grieco.jpg",
+    image: "/images/sponsors/grieco.png",
     features: ["Espresso italiano", "Dal 1952", "Tostatura tradizionale"]
   },
   {

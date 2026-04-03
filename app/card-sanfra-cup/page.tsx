@@ -76,7 +76,7 @@ export default function CardSanfraCupPage() {
           offers: ["Box 150 cialde: 24,99€ → 20,99€", "Con 2 box da 150, ricevi 1 box da 50 in regalo", "Con 4 box da 150 (100€), ricevi 1 box da 150 in regalo"],
           details: "",
           addresses: ["Via Roberto Wenner, 5, 84131 Salerno SA"],
-          logo: "/images/sponsors/grieco.jpg"
+          logo: "/images/sponsors/grieco.png"
         },
         {
           name: "Portico",

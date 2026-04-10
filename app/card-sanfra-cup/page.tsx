@@ -97,6 +97,13 @@ export default function CardSanfraCupPage() {
           details: "Lo sconto è personale e valido solo per il possessore della card.",
           addresses: ["Via Nicola Acocella 7, Salerno"],
           logo: "/images/sponsors/assocalcio.png"
+        },
+        {
+          name: "Up and Down",
+          offers: ["Prova gratuita in palestra", "Quota iscrizione annuale gratuita"],
+          details: "",
+          addresses: ["Via Nicola Aversano, 6, 84124 Salerno SA"],
+          logo: "/images/sponsors/up-and-down.png"
         }
       ]
     }

@@ -83,6 +83,16 @@ const sponsors = [
     features: ["Colazione", "Aperitivi", "Centro città"]
   },
   {
+    id: "up-and-down",
+    name: "Up and Down",
+    subtitle: "Partner Ufficiale",
+    backText: "Benessere psico-fisico a 360°.",
+    description: "Up & Down nasce dall'idea dei fratelli Rocco di creare in centro città una realtà di palestra innovativa impuntata sul benessere psico-fisico a 360°: il Fitness. Raggiungere un fisico allenato, armonioso, in salute, qualitativo e funzionale è il nostro obbiettivo. La nostra mission: \"migliorare lo stile e la qualità della vita delle persone\". Da più di 10 anni offriamo sempre le attrezzature, i corsi, le discipline più all'avanguardia nel mondo del fitness; primi nell'inserimento di corsi di Kettlebell Training, TRX, e Functional a Salerno, primi nel far approdare il trampolino ed il meraviglioso mondo del Super Jump in città, primi ad utilizzare la tecnologia Visual e Silent Ride nello Spinning, ad oggi l'unica palestra in centro dove ci sono ancora i corsi di Fitness Coreografico.",
+    address: "Via Nicola Aversano, 6, 84124 Salerno SA",
+    image: "/images/sponsors/up-and-down.png",
+    features: ["Fitness", "Corsi all'avanguardia", "Benessere 360°"]
+  },
+  {
     id: "caffe-grieco",
     name: "Caffe Grieco",
     subtitle: "Partner Ufficiale",

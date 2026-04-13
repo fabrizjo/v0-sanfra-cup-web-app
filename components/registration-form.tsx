@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Plus, Trash2, Users, Mail, Phone } from "lucide-react"
-import { createBrowserClient } from "@supabase/ssr"
+import { createBrowserClient } from "@/lib/supabase/client"
 
 type Player = {
   id: string
@@ -102,10 +102,7 @@ export function RegistrationForm({ sport = "calcio" }: RegistrationFormProps) {
     setSubmitStatus("idle")
 
     try {
-      const supabase = createBrowserClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      )
+      const supabase = createBrowserClient()
 
       // Insert team
       const { data: teamData, error: teamError } = await supabase

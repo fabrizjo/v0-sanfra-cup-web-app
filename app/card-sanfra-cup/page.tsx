@@ -99,7 +99,7 @@ export default function CardSanfraCupPage() {
           logo: "/images/sponsors/assocalcio.png"
         },
         {
-          name: "Up and Down",
+          name: "Up & Down Fitness",
           offers: ["Prova gratuita in palestra", "Quota iscrizione annuale gratuita"],
           details: "",
           addresses: ["Via Nicola Aversano, 6, 84124 Salerno SA"],

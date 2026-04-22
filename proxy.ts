@@ -2,15 +2,21 @@ import { createServerClient } from "@supabase/ssr"
 import { NextResponse, type NextRequest } from "next/server"
 
 export async function proxy(request: NextRequest) {
-  console.log("[v0] Proxy: Processing request for", request.nextUrl.pathname)
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  // If Supabase env vars are not set, allow the request to proceed without auth check
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return NextResponse.next({ request })
+  }
 
   let supabaseResponse = NextResponse.next({
     request,
   })
 
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         getAll() {
@@ -32,8 +38,6 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  console.log("[v0] Proxy: User authenticated:", !!user)
-
   const pathname = request.nextUrl.pathname
 
   if (pathname === "/admin" || pathname.startsWith("/admin/")) {
@@ -41,7 +45,6 @@ export async function proxy(request: NextRequest) {
     if (pathname === "/admin/login") {
       // If already logged in, redirect to admin dashboard
       if (user) {
-        console.log("[v0] Proxy: User logged in, redirecting from login to admin")
         const url = request.nextUrl.clone()
         url.pathname = "/admin"
         return NextResponse.redirect(url)
@@ -52,7 +55,6 @@ export async function proxy(request: NextRequest) {
 
     // For all other admin routes, require authentication
     if (!user) {
-      console.log("[v0] Proxy: No user on protected route, redirecting to login")
       const url = request.nextUrl.clone()
       url.pathname = "/admin/login"
       return NextResponse.redirect(url)
